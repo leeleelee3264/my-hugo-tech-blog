@@ -1,3 +1,6 @@
 [submodule "themes/fuji"]
 	path = themes/fuji
 	url = https://github.com/dsrkafuu/hugo-theme-fuji.git
+[submodule "public"]
+	path = public
+	url = https://github.com/leeleelee3264/leeleelee3264.github.io.git
