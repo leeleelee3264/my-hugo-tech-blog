@@ -36,7 +36,7 @@ subTitle = "Log of LeeLee"
 defaultTheme = "auto"              # default theme when first visit (auto|dark|light)
 
 # Source URL of the website, will appear in the footer
-sourceURL = "https://github.com/dsrkafuu/hugo-theme-fuji"
+sourceURL = "https://github.com/leeleelee3264/leeleelee3264.github.io"
 
 # Use CloudFlare Workers to accelerate the Google Analytics
 # If you are using this please comment the googleAnalytics above

@@ -1,9 +1,12 @@
-![example workflow](https://github.com/leeleelee3264/leeleelee3264/actions/workflows/leelee_me_healthcheck.yaml/badge.svg)
-![example workflow](https://github.com/leeleelee3264/twitter_project/actions/workflows/netflix.yml/badge.svg)
++++
+title = "About Me"
+description = "This is about LeeLee"
+date = 2020-08-11T19:15:32+08:00
+showLicense = false
+showToc = false
+showComments = false
++++
 
-<br>
-
-## LeeLee
 Hi, I'm LeeLee. <br>
 I'm a Backend developer who dreams Devops. Here is something about me. <br>
 
