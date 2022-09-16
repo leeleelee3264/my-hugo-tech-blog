@@ -1,5 +1,5 @@
-baseURL = "https://github.dsrkafuu.net/hugo-theme-fuji/"
-title = "Hugo Theme Fuji"
+baseURL = "https://leeleelee3264.github.io/"
+title = "Logging"
 
 theme = "fuji"
 hasCJKLanguage = true
@@ -31,8 +31,8 @@ home = ["HTML", "RSS", "SearchIndex"]
 post = "/:section/:filename/" # Custom post links, e.g. "/:year/:month/:title/"
 
 [params]
-author = "DSRKafuU"                # You can also set author in post front matter individually
-subTitle = "A minimal Hugo theme."
+author = "leeleelee3264"                # You can also set author in post front matter individually
+subTitle = "Log of LeeLee"
 defaultTheme = "auto"              # default theme when first visit (auto|dark|light)
 
 # Source URL of the website, will appear in the footer
