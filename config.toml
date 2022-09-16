@@ -123,13 +123,14 @@ name = "Home"
 url = "/"
 weight = 1
 [[menu.nav]]
-name = "Archives"
-url = "/archives/"
-weight = 2
-[[menu.nav]]
 name = "About"
 url = "/about/"
+weight = 2
+[[menu.nav]]
+name = "Archives"
+url = "/archives/"
 weight = 3
+
 #[[menu.nav]]
 #name = "Search"
 #url = "/search/"
