@@ -1,5 +1,5 @@
 +++
-title = "[Project] Build Myinfo oauth2 connector with Python/Django"
+title = "Python으로 Myinfo oauth2 client connector 구현하기"
 date = "2022-07-23"
 description = "All about Myinfo project"
 tags = ["Project"]

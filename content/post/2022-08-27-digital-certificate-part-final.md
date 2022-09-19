@@ -1,5 +1,5 @@
 +++
-title = "[Security] Apply digital certificate"
+title = "Digital certificate 적용하기"
 date = "2022-08-27"
 description = "All about CA and apply Digital Certificate."
 tags = ["Infra"]
