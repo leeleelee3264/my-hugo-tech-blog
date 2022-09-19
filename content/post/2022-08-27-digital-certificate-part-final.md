@@ -9,7 +9,7 @@ showComments = true
 <br>
 <br>
 
-> CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명합니다.  
+> CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다.  
 
 <br>
 
@@ -283,7 +283,10 @@ cat ComodoRSADomainValidationSecureServerCA.crt ComodoRSAAddTrustCA.crt AddTrust
 
 ### Apply CA Bundle 
 
+
 CA bundle을 서버 호스트 어디엔가 다운로드해두었다면 해당 도메인이 등록되어있는 Nginx 등의 웹서버에 CA Bundle가 있는 path를 적어주면 된다. 그럼 알아서 클라이언트에게 CA Bundle을 한꺼번에 넘겨준다. 클라이언트는 이 Bundle을 통해서 end-entity가 믿을 수 있는지 없는지 여부를 결정한다. 이와 같은 과정을 **Chain of Trust**라고 한다.
+
+인증서를 서버에 다운로드 하는 것을 ‘installed’ 한다고 표현하는데 실제로는 인증서를 서버에 설치한다기 보다는 특정 디렉터리에 넣어둔다.
 
 <br>
 
