@@ -1,6 +1,6 @@
 +++
-title: ""
-date: "YYYY-mm-dd"
+title = ""
+date = "YYYY-mm-dd"
 description = ""
 tags = [""]
 +++

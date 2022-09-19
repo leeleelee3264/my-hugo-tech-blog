@@ -1,8 +1,8 @@
 +++
-title = "[Security] Apply Digital Certificate"
+title = "[Security] Apply digital certificate"
 date = "2022-08-27"
 description = "All about CA and apply Digital Certificate."
-tags = ["infra"]
+tags = ["Infra"]
 showComments = true
 +++
 
