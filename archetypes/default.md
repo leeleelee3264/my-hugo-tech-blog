@@ -60,26 +60,8 @@ tags = [""]
 <br> 
 
 
-{{< highlight shell  "linenos=true,hl_inline=false" >}}
-server {
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-
-        server_name www.test.me test.me;
-
-        location / {
-                try_files $uri $uri/ =404;
-        }
-
-    listen [::]:443 ssl http2; # managed by Certbot
-    listen 443 ssl http2; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/test.me/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/test.me/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-}
 {{< /highlight >}}
 
 설명 설명 설명 
