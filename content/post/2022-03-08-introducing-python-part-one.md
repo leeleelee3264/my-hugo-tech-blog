@@ -54,10 +54,11 @@ tags = ["Book"]
 
 > 슬라이싱을 이용한 문자 reverse 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 st = "eererewrvfgrhfos"
 re_st = st[::-1] # sofhrgfvrwereree
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -72,11 +73,13 @@ re_st = st[::-1] # sofhrgfvrwereree
 <br> 
 
 > del 예시 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 del full[2]
 
 # full.del(2) 처럼 쓰지 못한다.
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -87,7 +90,8 @@ del full[2]
 <br> 
 
 > 리스트 예시 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 생성 
 empty = []
 empyt2 = list()
@@ -109,7 +113,8 @@ full.appned(added) # [1, 2, 3, 4, [5, 6, 7, 8]]
 # sorted() 는 리스트의 정렬된 복사본을 반환한다. 
 full.sort()
 new_sort = full.sorted() 
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -120,7 +125,8 @@ new_sort = full.sorted()
 <br> 
 
 > 튜플 예시
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 생성 
 empty_tuple = ()
 # 콤마로 값을 나열해도 튜플을 만들 수 있다. 
@@ -131,8 +137,8 @@ empty_tuple = (1, 2, 3)
 password = '12'
 icecream = 'sweet' 
 password, icecream = icecream, password 
+{{< /highlight >}}
 
-```
 <br> 
 
 #### 리스트가 아닌 불변객체라 함수 지원이 더 적은 튜플을 사용하는 이유
@@ -151,7 +157,8 @@ password, icecream = icecream, password
 
 > 딕셔너리 예시
 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 생성 
 empty_dict = {}
 
@@ -182,8 +189,9 @@ em.values()
 
 # 모든 키, 값 가져오기
 # ('a', 'b'), ('c', 'd') 처럼 튜플로 반환한다 
-em.items() 
-```
+em.items()
+{{< /highlight >}}
+
 
 <br>
 
@@ -195,7 +203,8 @@ em.items()
 
 > 셋 예시 
 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 생성 
 # 그냥 {} 는 딕셔너리 생성자에 선점되었다. 
 empty_set = set() 
@@ -230,7 +239,8 @@ a.issubset((1, 2, 3))
 a.issuperset((1)) # True
 ((1, 2, 3)).issuperset(a) # True
 a.issuperset(a) # True 
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -245,9 +255,11 @@ a.issuperset(a) # True
 
 > 한 줄 for 문 예시
 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 num = [i for i in range(1, 6)]
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -259,7 +271,8 @@ num = [i for i in range(1, 6)]
 
 > 인자 예시 
 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 위치 인자 
 def menu(wine, entree, dessert): 
 	pass 
@@ -271,13 +284,14 @@ def menu(wine=wine, entree=entreee, dessert=dessert):
 # 인자의 기본 값 지정 
 def menu(wine, entree, dessert='pie'): 
 	pass 
-```
+{{< /highlight >}}
+
 
 <br> 
 
 > 인자 모으기 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # 위치 인자 모으기 * 
 def print_args(one, two, three, *args): 
 	pass 
@@ -290,7 +304,8 @@ def print_keyword(**kwargs)
 
 # 실제 호출 시 위치인자와 마찬가지로, 함수에 따로 정의가 안 된 위치인자를 취한다. 
 print_keyword(one=1, two=2, three=3, four=4, five=5)
-```
+{{< /highlight >}}
+
 
 <br> 
 
@@ -306,7 +321,7 @@ print_keyword(one=1, two=2, three=3, four=4, five=5)
 
 > docstring 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 """
 	모듈 (파이썬 파일) 최상단에 이런 형식으로 주석을 달아주세요. 
 Usage: 
@@ -324,7 +339,8 @@ class TestClass:
 		"""
 
 		pass
-```
+{{< /highlight >}}
+
 
 <br> 
 
@@ -336,10 +352,11 @@ docstring을 이용해서 주석을 달아두면  코드에서 `help` 함수를 
 
 > help 함수로 docstring 접근 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 help(TestClass)
 TestClass.__doc__
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -351,8 +368,8 @@ PEP 에 따르면 파이썬은 한 줄에 `80글자`를 넘으면 안된다. 가
 
 > 백슬래시 예시
 
-```python
 
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 test = "this" + \ 
 			"is very very" + \ 
 			"long long line" 
@@ -361,7 +378,8 @@ test = "this" + \
 test = ""
 test += "is very very" 
 test += "long long line"
-```
+{{< /highlight >}}
+
 
 <br>
 
@@ -376,7 +394,7 @@ _함수는 뷸변하기 때문에 딕셔너리의 키로 사용할 수 있다._
 
 > 함수에서 함수를 반환하는 예시 
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def run_something_with_args(func, arg1, arg2): 
 	func(arg1, arg2)
 
@@ -385,7 +403,8 @@ def add_args(arg1, arg2):
 
 >> run_something(add_agrs, 5, 8 )
 14
-```
+{{< /highlight >}}
+
 
 <br> 
 
@@ -405,7 +424,8 @@ def add_args(arg1, arg2):
 <br> 
 
 > 내부 함수 예시 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def increment(number): 
 	def inner_increment(): 
 		return number + 1
@@ -413,14 +433,17 @@ def increment(number):
 
 >> increment(10)
 11
-```
+
+{{< /highlight >}}
+
 
 위처럼 작성을 하면 inner_increment 함수를 어디에서도 호출을 할 수 없다.
 
 <br> 
 
 > 내부 함수를 이용해 Helper를 만든 예시
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def factorial(number):
 	if not isinstance(number, int):
 		raise TypeError("Sorry. 'number' must be an integer.")
@@ -433,7 +456,8 @@ def factorial(number):
 		return number * inner_factorial(number - 1)
 
 	return inner_factorial(number)
-```
+{{< /highlight >}}
+
 
 <br> 
 
@@ -442,7 +466,8 @@ def factorial(number):
 <br> 
 
 > private을 이용해 Helper를 만든 예시 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def factorial(number):
 	if not isinstance(number, int):
 		raise TypeError("Sorry. 'number' must be an integer.")
@@ -455,7 +480,7 @@ def _factorial(number):
 	if number <= 1:
 		return 1
 	return number * inner_factorial(number - 1)
-```
+{{< /highlight >}}
 
 <br>
 
@@ -463,9 +488,12 @@ def _factorial(number):
 
 클로저는 바깥 함수로부터 전달된 변수값을 저장하고, 변경을 할 수 있는 함수이다. 파이썬에서 함수를 변수에 할당할 수 있는 이유도 클로저 기능을 지원하기 때문이다.
 
-Example 1 generate_power 클로저 버전
+<br> 
 
-```python
+> 클로저 예시 generate_power 
+
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 # closure factory function
 def generate_power(exponent):
     def power(base):
@@ -478,15 +506,21 @@ raise_two = generate_power(2)
 16 
 >> raise_two(5) 
 25
-```
+
+{{< /highlight >}}
+
 
 <br>
 
-클로저의 개념이 처음이다보니 제대로 이해가 가지 않아 print를 해가며 이해를 진행했다.
+#### 클로저 호출 과정 상세 보기
 
-Example 1 generate_power 클로저 버전 with print
+클로저의 개념이 처음이다보니 제대로 이해가 가지 않아 print로 디버깅을 해가며 이해를 진행했다.
 
-```python
+<br> 
+
+> 클로저 예시 generate_power_with_debug
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def generate_power_with_debug(exponent):
     print(f'closure generated, passed exponent {exponent}')
 
@@ -506,48 +540,61 @@ print(f'result of closure : {raise_two(4)}')
 closure generated, passed exponent 2
 inner function in closure. passed base 4
 result of closure : 16
-```
+{{< /highlight >}}
 
-호출 과정
 
-```python
+<br> 
+
+> generate_power 호출 과정 (1)
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 raise_two = generate_power_with_debug(2)) 
+{{< /highlight >}}
 
-# 1. generate_power_with_debug 로 변수 exponent에 2를 넣어 클로저 생성한다.
-# 2. 클로저는 매번 호출될 때마다 새로운 클로저를 생성한다. 
-# 3. 내부 함수 power은 호출이 되지 않고, 새로운 power 인스턴스를 생성해 리턴이 된다.
-# 3-1. 리턴값이 함수라는 얘기다. 
 
-(중요!!)
-# 3-2. power를 리턴할 때 power의 surrounding state 를 스냅셧으로 남긴다. 여기에는 exponent 변수가 포함되어있다. 
+1. generate_power_with_debug 로 변수 exponent에 2를 넣어 클로저 생성한다.
+2. 클로저는 매번 호출될 때마다 새로운 클로저를 생성한다. 
+3. 내부 함수 power은 호출이 되지 않고, 새로운 power 인스턴스를 생성해 리턴이 된다. 
+   1. 리턴값이 함수라는 얘기다. 
+   2. power를 리턴할 때 power의 surrounding state 를 스냅셧으로 남긴다. 여기에는 exponent 변수가 포함되어있다. 
 
-```
+<br> 
 
-```python
+> generate_power 호출 과정 (2)
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 print(f'result of closure : {raise_twon(4)}')
+{{< /highlight >}}
 
-# 1. generate_power_with_debug 클로저를 호출한다. 
-# 2. 클로저를 호출함에 따라 변수 base에 4를 넣어 내부함수 power가 호출한다. 
-# 3. power는 클로저가 리턴되었을 때 함께 넘어왔던 surrounding state의 스냅샷에 저장이 된 exponent를 이용한다. 
-# 4. power 결과를 리턴한다. 
-```
+
+1. generate_power_with_debug 클로저를 호출한다. 
+2. 클로저를 호출함에 따라 변수 base에 4를 넣어 내부함수 power가 호출한다. 
+3. power는 클로저가 리턴되었을 때 함께 넘어왔던 surrounding state의 스냅샷에 저장이 된 exponent를 이용한다. 
+4. power 결과를 리턴한다. 
 
 <br>
+
+> 클로저 호출 시나리오 총정리 
+
+
+```
+Q: 어떻게 내부함수를 호출할 때 외부함수의 값에 접근을 할까?
+A: 클로저를 생성할 때 내부함수를 리턴하는데, 이때 외부함수의 상태 스냅샷을 함께 리턴해주기 때문이다.
+```
 
 - 클로저를 구분할 수 있는 부분은 내부함수를 괄호() 로 호출하지 않다는 것이다. 예제에서 power를 리턴하기만 하는데, 이렇게 리턴을 하면 exponent 값을 저장한 **power 함수의 복사본을** 주게 된다.
 - 복사본을 할당 받은 변수 raise_two를 실제로 매개변수를 넣고 호출한다.
 - 매개변수는 내부함수인 power 의 base 와 맵핑이 된다.
 
-> 어떻게 내부함수를 호출할 때 외부함수의 값에 접근을 할까?
->
-> > 클로저를 생성할 때 내부함수를 리턴하는데, 이때 외부함수의 상태 스냅샷을 함께 리턴해주기 때문이다.
 
 
 <br>
 
-Example 2 has_permission
+#### 클로저로 권한 확인 함수 구현 
 
-```python
+> 클로저로 구현한 권한 확인 함수 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def has_permission(page):
     def permission(username):
         if username.lower() == "admin":
@@ -564,24 +611,31 @@ check_admin_page_permision = has_permission("Admin Page")
 
 >>> check_admin_page_permision("john")
 "'john' doesn't have access to Admin Page."
-```
 
-> difference bwteern clousre and decorator? No! Decorators return a closure. A closure is what is returned by a decorator.
->
+{{< /highlight >}}
+
 
 <br>
 
-## 데코레이터
+### 데코레이터
 
-데코레이터는 callable(함수, 메소드, 클래스)를 인자로 받고, 다른 callable을 리턴한다(내부함수). 생김새와 위치는 자바의 어노테이션과 동일하다. 데코레이션을 사용하면 이미 존재하고 있던 original callable에 별도의 수정사항없이 액션을 추가 할 수 있다.
+데코레이터는 callable`(함수, 메소드, 클래스)`를 인자로 받고, 다른 callable을 리턴한다`(내부함수)`.     
 
-데코레이터 생성하기
+생김새와 위치는 자바의 어노테이션과 동일하다. 데코레이션을 사용하면 이미 존재하고 있던 함수에 별도의 수정사항없이 액션을 추가 할 수 있다.
+
+<br> 
+
+> 데코레이터 사용 시나리오
 
 - 함수를 인자로 받는 callable을 선언한다.
 - 인자로 받은 함수를 호출한다.
 - 추가 액션이 있는 다른 함수를 리턴한다.
 
-```python
+<br> 
+
+> 데코레이터 예시 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def example_decorator(func): 
 	def _add_messages(): 
 		print('This is my first decorator')
@@ -599,13 +653,17 @@ def greet():
 This is my first decorator 
 Hello World 
 bye 
-```
+{{< /highlight >}}
+
+
+<br>
 
 이렇게 추가로 액션을 행할 수 있게 해주는 데코레이터는 `디버깅`, `캐싱`, `로깅`, `시간측정`(timing)에 많이 쓰인다.
 
-Example 1 debugging
 
-```python
+> 데코레이터 디버깅 예시
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def debug(func):
     def _debug(*args, **kwargs):
         result = func(*args, **kwargs)
@@ -622,14 +680,17 @@ def add(a, b):
 >>> add(5, 6)
 add(args: (5, 6), kwargs: {}) -> 11
 11
-```
+
+{{< /highlight >}}
+
 <br>
 
-Example 2 generate_power 데코레이터 버전
+> 데코레이터로 구현한 generate_power 
 
 아까 위에서는 클로저로 generate_power를 구현했는데 이번에는 데코레이터로 구현을 했다.
 
-```python
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def generate_power(exponent):
     def power(func):
         def inner_power(*args):
@@ -651,13 +712,17 @@ def raise_three(n):
 
 >>> raise_three(5)
 125
-```
+{{< /highlight >}}
+
 
 <br>
 
-Example 2 generate_power_with_debug
+#### 데코레이터 호출 과정 상세 보기 
+<br>
 
-```python
+> 데코레이터로 구현한 generate_power_with_debug
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 def generate_power_with_debug(exponent):
     print(f'closure is generated, passed exponent : {exponent}')
 
@@ -684,46 +749,70 @@ closure is generated, passed exponent : 2
 inner function in closure. passed func : <function raise_two at 0x100e2dee0>
 inner function in power. passed args : (7,)
 result of closure : 49
-```
+{{< /highlight >}}
 
-호출과정
+<br> 
 
-```python
+
+> generate_power 호출 과정 (1)
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 @generate_power_with_debug(2)
 def raise_two(n): 
 	return n 
+{{< /highlight >}}
 
-# 1. raise_two = generate_power_with_debug(2) 와 동일하다. 
-# 2. @generate_power_with_debug 데코레이터는 exponent 값을 포함한 내부함수 power를 리턴한다.
-# 3. raise_two가 선언되면서 power도 호출이 된다. 
-# 4. power는 func를 포함한 내부험수 inner_function을 리턴한다. 여기에서도 inner_function은 호출되지 않고, 새로운 인스턴스를 생성해 리턴이 된다. 
-```
 
-```python
+1. raise_two = generate_power_with_debug(2) 와 동일하다. 
+2. @generate_power_with_debug 데코레이터는 exponent 값을 포함한 내부함수 power를 리턴한다.
+3. raise_two가 선언되면서 power도 호출이 된다. 
+4. power는 func를 포함한 내부험수 inner_function을 리턴한다. 여기에서도 inner_function은 호출되지 않고, 새로운 인스턴스를 생성해 리턴이 된다. 
+
+<br> 
+
+> generate_power 호출 과정 (2)
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 print(f'result of closure : {raise_two(7)}')
+{{< /highlight >}}
 
-# 1. raise_two를 호출하면서 클로저를 호출한다. 
-# 2. 클로저 호출함에 따라 변수 *args에는 raise_two 함수에 전달된 인자 7이 전달된다. 이또한 스냅샷으로 외부 state를 저장했기 때문이다. 
-# 2-1. *args는 함수에 전달되는 모든 인자들을 뜻하고, **kwargs는 위치 지정된 모든 인자들을 뜻한다. 
-# 3. inner_power 결과를 리턴한다.                                                                                
-```
+
+1. raise_two를 호출하면서 클로저를 호출한다. 
+2. 클로저 호출함에 따라 변수 *args에는 raise_two 함수에 전달된 인자 7이 전달된다. 이또한 스냅샷으로 외부 state를 저장했기 때문이다. 
+2-1. *args는 함수에 전달되는 모든 인자들을 뜻하고, **kwargs는 위치 지정된 모든 인자들을 뜻한다. 
+3. inner_power 결과를 리턴한다.                                                                                
 
 <br>
 
-## 이름에 _와 __사용
+#### 클로저 VS 데코레이터
+- 데코레이터는 클로저를 반환한다. 
+- 클로저는 데코레이터에 의해 반환된다. 
 
-[What’s the Meaning of Single and Double Underscores In Python?](https://towardsdatascience.com/whats-the-meaning-of-single-and-double-underscores-in-python-3d27d57d6bd1)
 
-```python
+<br> 
+
+### 이름에 `_`와 `__`사용
+
+#### 먼저 읽으면 좋을 자료
+- [What’s the Meaning of Single and Double Underscores In Python?](https://towardsdatascience.com/whats-the-meaning-of-single-and-double-underscores-in-python-3d27d57d6bd1)
+
+<br> 
+
+> _ 와 __ 사용 예시
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 _foo # single leading underscore 
 foo_ # single trailing underscore 
 
 _ # single underscore 
 
 __foo__ # double leading and trailing underscore 
-__foo # double leading underscore 
-```
+__foo # double leading underscore
+{{< /highlight >}}
 
+<br> 
+
+#### 상세 사용 예시
 | name                                 | e.g.     | usage                                                                                                        |
 |--------------------------------------|----------|--------------------------------------------------------------------------------------------------------------|
 | single leading underscore            | `_foo`     | - private(internally) 하게 사용이 됨을 나타낸다. <br>  - 여전히 외부에서 접근이 가능하기 때문에 문맥적 힌트에 가깝다.                             |
@@ -736,31 +825,41 @@ __foo # double leading underscore
 
 <br>
 
----
 
-# 5장 파이 포장하기: 모듈, 패키지, 프로그램
+# 파이 포장하기: 모듈, 패키지, 프로그램
 
-> 파이썬을 사용하다보면 모듈이라는 단어가 자주 나오는데 여기서 모듈이란 단순히 파이썬 코드가 들어가있는 파일을 뜻한다.
->
+### 모듈
+파이썬을 사용하다보면 `모듈`이라는 단어가 자주 나오는데 여기서 모듈이란 단순히 *파이썬 코드가 들어가있는 파일*을 뜻한다.
 
-## 패키지
+<br> 
 
-파이썬을 좀 더 확장 가능한 어플리케이션으로 만들기 위해서는 모듈을 패키지라는 파일 계층구조로 구성해야 한다.  **__init__.py** 는 파일 내용을 비워놔도 되지만, **파이썬은 이 파일을 포함하는 디렉터리를 패키지로 간주**하기 때문에 패키지로 사용하고 싶다면 꼭 만들어둬야 한다.
+### 패키지
 
-파이썬에서 batteries included 철학은 유용한 작업을 처리하는 많은 표준 라이브러리 모듈들이 내장이 되어있다는 뜻이다.
+파이썬을 좀 더 확장 가능한 어플리케이션으로 만들기 위해서는 모듈을 패키지라는 파일 계층구조로 구성해야 한다.  `__init__.py` 는 파일 내용을 비워놔도 되지만, *파이썬은 이 파일을 포함하는 디렉터리를 패키지로 간주* 하기 때문에 패키지로 사용하고 싶다면 꼭 만들어둬야 한다.
+
+파이썬에서 _batteries included_ 철학은 유용한 작업을 처리하는 많은 표준 라이브러리 모듈들이 내장이 되어있다는 뜻이다.
 
 <br>
 
-### Stack + Queue == Deque
+### Deque = Stack + Queue
 
-파이썬 list는 left end의 pop()과 append()에서 빠르지가 않기 때문에 left-end와  right-end 모두 빠르고 메모리를 효과적으로 사용하기 위해 데크를 제공한다.
+파이썬 `list`는 left end의 `pop()`과 `append()`가 빠르지가 않기 때문에 left-end와  right-end 모두 빠르고 _메모리를 효과적으로 사용하기 위해 데크를 제공한다_.
 
-> list의 right-end 연산 속도는 O(1)이지만, left-end 연산 속도는 O(n)이다.
->
+list의 right-end 연산 속도는 O(1)이지만, left-end 연산 속도는 O(n)이다.
 
-Deque 는 Stack과 Queue의 기능을 모두 가진, 출입구가 양 끝에 있는 Queue다.(double-ended queue의 구현체이다) Deque는 양 끝으로부터 항목을 추가하거나 삭제할 때 유용하게 쓰인다. popleft()는 left-end를 제거해서 반환하고, pop()은 right-end를 제거해서 반환한다.
+<br> 
 
-```python
+#### Deque 구현체
+- Deque 는 Stack과 Queue의 기능을 가졌다. 
+- 출입구가 양 끝에 있는 Queue다.(double-ended queue의 구현체이다) 
+- Deque는 양 끝으로부터 항목을 추가하거나 삭제할 때 유용하게 쓰인다. 
+- `popleft()`는 left-end를 제거해서 반환하고, `pop()`은 right-end를 제거해서 반환한다.
+
+<br> 
+
+> Deque 예시
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 from collections import deque
 
 numbers = deque([1,2,3,4]) 
@@ -776,24 +875,24 @@ deque([3,4])
 >>> numbers.appendleft(1) 
 >>> numbers
 deque([1,2,3,4])
-```
+{{< /highlight >}}
+
 
 <br>
 
-Deque의 흥미로운 점
+#### Deque의 흥미로운 점
 
 - 최대 길이 (maximum lenght)를 지정할 수 있다.
-    - 최대 길이를 지정하지 않으면 자원이
-- 때문에 한 쪽에서 데이터를 넣어 큐가 꽉 차게 되면 자동으로 다른 쪽에 있는 아이템을 버린다.
+- 한 쪽에서 데이터를 넣어 큐가 꽉 차게 되면 자동으로 다른 쪽에 있는 아이템을 버린다.
 - 이러한 기능으로 인해 `이전 0회의 기록을 남기기` 와 같은 요구사항이 있을 때 활용하기가 용이하다.
+- [[더 많은 Deque 사용법]](https://docs.python.org/3/library/collections.html#deque-recipes) 에서 더 많은 용도를 확인할 수 있다.
 
-  ![스크린샷 2022-03-02 오후 4.03.53.png](/assets/img/post/python_deque.png)
 
 <br>
 
-Example 1 히스토리 예제 남기기:
+> 히스토리 남기기 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 from collections import deque
 
 sites = (
@@ -818,13 +917,14 @@ deque(['facebook.com', 'bing.com', 'yahoo.com'], maxlen=3)
 pages.appendleft("twitter.com")
 >>> pages
 deque(['twitter.com', 'facebook.com', 'bing.com'], maxlen=3)
-```
+{{< /highlight >}}
+
 
 <br>
 
-Example 2 Linux의 tail 모방하기:
+> Linux의 tail 모방 예시
 
-```python
+{{< highlight python  "linenos=true,hl_inline=false" >}}
 from collections import deque
 
 def tail(filename, lines=10):
@@ -833,18 +933,16 @@ def tail(filename, lines=10):
             return deque(file, lines)
     except OSError as error:
         print(f'Opening file "{filename}" failed with error: {error}')
-```
-
-
-
-- CPython에서 deque의 append(), appendleft(), pop(), popleft(), len()은 thread-safe 하게 만들어졌기 때문에 멀티쓰레드 환경에서 deque를 사용하기 좋다.
-
-  > CPyton은 C로 구현한 파이썬으로, 가장 많이 사용되고 있는 파이썬 구현체다. 오픈소스로 관리가 되고 있기 때문에 모든 코드를 https://github.com/python/cpython 에서 볼 수 있다.
+{{< /highlight >}}
 
 
 <br>
 
-[더 많은 Deque 사용법](https://docs.python.org/3/library/collections.html#deque-recipes)
+#### thread-safe 
+- CPython에서 *deque*의 `append()`, `appendleft()`, `pop()`, `popleft()`, `len()`은 thread-safe 하게 만들어졌기 때문에 멀티쓰레드 환경에서 deque를 사용하기 좋다. 
+  - CPyton은 C로 구현한 파이썬으로, 가장 많이 사용되고 있는 파이썬 구현체다. 오픈소스로 관리가 되고 있다. [[깃허브]](https://github.com/python/cpython)
 
----
+
+<br>
+
 
