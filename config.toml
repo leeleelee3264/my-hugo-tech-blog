@@ -1,5 +1,5 @@
 baseURL = "https://leeleelee3264.github.io/"
-title = "Logging"
+title = "dev_leelee.log"
 
 theme = "fuji"
 hasCJKLanguage = true
@@ -32,7 +32,7 @@ post = "/:section/:filename/" # Custom post links, e.g. "/:year/:month/:title/"
 
 [params]
 author = "leeleelee3264"                # You can also set author in post front matter individually
-subTitle = "Log of LeeLee"
+subTitle = "Logfile of Developer LeeLee"
 defaultTheme = "auto"              # default theme when first visit (auto|dark|light)
 
 # Source URL of the website, will appear in the footer
