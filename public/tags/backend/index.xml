@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Backend on dev_leelee.log</title>
+    <link>https://leeleelee3264.github.io/tags/backend/</link>
+    <description>Recent content in Backend on dev_leelee.log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 29 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python decorator로 간단한 profiler 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
+      <description>간단한 프로파일링을 할 수 있는 profiler를 Python decorator로 구현한다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프</description>
+    </item>
+    
+  </channel>
+</rss>

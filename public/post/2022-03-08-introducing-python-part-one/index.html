@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Introducing Python] part one (1/2) - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="책 [Introducing Python] 절반을 요약한다." />
+
+
+<meta name="keywords" content="Book" />
+
+
+<meta property="og:title" content="[Introducing Python] part one (1/2)" />
+<meta name="twitter:title" content="[Introducing Python] part one (1/2)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/" /><meta property="og:description" content="책 [Introducing Python] 절반을 요약한다." />
+<meta name="twitter:description" content="책 [Introducing Python] 절반을 요약한다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-03-08T00:00:00+00:00" /><meta property="article:modified_time" content="2022-03-08T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/">[Introducing Python] part one (1/2)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-03-08</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;6136 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>책 [Introducing Python] 절반을 요약한다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>파이 맛보기</li>
+<li>파이 재료: 숫자, 문자열 변수</li>
+<li>파이 채우기: 리스트, 튜플, 딕셔너리, 셋</li>
+<li>파이 크러스트: 코드 구조</li>
+<li>파이 포장하기: 모듈, 패키지, 프로그램</li>
+</ol>
+<br> 
+<h1 id="파이-맛보기">파이 맛보기</h1>
+<p>파이썬은 <code>인터프리터</code> 언어다. 파이썬이 개발을 빠르게 할 수 있다는 이유도 거대한 크기의 기계어를 만들어내지 않고 실행이 가능하기 때문으로 추정된다.</p>
+<h3 id="인터프리터-언어">인터프리터 언어</h3>
+<ul>
+<li>대표적인 인터프리터 언어는 파이썬, 자바 스크립트가 있다.</li>
+<li>인터프리터는 소스코드를 바로 실행한다.</li>
+<li>인터프리터는 바로바로 실행을 하다보니 처음에 속도가 비교적 빠르다.</li>
+</ul>
+<h3 id="컴파일-언어">컴파일 언어</h3>
+<ul>
+<li>대표적인 컴파일 언어는 자바다.</li>
+<li>컴파일 언어는 처음 프로그램을 시작할 때 모든 코드를 기계어로 바꾼다 (컴파일 한다).</li>
+<li>컴파일을 하기 때문에 처음에 프로그램을 실행할 때 시간이 오래 걸린다.</li>
+<li>하지만 한 번 컴파일을 하면 실행시 기계어를 불러와 더 빨리 실행을 할 수 있어 매번 실행시마다 번역을 거치는 인터프리터 언어보다 속도가 더 빨라진다.</li>
+</ul>
+<br> 
+<h1 id="파이-재료-숫자-문자열-변수">파이 재료: 숫자, 문자열 변수</h1>
+<p>파이썬은 문자를 변형 할 수 없다. st[0] = &rsquo;e&rsquo; 이런식으로 변경을 할 수 없다. 즉, <code>불변객체</code>이다.</p>
+<p>문자열도 중간에 수정을 할 수 없고 아예 객체를 새로 만드는 <code>replace()</code> 메서드를 이용해서 문자열을 변경해야 한다. 문자열을 불변으로 만드는 이유는 Java와 마찬가지로 <em>프로그래밍을 편리하게 하기 위해서다.</em></p>
+<br> 
+<blockquote>
+<p>슬라이싱을 이용한 문자 reverse 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>st <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;eererewrvfgrhfos&#34;</span>
+</span></span><span style="display:flex;"><span>re_st <span style="color:#f92672">=</span> st[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e"># sofhrgfvrwereree</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h1 id="파이-채우기-리스트-튜플-딕셔너리-셋">파이 채우기: 리스트, 튜플, 딕셔너리, 셋</h1>
+<p>파이썬에서 기본으로 제공하는 자료구조에 대해 알아본다.</p>
+<h3 id="del">del</h3>
+<p>자료구조에서 항목을 삭제하는 커맨드는 del 인데, 이 del은 자료구조의 함수가 아닌 파이썬 구문이다. del은 객체로부터 이름을 분리하고 객체의 메모리를 비워준다.</p>
+<br> 
+<blockquote>
+<p>del 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">del</span> full[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># full.del(2) 처럼 쓰지 못한다.</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="리스트">리스트</h3>
+<p>리스트는 변경 가능하다. 항목을 할당하고, 자유롭게 수정 삭제를 할 수 있다.</p>
+<br> 
+<blockquote>
+<p>리스트 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 생성 </span>
+</span></span><span style="display:flex;"><span>empty <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>empyt2 <span style="color:#f92672">=</span> list()
+</span></span><span style="display:flex;"><span>full <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 리스트의 끝에 항목 추가하기  append()</span>
+</span></span><span style="display:flex;"><span>full<span style="color:#f92672">.</span>appned(<span style="color:#ae81ff">4</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 리스트 병합하기 extend()</span>
+</span></span><span style="display:flex;"><span>added <span style="color:#f92672">=</span> [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>full<span style="color:#f92672">.</span>extend(added)  <span style="color:#75715e"># [1, 2, 3, 4, 5, 6, 7, 8]</span>
+</span></span><span style="display:flex;"><span>full <span style="color:#f92672">+=</span> added <span style="color:#75715e"># [1, 2, 3, 4, 5, 6, 7, 8]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># append 를 쓰면 리스트 자체가 추가된다 </span>
+</span></span><span style="display:flex;"><span>full<span style="color:#f92672">.</span>appned(added) <span style="color:#75715e"># [1, 2, 3, 4, [5, 6, 7, 8]]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 리스트 정렬 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sort()는 리스트 자체를 내부적으로 정렬한다. </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sorted() 는 리스트의 정렬된 복사본을 반환한다. </span>
+</span></span><span style="display:flex;"><span>full<span style="color:#f92672">.</span>sort()
+</span></span><span style="display:flex;"><span>new_sort <span style="color:#f92672">=</span> full<span style="color:#f92672">.</span>sorted() </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="튜플">튜플</h3>
+<p>튜플은 불변한다. 튜플에 항목을 할당하고 나서는 바꿀 수 없다. 때문에 튜플을 상수 리스트라 볼 수 있다.</p>
+<br> 
+<blockquote>
+<p>튜플 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 생성 </span>
+</span></span><span style="display:flex;"><span>empty_tuple <span style="color:#f92672">=</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 콤마로 값을 나열해도 튜플을 만들 수 있다. </span>
+</span></span><span style="display:flex;"><span>empty_tuple <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>empty_tuple <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 튜플의 나열하는 특성을 이용해서 객체 생성없이 swap하기 </span>
+</span></span><span style="display:flex;"><span>password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12&#39;</span>
+</span></span><span style="display:flex;"><span>icecream <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sweet&#39;</span> 
+</span></span><span style="display:flex;"><span>password, icecream <span style="color:#f92672">=</span> icecream, password </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="리스트가-아닌-불변객체라-함수-지원이-더-적은-튜플을-사용하는-이유">리스트가 아닌 불변객체라 함수 지원이 더 적은 튜플을 사용하는 이유</h4>
+<ul>
+<li>더 적은 공간을 사용한다.</li>
+<li>실수로 값을 바꿀 위험이 없다.</li>
+<li>튜플을 딕셔너리 키로 사용이 가능하다.</li>
+<li>네임드 튜플 은 객체의 대안이 될 수 있다.</li>
+<li>함수의 인자들은 튜플로 전달된다.</li>
+</ul>
+<br>
+<h3 id="딕셔너리">딕셔너리</h3>
+<br> 
+<blockquote>
+<p>딕셔너리 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 생성 </span>
+</span></span><span style="display:flex;"><span>empty_dict <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># dict() 를 이용해 두 값 쌍으로 이뤄진 자료구조를 딕셔너리로 변환할 수 있다. </span>
+</span></span><span style="display:flex;"><span>lol <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>], [<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>]] 
+</span></span><span style="display:flex;"><span>lol2 <span style="color:#f92672">=</span> lol <span style="color:#75715e">#{&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lol3 <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;ab&#39;</span>, <span style="color:#e6db74">&#39;cb&#39;</span>) 
+</span></span><span style="display:flex;"><span>lol4 <span style="color:#f92672">=</span> lol <span style="color:#75715e">#{&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 딕셔너리 결합하기 update() </span>
+</span></span><span style="display:flex;"><span>em <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#e6db74">&#39;b&#39;</span>}
+</span></span><span style="display:flex;"><span>em2 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;c&#39;</span>: <span style="color:#e6db74">&#39;d&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>em<span style="color:#f92672">.</span>update(em2) <span style="color:#75715e"># {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 딕셔너리 비우기 </span>
+</span></span><span style="display:flex;"><span>em<span style="color:#f92672">.</span>clear() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 딕셔너리에 특정 키가 들어있나 확인 </span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;c&#39;</span> <span style="color:#f92672">in</span> em 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 모든 키 가져오기 </span>
+</span></span><span style="display:flex;"><span>em<span style="color:#f92672">.</span>keys() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 모든 값 가져오기 </span>
+</span></span><span style="display:flex;"><span>em<span style="color:#f92672">.</span>values() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 모든 키, 값 가져오기</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># (&#39;a&#39;, &#39;b&#39;), (&#39;c&#39;, &#39;d&#39;) 처럼 튜플로 반환한다 </span>
+</span></span><span style="display:flex;"><span>em<span style="color:#f92672">.</span>items()</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="셋">셋</h3>
+<p>어떤 것이 존재하는지 여부만 판단하기 위해서 셋을 사용한다. 중복을 허용하지 않는다. 셋은 수학시간에 배웠던 집합과 아주 유사하다.</p>
+<br>
+<blockquote>
+<p>셋 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 생성 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 그냥 {} 는 딕셔너리 생성자에 선점되었다. </span>
+</span></span><span style="display:flex;"><span>empty_set <span style="color:#f92672">=</span> set() 
+</span></span><span style="display:flex;"><span>empty_set2 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 각종 집합</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 교집합 &amp;, intersection()</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> contents <span style="color:#f92672">&amp;</span> {<span style="color:#e6db74">&#39;ice&#39;</span>, <span style="color:#e6db74">&#39;cream&#39;</span>} <span style="color:#75715e"># ice 와 cream 모두 들어있어야 참 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>} 
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">&amp;</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 합집합 |, union()</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">|</span> b <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 차집합 -, difference() </span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">-</span> b <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 대칭 차집합 ^, symmetric_difference  </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 각 항목에 별개로 가지고 있는 값을 구한다. </span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">^</span> b <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 부분집합 &lt;=, issubset() </span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>issubset(b) <span style="color:#75715e"># False </span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>issubset(a) <span style="color:#75715e"># True </span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>issubset((<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 슈퍼셋 &gt;=, issuperset() </span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>issuperset((<span style="color:#ae81ff">1</span>)) <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>((<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>))<span style="color:#f92672">.</span>issuperset(a) <span style="color:#75715e"># True</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>issuperset(a) <span style="color:#75715e"># True </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h1 id="파이-크러스트-코드-구조">파이 크러스트: 코드 구조</h1>
+<h3 id="컴프리헨션">컴프리헨션</h3>
+<p>내가 가끔 검색해보고는 하는 한 줄 로 for 문 돌리기와 유사하다.</p>
+<p>하나 이상의 <code>이터레이터</code>로부터 파이썬 자료구조를 만드는 방법이다. 더 파이써닉한 용법이라니는데 간단한 할당문 말고는 컴프리헨션을 사용하면 더 헷갈릴 것 같다.</p>
+<blockquote>
+<p>한 줄 for 문 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>num <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>)]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="인자">인자</h3>
+<p>다른 언어들과 마찬가지로, 값을 순서대로 상응하는 매개변수에 복사하는 것이 위치인자이다. 키워드인자는 위치인자의 혼동을 피하기 위해 상응하는 이름을 인자 안에 지정한 것이다.</p>
+<br> 
+<blockquote>
+<p>인자 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 위치 인자 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">menu</span>(wine, entree, dessert): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">pass</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 키워드 인자 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">menu</span>(wine<span style="color:#f92672">=</span>wine, entree<span style="color:#f92672">=</span>entreee, dessert<span style="color:#f92672">=</span>dessert): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">pass</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 인자의 기본 값 지정 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">menu</span>(wine, entree, dessert<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pie&#39;</span>): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">pass</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>인자 모으기 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 위치 인자 모으기 * </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_args</span>(one, two, three, <span style="color:#f92672">*</span>args): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">pass</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 실제로 호출 시 three까지 위치에 따라 값이 들어가고 나머지는  *args가 인자를 취하게 해준다.</span>
+</span></span><span style="display:flex;"><span>print_args(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 키워드 인자 모으기 ** </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_keyword</span>(<span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 실제 호출 시 위치인자와 마찬가지로, 함수에 따로 정의가 안 된 위치인자를 취한다. </span>
+</span></span><span style="display:flex;"><span>print_keyword(one<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, two<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, three<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, four<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, five<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>여러가지 종류의 인자들을 섞어서 사용하려면 함수를 정의할 때 위치인자, 키워드 인자, <code>*args</code>, <code>**kwargs</code> 순으로 정의를 해줘야한다.</p>
+<br>
+<h3 id="docstring">docstring</h3>
+<p>파이썬 문서화에 관련된 부분. 일반 주석은 #을 사용하지만, 모듈과 클래스와 메소드에 사용하는 주석의 형태는 따로 있다. 이것을 <code>doctstring</code> 이라고 한다.</p>
+<br> 
+<blockquote>
+<p>docstring 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	모듈 (파이썬 파일) 최상단에 이런 형식으로 주석을 달아주세요. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Usage: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	python my_test.py &lt;param&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestClass</span>: 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">클래스 아래에 이런 형식으로 주석을 달아주세요.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_method</span>():
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		함수 아래에 이런 형식으로 주석을 달아주세요.		
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">pass</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>docstring을 이용해서 주석을 달아두면  코드에서 <code>help</code> 함수를 사용해 접근을 할 수 있다.</p>
+<p>내가 지금 사용하는 클래스가 뭘 하는 애인지 해당 클래스 파일을 읽지 않아도 콘솔에 입력만 하면 볼 수 있다는 장점이 있다.</p>
+<br> 
+<blockquote>
+<p>help 함수로 docstring 접근 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>help(TestClass)
+</span></span><span style="display:flex;"><span>TestClass<span style="color:#f92672">.</span>__doc__</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="라인-유지하기">라인 유지하기</h3>
+<p>PEP 에 따르면 파이썬은 한 줄에 <code>80글자</code>를 넘으면 안된다. 가독성이 제일 중요한 언어에서 가독성이 떨어지기 때문이다. 그래서 긴 문장을 사용해야 할 때에는 <code>백슬래시(\)</code>로 라인을 끊어준다.</p>
+<br> 
+<blockquote>
+<p>백슬래시 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>test <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;this&#34;</span> <span style="color:#f92672">+</span> \ 
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;is very very&#34;</span> <span style="color:#f92672">+</span> \ 
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;long long line&#34;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 추천하지 않는 라인 끊는 방법</span>
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;is very very&#34;</span> 
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;long long line&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="일등-시민--함수">일등 시민 : 함수</h3>
+<p><em>함수는 뷸변하기 때문에 딕셔너리의 키로 사용할 수 있다.</em></p>
+<p>함수를 변수에 할당할 수 있고, 다른 함수에서 이를 인자로 쓸 수 있으며, 함수에서 함수를 반환할 수 있다. 파이썬에서 <code>괄호 ()는 함수를 호출</code> 한다는 의미로 사용되고, <code>괄호가 없으면 함수를 객체</code> 처럼 간주한다.</p>
+<br> 
+<blockquote>
+<p>함수에서 함수를 반환하는 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_something_with_args</span>(func, arg1, arg2): 
+</span></span><span style="display:flex;"><span>	func(arg1, arg2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_args</span>(arg1, arg2): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> arg1 <span style="color:#f92672">+</span> agr2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> run_something(add_agrs, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8</span> )
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">14</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<ul>
+<li>예제에서 run_something_with_args로 전달된 add_args 는 괄호 없이 객체처럼 취급되어 func 매개변수로 할당된다.</li>
+<li>뒤에 괄호 () 가 붙은 func 는 전달 받은 arg1, arg2를 매개변수로 해 함수를 호출한다.</li>
+</ul>
+<br>
+<h4 id="내부-함수">내부 함수</h4>
+<h5 id="먼저-읽으면-좋을-자료">먼저 읽으면 좋을 자료</h5>
+<ul>
+<li><a href="[https://realpython.com/inner-functions-what-are-they-good-for/#adding-behavior-with-inner-functions-decorators]%28https://realpython.com/inner-functions-what-are-they-good-for/#adding-behavior-with-inner-functions-decorators%29">[Real Python: adding behavior with inner functions decorators]</a></li>
+</ul>
+<p>함수 안에 또 다른 함수를 정의한다. <em>함수를 global scope 으로부터 완전히 숨겨 encapsulation을 하거나</em>, 복잡한 작업을 하기 위해 Helper 함수를 만들어야 할 때 내부함수를 쓴다.</p>
+<br> 
+<blockquote>
+<p>내부 함수 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">increment</span>(number): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_increment</span>(): 
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> inner_increment()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> increment(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">11</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>위처럼 작성을 하면 inner_increment 함수를 어디에서도 호출을 할 수 없다.</p>
+<br> 
+<blockquote>
+<p>내부 함수를 이용해 Helper를 만든 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">factorial</span>(number):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(number, int):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;Sorry. &#39;number&#39; must be an integer.&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> number <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Sorry. &#39;number&#39; must be zero or positive.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_factorial</span>(number):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> number <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> number <span style="color:#f92672">*</span> inner_factorial(number <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> inner_factorial(number)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>그런데 <em><code>내부함수</code>로 Helper 함수를 만들기보다는 <code>private</code> 으로 Helper 함수를 만드는 것을 권장한다</em>. private helper 함수가 훨씬 더 코드 읽기가 편하고 같은 모듈이나 클래스에서만 재사용이 가능하기 때문이다.</p>
+<br> 
+<blockquote>
+<p>private을 이용해 Helper를 만든 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">factorial</span>(number):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(number, int):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;Sorry. &#39;number&#39; must be an integer.&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> number <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Sorry. &#39;number&#39; must be zero or positive.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> _factorial(number)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_factorial</span>(number): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> number <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> number <span style="color:#f92672">*</span> inner_factorial(number <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="클로저">클로저</h4>
+<p>클로저는 바깥 함수로부터 전달된 변수값을 저장하고, 변경을 할 수 있는 함수이다. 파이썬에서 함수를 변수에 할당할 수 있는 이유도 클로저 기능을 지원하기 때문이다.</p>
+<br> 
+<blockquote>
+<p>클로저 예시 generate_power</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># closure factory function</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_power</span>(exponent):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">power</span>(base):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> base <span style="color:#f92672">**</span> exponent
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> power
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>raise_two <span style="color:#f92672">=</span> generate_power(<span style="color:#ae81ff">2</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> raise_two(<span style="color:#ae81ff">4</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> raise_two(<span style="color:#ae81ff">5</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">25</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="클로저-호출-과정-상세-보기">클로저 호출 과정 상세 보기</h4>
+<p>클로저의 개념이 처음이다보니 제대로 이해가 가지 않아 print로 디버깅을 해가며 이해를 진행했다.</p>
+<br> 
+<blockquote>
+<p>클로저 예시 generate_power_with_debug</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_power_with_debug</span>(exponent):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;closure generated, passed exponent </span><span style="color:#e6db74">{</span>exponent<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">power</span>(base):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;inner function in closure. passed base </span><span style="color:#e6db74">{</span>base<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> base <span style="color:#f92672">**</span> exponent
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> power
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># closure 생성</span>
+</span></span><span style="display:flex;"><span>raise_two <span style="color:#f92672">=</span> generate_power_with_debug(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># closure 호출</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;result of closure : </span><span style="color:#e6db74">{</span>raise_two(<span style="color:#ae81ff">4</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 콘솔에 출력된 결과 </span>
+</span></span><span style="display:flex;"><span>closure generated, passed exponent <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>inner function <span style="color:#f92672">in</span> closure<span style="color:#f92672">.</span> passed base <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>result of closure : <span style="color:#ae81ff">16</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>generate_power 호출 과정 (1)</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>raise_two <span style="color:#f92672">=</span> generate_power_with_debug(<span style="color:#ae81ff">2</span>)) </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>generate_power_with_debug 로 변수 exponent에 2를 넣어 클로저 생성한다.</li>
+<li>클로저는 매번 호출될 때마다 새로운 클로저를 생성한다.</li>
+<li>내부 함수 power은 호출이 되지 않고, 새로운 power 인스턴스를 생성해 리턴이 된다.
+<ol>
+<li>리턴값이 함수라는 얘기다.</li>
+<li>power를 리턴할 때 power의 surrounding state 를 스냅셧으로 남긴다. 여기에는 exponent 변수가 포함되어있다.</li>
+</ol>
+</li>
+</ol>
+<br> 
+<blockquote>
+<p>generate_power 호출 과정 (2)</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;result of closure : </span><span style="color:#e6db74">{</span>raise_twon(<span style="color:#ae81ff">4</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>generate_power_with_debug 클로저를 호출한다.</li>
+<li>클로저를 호출함에 따라 변수 base에 4를 넣어 내부함수 power가 호출한다.</li>
+<li>power는 클로저가 리턴되었을 때 함께 넘어왔던 surrounding state의 스냅샷에 저장이 된 exponent를 이용한다.</li>
+<li>power 결과를 리턴한다.</li>
+</ol>
+<br>
+<blockquote>
+<p>클로저 호출 시나리오 총정리</p>
+</blockquote>
+<pre><code>Q: 어떻게 내부함수를 호출할 때 외부함수의 값에 접근을 할까?
+A: 클로저를 생성할 때 내부함수를 리턴하는데, 이때 외부함수의 상태 스냅샷을 함께 리턴해주기 때문이다.
+</code></pre>
+<ul>
+<li>클로저를 구분할 수 있는 부분은 내부함수를 괄호() 로 호출하지 않다는 것이다. 예제에서 power를 리턴하기만 하는데, 이렇게 리턴을 하면 exponent 값을 저장한 <strong>power 함수의 복사본을</strong> 주게 된다.</li>
+<li>복사본을 할당 받은 변수 raise_two를 실제로 매개변수를 넣고 호출한다.</li>
+<li>매개변수는 내부함수인 power 의 base 와 맵핑이 된다.</li>
+</ul>
+<br>
+<h4 id="클로저로-권한-확인-함수-구현">클로저로 권한 확인 함수 구현</h4>
+<blockquote>
+<p>클로저로 구현한 권한 확인 함수</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">has_permission</span>(page):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">permission</span>(username):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;admin&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#39;</span><span style="color:#e6db74">{</span>username<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; has access to </span><span style="color:#e6db74">{</span>page<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#39;</span><span style="color:#e6db74">{</span>username<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; doesn&#39;t have access to </span><span style="color:#e6db74">{</span>page<span style="color:#e6db74">}</span><span style="color:#e6db74">.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> permission
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 선언</span>
+</span></span><span style="display:flex;"><span>check_admin_page_permision <span style="color:#f92672">=</span> has_permission(<span style="color:#e6db74">&#34;Admin Page&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> check_admin_page_permision(<span style="color:#e6db74">&#34;admin&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#39;admin&#39; has access to Admin Page.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> check_admin_page_permision(<span style="color:#e6db74">&#34;john&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#39;john&#39; doesn&#39;t have access to Admin Page.&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="데코레이터">데코레이터</h3>
+<p>데코레이터는 callable<code>(함수, 메소드, 클래스)</code>를 인자로 받고, 다른 callable을 리턴한다<code>(내부함수)</code>.</p>
+<p>생김새와 위치는 자바의 어노테이션과 동일하다. 데코레이션을 사용하면 이미 존재하고 있던 함수에 별도의 수정사항없이 액션을 추가 할 수 있다.</p>
+<br> 
+<blockquote>
+<p>데코레이터 사용 시나리오</p>
+</blockquote>
+<ul>
+<li>함수를 인자로 받는 callable을 선언한다.</li>
+<li>인자로 받은 함수를 호출한다.</li>
+<li>추가 액션이 있는 다른 함수를 리턴한다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>데코레이터 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">example_decorator</span>(func): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_add_messages</span>(): 
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#39;This is my first decorator&#39;</span>)
+</span></span><span style="display:flex;"><span>		func()
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#39;bye&#39;</span>) 
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 데코레이터도 클로저처럼 내부함수를 괄호()로 호출하지 않는다. </span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> _add_messages
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># greet = example_decorator(greet) 과 동일하다. 클로저 생성 형태와 동일하다. </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@example_decorator</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greet</span>(): 
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#39;Hello World&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> greet() 
+</span></span><span style="display:flex;"><span>This <span style="color:#f92672">is</span> my first decorator 
+</span></span><span style="display:flex;"><span>Hello World 
+</span></span><span style="display:flex;"><span>bye </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<p>이렇게 추가로 액션을 행할 수 있게 해주는 데코레이터는 <code>디버깅</code>, <code>캐싱</code>, <code>로깅</code>, <code>시간측정</code>(timing)에 많이 쓰인다.</p>
+<blockquote>
+<p>데코레이터 디버깅 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">debug</span>(func):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_debug</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span><span style="display:flex;"><span>        print(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>func<span style="color:#f92672">.</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">(args: </span><span style="color:#e6db74">{</span>args<span style="color:#e6db74">}</span><span style="color:#e6db74">, kwargs: </span><span style="color:#e6db74">{</span>kwargs<span style="color:#e6db74">}</span><span style="color:#e6db74">) -&gt; </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> _debug
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@debug</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> add(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)
+</span></span><span style="display:flex;"><span>add(args: (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>), kwargs: {}) <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">11</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">11</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>데코레이터로 구현한 generate_power</p>
+</blockquote>
+<p>아까 위에서는 클로저로 generate_power를 구현했는데 이번에는 데코레이터로 구현을 했다.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_power</span>(exponent):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">power</span>(func):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_power</span>(<span style="color:#f92672">*</span>args):
+</span></span><span style="display:flex;"><span>            base <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> base <span style="color:#f92672">**</span> exponent
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inner_power
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> power
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@generate_power</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">raise_two</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> raise_two(<span style="color:#ae81ff">7</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">49</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@generate_power</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">raise_three</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> raise_three(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">125</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="데코레이터-호출-과정-상세-보기">데코레이터 호출 과정 상세 보기</h4>
+<br>
+<blockquote>
+<p>데코레이터로 구현한 generate_power_with_debug</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generate_power_with_debug</span>(exponent):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;closure is generated, passed exponent : </span><span style="color:#e6db74">{</span>exponent<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">power</span>(func):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;inner function in closure. passed func : </span><span style="color:#e6db74">{</span>func<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inner_power</span>(<span style="color:#f92672">*</span>args):
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;inner function in power. passed args : </span><span style="color:#e6db74">{</span>args<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>            base <span style="color:#f92672">=</span> func(<span style="color:#f92672">*</span>args)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> base <span style="color:#f92672">**</span> exponent
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inner_power
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> power
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># closure 생성</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># raise_two = generate_power_with_debug(2) 와 동일 하다.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@generate_power_with_debug</span>(<span style="color:#ae81ff">2</span>) <span style="color:#75715e"># power()를 리턴</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">raise_two</span>(n): <span style="color:#75715e"># power()를 호출, inner_power()를 리턴</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;result of closure : </span><span style="color:#e6db74">{</span>raise_two(<span style="color:#ae81ff">7</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 콘솔에 출력된 결과 </span>
+</span></span><span style="display:flex;"><span>closure <span style="color:#f92672">is</span> generated, passed exponent : <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>inner function <span style="color:#f92672">in</span> closure<span style="color:#f92672">.</span> passed func : <span style="color:#f92672">&lt;</span>function raise_two at <span style="color:#ae81ff">0x100e2dee0</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>inner function <span style="color:#f92672">in</span> power<span style="color:#f92672">.</span> passed args : (<span style="color:#ae81ff">7</span>,)
+</span></span><span style="display:flex;"><span>result of closure : <span style="color:#ae81ff">49</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>generate_power 호출 과정 (1)</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@generate_power_with_debug</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">raise_two</span>(n): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> n </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>raise_two = generate_power_with_debug(2) 와 동일하다.</li>
+<li>@generate_power_with_debug 데코레이터는 exponent 값을 포함한 내부함수 power를 리턴한다.</li>
+<li>raise_two가 선언되면서 power도 호출이 된다.</li>
+<li>power는 func를 포함한 내부험수 inner_function을 리턴한다. 여기에서도 inner_function은 호출되지 않고, 새로운 인스턴스를 생성해 리턴이 된다.</li>
+</ol>
+<br> 
+<blockquote>
+<p>generate_power 호출 과정 (2)</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;result of closure : </span><span style="color:#e6db74">{</span>raise_two(<span style="color:#ae81ff">7</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>raise_two를 호출하면서 클로저를 호출한다.</li>
+<li>클로저 호출함에 따라 변수 *args에는 raise_two 함수에 전달된 인자 7이 전달된다. 이또한 스냅샷으로 외부 state를 저장했기 때문이다.
+2-1. *args는 함수에 전달되는 모든 인자들을 뜻하고, **kwargs는 위치 지정된 모든 인자들을 뜻한다.</li>
+<li>inner_power 결과를 리턴한다.</li>
+</ol>
+<br>
+<h4 id="클로저-vs-데코레이터">클로저 VS 데코레이터</h4>
+<ul>
+<li>데코레이터는 클로저를 반환한다.</li>
+<li>클로저는 데코레이터에 의해 반환된다.</li>
+</ul>
+<br> 
+<h3 id="이름에-_와-__사용">이름에 <code>_</code>와 <code>__</code>사용</h3>
+<h4 id="먼저-읽으면-좋을-자료-1">먼저 읽으면 좋을 자료</h4>
+<ul>
+<li><a href="https://towardsdatascience.com/whats-the-meaning-of-single-and-double-underscores-in-python-3d27d57d6bd1" target="_blank">What’s the Meaning of Single and Double Underscores In Python?</a></li>
+</ul>
+<br> 
+<blockquote>
+<p>_ 와 __ 사용 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>_foo <span style="color:#75715e"># single leading underscore </span>
+</span></span><span style="display:flex;"><span>foo_ <span style="color:#75715e"># single trailing underscore </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_ <span style="color:#75715e"># single underscore </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>__foo__ <span style="color:#75715e"># double leading and trailing underscore </span>
+</span></span><span style="display:flex;"><span>__foo <span style="color:#75715e"># double leading underscore</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="상세-사용-예시">상세 사용 예시</h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>e.g.</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>single leading underscore</td>
+<td><code>_foo</code></td>
+<td>- private(internally) 하게 사용이 됨을 나타낸다. <br>  - 여전히 외부에서 접근이 가능하기 때문에 문맥적 힌트에 가깝다.</td>
+</tr>
+<tr>
+<td>single trailing underscore</td>
+<td><code>foo_</code></td>
+<td>- 파이썬에서 이미 선점한 키워드를 사용할 때 혼선을 피하기 위한 방법이다.<br>  e.g. type_, from_</td>
+</tr>
+<tr>
+<td>single underscore</td>
+<td><code>_</code></td>
+<td>- 사용하지 않은 변수들을 담아두는 용도로 쓴다. <br>  e.g. _ = return_something(),  <br> - 숫자가 길어질 때 혼선을 방지하기 위해 쓴다. <br>  e.g. 1000 → 1_000</td>
+</tr>
+<tr>
+<td>double leading and trailing underscore</td>
+<td><code>__foo__</code></td>
+<td>- dunder method 라고 한다. <br>  - 파이썬에서 이미 선점한 특수 목적 전역 클레스 메소드다.</td>
+</tr>
+<tr>
+<td>double leading underscore</td>
+<td><code>__foo</code></td>
+<td>- 부모-자식 필드 이름을 구분하기 위해 사용되는 것으로 파악했다.   <br> - 실 사용이 거의 없을 거 같다.</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h1 id="파이-포장하기-모듈-패키지-프로그램">파이 포장하기: 모듈, 패키지, 프로그램</h1>
+<h3 id="모듈">모듈</h3>
+<p>파이썬을 사용하다보면 <code>모듈</code>이라는 단어가 자주 나오는데 여기서 모듈이란 단순히 <em>파이썬 코드가 들어가있는 파일</em>을 뜻한다.</p>
+<br> 
+<h3 id="패키지">패키지</h3>
+<p>파이썬을 좀 더 확장 가능한 어플리케이션으로 만들기 위해서는 모듈을 패키지라는 파일 계층구조로 구성해야 한다.  <code>__init__.py</code> 는 파일 내용을 비워놔도 되지만, <em>파이썬은 이 파일을 포함하는 디렉터리를 패키지로 간주</em> 하기 때문에 패키지로 사용하고 싶다면 꼭 만들어둬야 한다.</p>
+<p>파이썬에서 <em>batteries included</em> 철학은 유용한 작업을 처리하는 많은 표준 라이브러리 모듈들이 내장이 되어있다는 뜻이다.</p>
+<br>
+<h3 id="deque--stack--queue">Deque = Stack + Queue</h3>
+<p>파이썬 <code>list</code>는 left end의 <code>pop()</code>과 <code>append()</code>가 빠르지가 않기 때문에 left-end와  right-end 모두 빠르고 <em>메모리를 효과적으로 사용하기 위해 데크를 제공한다</em>.</p>
+<p>list의 right-end 연산 속도는 O(1)이지만, left-end 연산 속도는 O(n)이다.</p>
+<br> 
+<h4 id="deque-구현체">Deque 구현체</h4>
+<ul>
+<li>Deque 는 Stack과 Queue의 기능을 가졌다.</li>
+<li>출입구가 양 끝에 있는 Queue다.(double-ended queue의 구현체이다)</li>
+<li>Deque는 양 끝으로부터 항목을 추가하거나 삭제할 때 유용하게 쓰인다.</li>
+<li><code>popleft()</code>는 left-end를 제거해서 반환하고, <code>pop()</code>은 right-end를 제거해서 반환한다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>Deque 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> deque([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers 
+</span></span><span style="display:flex;"><span>deque([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers<span style="color:#f92672">.</span>appendleft(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers<span style="color:#f92672">.</span>appendleft(<span style="color:#ae81ff">1</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> numbers
+</span></span><span style="display:flex;"><span>deque([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>])</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="deque의-흥미로운-점">Deque의 흥미로운 점</h4>
+<ul>
+<li>최대 길이 (maximum lenght)를 지정할 수 있다.</li>
+<li>한 쪽에서 데이터를 넣어 큐가 꽉 차게 되면 자동으로 다른 쪽에 있는 아이템을 버린다.</li>
+<li>이러한 기능으로 인해 <code>이전 0회의 기록을 남기기</code> 와 같은 요구사항이 있을 때 활용하기가 용이하다.</li>
+<li><a href="https://docs.python.org/3/library/collections.html#deque-recipes" target="_blank">[더 많은 Deque 사용법]</a> 에서 더 많은 용도를 확인할 수 있다.</li>
+</ul>
+<br>
+<blockquote>
+<p>히스토리 남기기 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sites <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;google.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;yahoo.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;bing.com&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pages <span style="color:#f92672">=</span> deque(maxlen<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>pages<span style="color:#f92672">.</span>maxlen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> site <span style="color:#f92672">in</span> sites:
+</span></span><span style="display:flex;"><span>    pages<span style="color:#f92672">.</span>appendleft(site)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> pages
+</span></span><span style="display:flex;"><span>deque([<span style="color:#e6db74">&#39;bing.com&#39;</span>, <span style="color:#e6db74">&#39;yahoo.com&#39;</span>, <span style="color:#e6db74">&#39;google.com&#39;</span>], maxlen<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pages<span style="color:#f92672">.</span>appendleft(<span style="color:#e6db74">&#34;facebook.com&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> pages
+</span></span><span style="display:flex;"><span>deque([<span style="color:#e6db74">&#39;facebook.com&#39;</span>, <span style="color:#e6db74">&#39;bing.com&#39;</span>, <span style="color:#e6db74">&#39;yahoo.com&#39;</span>], maxlen<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pages<span style="color:#f92672">.</span>appendleft(<span style="color:#e6db74">&#34;twitter.com&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> pages
+</span></span><span style="display:flex;"><span>deque([<span style="color:#e6db74">&#39;twitter.com&#39;</span>, <span style="color:#e6db74">&#39;facebook.com&#39;</span>, <span style="color:#e6db74">&#39;bing.com&#39;</span>], maxlen<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>Linux의 tail 모방 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tail</span>(filename, lines<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(filename) <span style="color:#66d9ef">as</span> file:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> deque(file, lines)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span> <span style="color:#66d9ef">as</span> error:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Opening file &#34;</span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; failed with error: </span><span style="color:#e6db74">{</span>error<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="thread-safe">thread-safe</h4>
+<ul>
+<li>CPython에서 <em>deque</em>의 <code>append()</code>, <code>appendleft()</code>, <code>pop()</code>, <code>popleft()</code>, <code>len()</code>은 thread-safe 하게 만들어졌기 때문에 멀티쓰레드 환경에서 deque를 사용하기 좋다.
+<ul>
+<li>CPyton은 C로 구현한 파이썬으로, 가장 많이 사용되고 있는 파이썬 구현체다. 오픈소스로 관리가 되고 있다. <a href="https://github.com/python/cpython" target="_blank">[깃허브]</a></li>
+</ul>
+</li>
+</ul>
+<br>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

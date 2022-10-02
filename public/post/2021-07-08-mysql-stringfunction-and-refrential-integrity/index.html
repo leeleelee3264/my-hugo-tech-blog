@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>MySQL String 함수와 참조 무결성 - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="MySQL String 함수와 참조 무결성에 대해 다룹니다." />
+
+
+<meta name="keywords" content="Infra" />
+
+
+<meta property="og:title" content="MySQL String 함수와 참조 무결성" />
+<meta name="twitter:title" content="MySQL String 함수와 참조 무결성" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/" /><meta property="og:description" content="MySQL String 함수와 참조 무결성에 대해 다룹니다." />
+<meta name="twitter:description" content="MySQL String 함수와 참조 무결성에 대해 다룹니다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2021-07-08T00:00:00+00:00" /><meta property="article:modified_time" content="2021-07-08T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/">MySQL String 함수와 참조 무결성</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-07-08</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2569 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>MySQL String 함수와 참조 무결성 (Referential Integrity) 에 대해서 다룹니다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>MySQL에서 String 함수</li>
+<li>참조 무결정</li>
+<li>소소한 하이디 SQL &amp; markdown 팁</li>
+<li>Reference</li>
+</ol>
+<br> 
+<h5 id="리뷰-후에-알게된-부분들">리뷰 후에 알게된 부분들</h5>
+<ol>
+<li><a href="https://lynmp.com/ko/article/nu86c16d8f09c9fbd8" target="_blank">[Markdown 각주/미주 달기]</a> <span><a href="#footnote_1">1</a></span></li>
+<li><code>SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수)</code></li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> SUBSTRING_INDEX(addr, <span style="color:#e6db74">&#39; &#39;</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">경기도</span> <span style="color:#960050;background-color:#1e0010">성남시</span> <span style="color:#960050;background-color:#1e0010">판교동</span> <span style="color:#960050;background-color:#1e0010">대왕판교로</span> <span style="color:#75715e">--&gt; 경기도 성남시 까지 나옴 </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ol start="3">
+<li><code>도메인 무결성</code>과 <code>고유 무결성(Unique Column Values)</code></li>
+</ol>
+<ul>
+<li>도메인 무결성은 만약 Gender를 표현 한다고 했을 때 남성/여성/무성 등 미리 정의가 되어있는 도메인 (convention같은 느낌)에 속한 값이 들어가야 한다.</li>
+<li>고유 무결성은 row에 속해있는 특정한 column 들이 유니크한 고유의 값일때만 업데이트와 인서트를 허가한다는 뜻이다. <code>UNIQUE key constraints</code>이 이 무결성을 지키는 역할을 한다.</li>
+</ul>
+<blockquote>
+<p>A unique value rule defined on a column (or set of columns) allows the insert or update of a row only if it contains a unique value in that column (or set of columns)
+&hellip;
+That is, no two rows of a table have duplicate values in a specified column or set of columns.</p>
+</blockquote>
+<br>
+<br> 
+<h1 id="mysql에서-string-함수">MySQL에서 String 함수</h1>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124757648-c5058c00-df68-11eb-911d-6a42dcdfd0bb.PNG" >
+<figcaption align = "center">[Picture 1] MySQL String 함수 1</figcaption>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124757701-d2bb1180-df68-11eb-84dc-825b9e9f76ca.PNG" >
+<figcaption align = "center">[Picture 2] MySQL String 함수 2</figcaption>
+<br>
+<h3 id="example">Example</h3>
+<h4 id="length-char_length">LENGTH(), CHAR_LENGTH()</h4>
+<p>LENGTH 는 바이트로 <em>글자</em>를 카운트하고 CHAR_LENGHT는 <em>글자 자체의 길이</em>를 카운트한다. 한글의 경우 1글자가 2바이트라서 <code>제이미</code> 세글자면 6바이트가 나올 것 같은데 DB에 설정된 utf8 charset은 한글을 3바이트로 저장하기 때문에 총 9바이트가 나왔다.</p>
+<br>
+<blockquote>
+<p>LENGTH(), CHAR_LENGTH() 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> NAME, <span style="color:#66d9ef">LENGTH</span>(NAME), <span style="color:#66d9ef">CHAR_LENGTH</span>(NAME)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">조건에도</span> <span style="color:#960050;background-color:#1e0010">사용이</span> <span style="color:#960050;background-color:#1e0010">가능해서</span> <span style="color:#960050;background-color:#1e0010">검색을</span> <span style="color:#960050;background-color:#1e0010">할</span> <span style="color:#960050;background-color:#1e0010">때</span> <span style="color:#960050;background-color:#1e0010">응용해서</span> <span style="color:#960050;background-color:#1e0010">사용하면</span> <span style="color:#960050;background-color:#1e0010">좋을</span> <span style="color:#960050;background-color:#1e0010">것</span> <span style="color:#960050;background-color:#1e0010">같다</span>. 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> NAME
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">CHAR_LENGTH</span>(NAME) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>LENGTH(), CHAR_LENGTH() 결과</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th style="text-align:right">LENGTH(NAME)</th>
+<th style="text-align:right">CHAR_LENGTH(NAME)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peter</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>제이미</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h4 id="right-left-mid">RIGHT(), LEFT(), MID()</h4>
+<p>RIGHT(), LEFT(), MID() 는 파이썬 String 연산과 동일해서 놀랐다.
+어떻게 활용을 할까 했는데 where로 검색을 하기에는 이미 더 편한 <code>like</code>가 다 커버를 해주고 있다. where절에 걸기보다는  <code>select 절에 걸어서 간단하게 데이터를 조작하고 비식별화 하는 것에 사용하면 좋아보인다.</code></p>
+<p>예제를 작성하다보니 이래저래 간편하게 쓰기 좋아보이는 유틸성 함수같다.
+SUBSTRING()과 SUBSTR()도 비슷한 맥락에서 사용이 되면 좋을 것 같은데 이건 좀 더 정교한 조작을 할 때 이용!</p>
+<br> 
+<blockquote>
+<p>RIGHT(), LEFT(), MID() 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> NAME
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">LEFT</span>(NAME, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;이&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> like로 <span style="color:#960050;background-color:#1e0010">더</span> <span style="color:#960050;background-color:#1e0010">쉽게</span> <span style="color:#960050;background-color:#1e0010">찾을</span> <span style="color:#960050;background-color:#1e0010">수</span> <span style="color:#960050;background-color:#1e0010">있다</span>. 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> NAME 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> NAME <span style="color:#66d9ef">LIKE</span> (<span style="color:#e6db74">&#39;이%&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> concat()<span style="color:#960050;background-color:#1e0010">연산과</span> <span style="color:#960050;background-color:#1e0010">함께</span> <span style="color:#960050;background-color:#1e0010">사용해서</span> <span style="color:#960050;background-color:#1e0010">데이터</span> <span style="color:#960050;background-color:#1e0010">비식별화</span>..<span style="color:#f92672">?</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(<span style="color:#66d9ef">left</span>(NAME,<span style="color:#ae81ff">1</span>), <span style="color:#e6db74">&#39;**&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">LEFT</span>(NAME, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;이&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#66d9ef">Replace</span>() <span style="color:#960050;background-color:#1e0010">연산과</span> <span style="color:#960050;background-color:#1e0010">함께</span> <span style="color:#960050;background-color:#1e0010">사용해도</span> <span style="color:#960050;background-color:#1e0010">가능</span><span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">replace</span>(name, <span style="color:#66d9ef">RIGHT</span>(NAME, <span style="color:#ae81ff">2</span>), <span style="color:#e6db74">&#39;**&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">LEFT</span>(NAME, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;이&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">작정하고</span> <span style="color:#960050;background-color:#1e0010">만들면</span> <span style="color:#960050;background-color:#1e0010">이렇게</span> <span style="color:#66d9ef">data</span> format을 <span style="color:#960050;background-color:#1e0010">씌워줄</span> <span style="color:#960050;background-color:#1e0010">수</span> <span style="color:#960050;background-color:#1e0010">있는데</span> <span style="color:#960050;background-color:#1e0010">여러번</span> <span style="color:#960050;background-color:#1e0010">써야</span> <span style="color:#960050;background-color:#1e0010">한다면</span> <span style="color:#960050;background-color:#1e0010">엑셀에서</span> <span style="color:#960050;background-color:#1e0010">수정을</span> <span style="color:#960050;background-color:#1e0010">하거나</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">프로그래밍으로</span> <span style="color:#960050;background-color:#1e0010">정규식을</span> <span style="color:#960050;background-color:#1e0010">입혀주는</span> <span style="color:#960050;background-color:#1e0010">게</span> <span style="color:#960050;background-color:#1e0010">더</span> <span style="color:#960050;background-color:#1e0010">간편하다는</span> <span style="color:#960050;background-color:#1e0010">생각이</span> <span style="color:#960050;background-color:#1e0010">든다</span>. 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(<span style="color:#66d9ef">left</span>(number,<span style="color:#ae81ff">3</span>), <span style="color:#e6db74">&#39;-&#39;</span>, MID(NUMBER, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>), <span style="color:#e6db74">&#39;-&#39;</span>, <span style="color:#66d9ef">RIGHT</span>(NUMBER, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">LEFT</span>(NAME, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;이&#39;</span>;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>RIGHT(), LEFT(), MID() 결과</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>concat(left(number,3), &lsquo;-&rsquo;, MID(NUMBER, 4, 4), &lsquo;-&rsquo;, RIGHT(NUMBER, 4))</th>
+<th>number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>010-8765-4321</td>
+<td>01087654321</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h4 id="insert">INSERT()</h4>
+<br> 
+<blockquote>
+<p>INSERT() 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">INSERT</span>(NAME, <span style="color:#66d9ef">CHAR_LENGTH</span>(NAME), <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39; 고객님&#39;</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span> concat으로 <span style="color:#960050;background-color:#1e0010">해결</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> CONCAT(NAME, <span style="color:#e6db74">&#39; 고객님&#39;</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>INSERT() 결과</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>INSERT(NAME, CHAR_LENGTH(NAME), CHAR_LENGTH(NAME), &rsquo; 고객님&rsquo;)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pete 고객님</td>
+</tr>
+<tr>
+<td>제이 고객님</td>
+</tr>
+</tbody>
+</table>
+<br> 
+<p>Peter 고객님과 제이미 고객님을 뽑고 싶었으나 내 의도대로 나오지 않았다. 받는 인자가 <code>INSERT(문자열, 시작위치, 길이, 새로운 문자열</code> 순서인데 길이가 어떤 역할을 하는지 잘 모르겠다. 스트링을 조작할 때는 INSERT()로 하려 하지 말고 <code>CONCAT()</code> 으로 간단하게 끝내야 할 것 같다.</p>
+<br> 
+<h4 id="lpad-rpad">LPAD(), RPAD()</h4>
+<p>LPAD는 왼쪽으로, RPAD는 오른쪽으로 해당 길이 만큼 입력된 글자들을 채워주는 기능. 단순하게 보면 글자수를 맞춰서 채워주는 기능인데 화면에서나 문서에서 글자들이 모두 같은 글자수를 가지고 있어야 할 때 쓸 일이 있어보인다. <code>RPAD(NAME, 10, ' ')</code> 로 자릿수만 채워줄 수 도 있다.</p>
+<br> 
+<blockquote>
+<p>LPAD(), RPAD() 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> RPAD(NAME, <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;*&#39;</span>), LPAD(NAME, <span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#39;&amp;&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> users;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>LPAD(), RPAD() 결과</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>RPAD(NAME, 10, &lsquo;*&rsquo;)</th>
+<th>LPAD(NAME, 10, &lsquo;&amp;&rsquo;)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peter*****</td>
+<td>&amp;&amp;&amp;&amp;&amp;Peter</td>
+</tr>
+<tr>
+<td>제이미*******</td>
+<td>&amp;&amp;&amp;&amp;&amp;&amp;&amp;제이미</td>
+</tr>
+</tbody>
+</table>
+<br> 
+<p>PAD라는 단어가 익숙해서 어디서 들어봤나 했는데 저번 회차에서 주임님이 말씀하셨던 db엔진에서 글자수 비교를 할 때 CHAR형은 지정된 글자수를 맞춰주기 위해 그보다 짧은 단어들에 공백을 채워서 비교해준다는 PAD Attribute와 같은 기능이었다.</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124854634-93c9a200-dfe2-11eb-8344-3044609bfe57.PNG" >
+<figcaption align = "center">[Picture 3] PAD의 뜻</figcaption>
+<br>
+<h1 id="참조-무결정">참조 무결정</h1>
+<p>관계를 맺은 테이블들의 데이터 사이에서 일관성을 유지하기 위해 foreign key를 만들 때 참조무결성 제약조건이 만들어진다.
+강의를 듣는 처음에는 참조무결성이 왜 필요할까? 왜 foreign key를 사용하지? 라는 의구심이 들었는데 <code>데이터를 일관적으로 관리</code> 한다는 성격 때문에 참조무결성을 사용하는 것 같다.</p>
+<br>
+<h3 id="foreign-key의-특징">foreign key의 특징</h3>
+<ul>
+<li>본테이블에 없는 데이터를 sub 테이블 (참조하는 테이블)에 넣을 수 없다.
+<ul>
+<li>이 특성이라면 프로그래밍적 오류를 db단에서 막을 수 도 있다.</li>
+</ul>
+</li>
+<li>본테이블에 없는 데이터로 sub의 foreign key를 수정할 수 없다.</li>
+<li>update와 delete에 cascade 옵션을 걸어놨을 경우 본테이블에 변경이 있으면 아무것도 안해도 sub 테이블에 알아서 반영을 해준다.
+<ul>
+<li>예를 들어 admin_user가 본테이블이고 admin_favorite이 sub 테이블이면 직원 중 하나가 퇴사를 하면 본테이블에 delete을 했을때 sub테이블에서도 자동으로 delete이 되어서 따로 관리를 할 필요가 없다.</li>
+</ul>
+</li>
+</ul>
+<br> 
+<h3 id="stateful-하지-않은-history-데이터도-foreign-key-의미가-있을까">stateful 하지 않은 history 데이터도 foreign key 의미가 있을까?</h3>
+<p>외래키를 설정하는게 이렇게 1:1로 데이터가 stateful할 떄 (ex: 사용자-디바이스 정보) 유용하지 <strong>그냥 밑으로 확장하는 history성 테이블에서도 의미가 있을까?</strong> 또 의심을 했는데 일단 history성이여도 본테이블에 없는 데이터를 넣지 못하는 일관성이 보장이 되기 때문에 필요 자체가 없는 기능은 아닌 것 같다.</p>
+<br>
+<h3 id="foreign-key-action">foreign key action</h3>
+<ol>
+<li>Restrict : 본테이블에 있는 데이터를 바꾸거나 삭제하려는데 다른테이블이 참조를 하고 있을 경우 action을 무시한다.</li>
+<li>No Action : mysql에서는 restrict 와 동일하다.</li>
+<li>Cascade : 본테이블에서 수정/삭제가 일어났을 때 참조하고 있는 테이블도 동일하게 수정/삭제가 적용된다.</li>
+<li>Set Null : 본테이블에서 수정/삭제가 일어났을 때 참조하고 있는 테이블의 Foreign Key를 NULL로 만든다. <code>수정에서 보다 삭제에서 더 유용한 설정</code></li>
+</ol>
+<br> 
+<h3 id="생각해-볼-부분">생각해 볼 부분</h3>
+<p>만약 데이터를 정말 지워버리는 <code>Hard Delete</code>말고 flag를 설정해줘서 지운 척을 하는 <code>Soft Delete</code>에서는 <code>Foreign Key Delete Action</code>을 어떻게 설정해주는 게 좋을까?</p>
+<br>
+<h1 id="소소한-하이디-sql--markdown-팁">소소한 하이디 SQL &amp; markdown 팁</h1>
+<p>하이디 sql에서 격자행 내보내기 할 때 대다수의 경우 csv 파일로 내보내기를 했는데 wiki나 블로그 작성 용으로 결과를 마크다운으로도 내보낼 수 있는 걸 오늘 발견했다.</p>
+<p>이렇게 하면 <a href="https://www.tablesgenerator.com/markdown_tables" target="_blank">[Table Generator]</a> 에 가서 셀 하나하나를 만들거나 결과창을 캡처 해 올 필요가 없어서 굉장히 편리하게 포스팅을 할 수 있다.</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124856705-fbcdb780-dfe5-11eb-9934-4b6f1fde700c.PNG" >
+<figcaption align = "center">[Picture 4] 하이디 SQL 격자 행 내보내기</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124856718-fec8a800-dfe5-11eb-9ca6-7b1e80c76984.PNG" >
+<figcaption align = "center">[Picture 5] 하이디 SQL 격자 행 내보내기 결과</figcaption>
+<br> 
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_char-length" target="_blank">[Mysql String Function Official Document]</a><br></li>
+<li><a href="https://bizadmin.tistory.com/entry/%EB%AC%B8%EC%9E%90%EC%97%B4-%ED%95%A8%EC%88%98" target="_blank">[MySQL 문자열 함수]</a><br></li>
+<li><a href="https://stackoverflow.com/questions/5809954/mysql-restrict-and-no-action" target="_blank">[MySQL RESTRICT and NO ACTION]</a><br></li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html" target="_blank">[Mysql Foreign Key Action Official Document]</a></li>
+</ul>
+<br> 
+<hr> 
+<p><a name="footnote_1">1</a>: 주석에 관한 설명을 이곳에&hellip;</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

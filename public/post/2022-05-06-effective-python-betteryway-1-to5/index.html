@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Effective Python] Chapter 1: 1장부터 5장까지의 요약 - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="책 [Effective Python] Chapter 1 중 better way 1장부터 5장까지 요약한다." />
+
+
+<meta name="keywords" content="Book" />
+
+
+<meta property="og:title" content="[Effective Python] Chapter 1: 1장부터 5장까지의 요약" />
+<meta name="twitter:title" content="[Effective Python] Chapter 1: 1장부터 5장까지의 요약" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/" /><meta property="og:description" content="책 [Effective Python] Chapter 1 중 better way 1장부터 5장까지 요약한다." />
+<meta name="twitter:description" content="책 [Effective Python] Chapter 1 중 better way 1장부터 5장까지 요약한다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-05-06T00:00:00+00:00" /><meta property="article:modified_time" content="2022-05-06T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/">[Effective Python] Chapter 1: 1장부터 5장까지의 요약</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-05-06</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;5112 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>책 [Effective Python] better way를 1장부터 5장까지 요약한다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>사용중인 파이썬의 버전을 알아두라</li>
+<li>PEP8 스타일 가이드를 따르라</li>
+<li>bytes와 str의 차이를 알아두라</li>
+<li>C 스타일 형식 문자열을 str.format과 쓰기보다는 f-문자열을 통한 인터플레이션을 사용하라</li>
+<li>복잡한 식을 쓰는 대신 도우미 함수를 작성하라</li>
+</ol>
+<br> 
+<h1 id="사용중인-파이썬의-버전을-알아두라">사용중인 파이썬의 버전을 알아두라</h1>
+<blockquote>
+<p>파이썬 버전 콘솔 명령어 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python <span style="color:#f92672">--</span>version</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>파이썬 버전 코드 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys 
+</span></span><span style="display:flex;"><span>print (sys<span style="color:#f92672">.</span>version_info) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> sys<span style="color:#f92672">.</span>version_info(major<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, minor<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, micro<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>, releaselevel<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;final&#39;</span>, serial<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>version) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">3.8.12</span> (default, Oct <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">2021</span>, <span style="color:#ae81ff">17</span>:<span style="color:#ae81ff">47</span>:<span style="color:#ae81ff">41</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>[Clang <span style="color:#ae81ff">13.0.0</span> (clang<span style="color:#f92672">-</span><span style="color:#ae81ff">1300.0.29.3</span>)]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="파이썬2">파이썬2</h3>
+<p>파이썬2는 2020년 1월 1일부로 수명이 다했다. 이제 더이상 버그수정, 보안 패치가 이뤄지지 않는다. 공식적으로 지원을 하지 않은 언어이기 때문에 사용에 대한 책임은 개발자에게 따른다.</p>
+<p>파이썬2로 작성된 코드를 사용해야 한다면 2to3, six와 같은 라이브러리의 도움을 받아야 한다.</p>
+<br>
+<blockquote>
+<p>six 사용 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    six.text_type<span style="color:#f92672">(</span>user.pk<span style="color:#f92672">)</span> + six.text_type<span style="color:#f92672">(</span>timestamp<span style="color:#f92672">)</span> + six.text_type<span style="color:#f92672">(</span>user.username<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span>+ six.text_type<span style="color:#f92672">(</span>user.uuid<span style="color:#f92672">)</span> + six.text_type<span style="color:#f92672">(</span>user.type<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h1 id="pep8-스타일-가이드를-따르라">PEP8 스타일 가이드를 따르라</h1>
+<p>PEP8는 파이썬 코드를 어떤 형식으로 작성할지 알려주는 스타일 가이드다. 문법만 올바르다면 어떤 방식으로 원하든 파이썬 코드를 작성해도 좋지만, 일관된 스타일을 사용하면 코드에 더 친숙하게 접근하고, 코드를 더 쉽게 읽을 수 있다.</p>
+<br>
+<h3 id="pep8-스타일-가이드">PEP8 스타일 가이드</h3>
+<h4 id="공백">공백</h4>
+<ul>
+<li>탭 대신 스페이스를 사용해 들여쓰기를 하라.</li>
+<li>문법적으로 중요한 들여쓰기에는 4칸 스페이스를 사용하라.</li>
+<li>라인 길이는 79개 문자 이하여야 한다.</li>
+<li>긴 식을 다음 줄에 이어서 쓸 경우에는 일반적인 들여쓰기보다 4스페이스를 더 들여써야 한다.</li>
+<li>파일 안에서 각 함수와 클래스 사이에는 빈 줄 두 줄 넣어라.</li>
+<li>클래스 안에서 메서드와 메서드 사이에는 빈 줄을 한 줄 넣어라.</li>
+<li>dict에서 키와 콜론(:) 사이에는 공백을 넣지 않고, 한 줄 안에 키와 값을 같이 넣는 경우에는 콜론 다음에 스페이스를 하나 넣는다.</li>
+<li>변수 대입에서 = 전후에는 스페이스를 하나씩만 넣는다.</li>
+<li>타입 표기를 덧붙이는 경우에는 변수 이름과 콜론 사이에 공백을 넣지 않도록 주의하고, 콜론과 타입 정보 사이에는 스페이스를 하나 넣어라.</li>
+</ul>
+<br> 
+<blockquote>
+<p>공백 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a: int, b: int): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="명명-규약-name-convention">명명 규약 (name convention)</h3>
+<h4 id="함수-변수-애트리뷰트-명명-규약">함수, 변수, 애트리뷰트 명명 규약</h4>
+<ul>
+<li>함수, 변수, 애트리뷰트는 lowercase_underscore 처럼 소문자와 밑줄을 사용해야 한다.
+<ul>
+<li>snake case</li>
+</ul>
+</li>
+<li>모듈 수준의 상수는 ALL_CAPS처럼 모든 글자를 대문자로 하고, 단어와 단어 사이를 밑줄로 연결한 형태를 사용한다.</li>
+</ul>
+<br> 
+<h4 id="private-명명-규약">private 명명 규약</h4>
+<ul>
+<li>보호해야(protect) 하는 인스턴스 애트리뷰트는 일반적인 애트리뷰트 이름 규칙을 따르되, 밑줄로 시작한다.</li>
+<li>private 인스턴스 애트리뷰는 밑줄 두 줄로 시작한다.
+<ul>
+<li>밑줄 두 줄은 maigc method를 위한 컨벤션인줄 알았는데, 클래스에서 private 메소드와 애트리뷰트를 밑줄 두줄로 만든다.</li>
+<li><strong>파이썬에서 private, protect 모두 정식 지원을 하지 않기 때문에, 가독성을 위한 네임 컨벤션에 더 가깝다.</strong></li>
+</ul>
+</li>
+</ul>
+<br> 
+<h4 id="클래스-명명-규약">클래스 명명 규약</h4>
+<ul>
+<li>클래스와 예외는 CapitalizedWord 처럼 여러 단어를 이어 붙이되, 각 단어의 첫 글자를 대문자로 만든다.
+<ul>
+<li>PascalCase, CamelCase</li>
+</ul>
+</li>
+<li>클래스에 들어있는 인스턴스 메서드는 호출 대상 객체를 가리키는 첫번쨰 인자의 이름으로, 반드시 self를 사용해야한다.
+<ul>
+<li>자기자신을 가르키기 때문에</li>
+</ul>
+</li>
+<li>클래스 메서드는 클래스를 가르키는 첫 번째 인자의 이름으로 반드시 cls를 사용해야 한다.
+<ul>
+<li>클래스 자체를 가르키기 때문에</li>
+</ul>
+</li>
+</ul>
+<br> 
+<blockquote>
+<p>함수, 변수 명명 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_add</span>(a, b): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>private 인스턴스 명명 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>__count <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__add</span>(a, b): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h3 id="식과-문">식과 문</h3>
+<h4 id="읽기-쉬운-식-작성">읽기 쉬운 식 작성</h4>
+<ul>
+<li>긍정적인 식을 부정하지 말고, 부정을 내부에 넣어라.</li>
+<li>한 줄짜리 if 문이나 한 줄짜리 for, while 루프, 한 줄 짜리 except 복합문을 사용하지 말라. 명확성을 위해 각 부분을 여러 줄에 나눠 배치하라.</li>
+<li>식을 한 줄 안에 다 쓸 수 없는 경우, 식을 괄호로 둘러싸고 줄바꿈과 들여쓰기를 추가해서 읽기 쉽게 만들라.</li>
+<li><strong>여러 줄에 걸쳐 식을 쓸 때는 줄이 계속된다는 표시를 하는 \ 문자 보다는 괄호를 사용하라.</strong>
+<ul>
+<li>editor를 사용하다보면 이렇게 \ 되는 형식을 많이 사용하는데, PEP8에서 권장하지 않은 형태였다니, 앞으로 ()를 써보도록 노력하겠다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="빈-컨테이너-확인">빈 컨테이너 확인</h4>
+<ul>
+<li>빈 컨테이너나 시퀸스([], ‘’)등을 검사할 때는 길이를 0과 비교하지 말라. 빈 컨테이너나 시퀸스 값이 암묵적으로 False 취급된다는 사실을 활용해라.
+<ul>
+<li><strong>파이썬을 자바와 동실시 해서, 얼마전에 str ≠ ‘’ 로 비어있는 여부를 검사한 적이 있다. 파이썬에서 비어있는 str는 False 취급이라는 것을 꼭 기억하자.</strong></li>
+</ul>
+</li>
+<li>마찬가지로 비어 있지 않은 컨테이너나 시퀸스([1], ‘hi’) 등을 검사할 때는 길이를 0과 비교하지 말라. 컨테이너가 비어있지 않은 경우 암묵적으로 True 평가가 된다는 사실을 활용해라.</li>
+</ul>
+<br>
+<blockquote>
+<p>내부 부정 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 긍정적인 식을 부정</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> a <span style="color:#f92672">is</span> b: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 부정을 내부에 넣음 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> a <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> b: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 비교 대상이 없이 자기 자신만 있을 때는 이렇게 해도 된다. </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> a:</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>빈 컨테이너 확인 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>d <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>st <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> d: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> st: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Don&#39;t do 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> str <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Dont&#39;do 2 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> len(d) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h3 id="임포트">임포트</h3>
+<p>임포트 문은 평소에 정말 신경을 쓰지 않았는데, 앞으로는 editor에서 어떻게 임포트를 하는지 보고, 신경 써서 작성하도록 하자.</p>
+<ul>
+<li>import 문을 항상 파일 맨 앞에 위치시켜라.</li>
+<li>모듈을 임포트할 때는 절대적인 이름을 사용하고, 현 모듈의 경로에 상대적인 이름은 사용하지 말라.</li>
+<li>반드시 상대적인 경로로 임포트를 해야 하는 경우에는 명시적인 구문을 사용하라.</li>
+</ul>
+<br> 
+<h4 id="임포트-순서">임포트 순서</h4>
+<ul>
+<li>임포트를 적을 때는 아래와 같은 순서로 섹션을 나누고, 각 세션은 알파벳 순서로 모듈을 임포트하라.
+<ul>
+<li>표준 라이브러리 모듈</li>
+<li>서드 파티 모듈</li>
+<li>여러분이 만든 모듈</li>
+</ul>
+</li>
+</ul>
+<br> 
+<blockquote>
+<p>임포트 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># bar 패키지에서 foo 모듈을 임포트 하려고 할 때 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Do </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bar <span style="color:#f92672">import</span> foo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Don&#39;t do</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> foo</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>상대 경로 임포트 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> foo </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="결론">결론</h3>
+<p>개인 프로젝트를 할 때에도 pylint, flake8 등의 파이썬 lint를 이용해서 스타일을 준수하도록 노력하자.</p>
+<br>
+<h1 id="bytes와-str의-차이를-알아두라">bytes와 str의 차이를 알아두라</h1>
+<p>파이썬에는 문자열 데이터의 시퀸스를 표현하는 두 가지 타입 bytes와 str이 있다.</p>
+<h3 id="bytes">bytes</h3>
+<p>부호가 없는 8바이트 데이터가 그대로 들어가거나, 아스키 인코딩을 사용해 내부 문자를 표시한다.</p>
+<blockquote>
+<p>bytes 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;h</span><span style="color:#ae81ff">\x65</span><span style="color:#e6db74">11o&#39;</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;eojwpkmcdlklksm&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="str">str</h3>
+<p>사람이 사용하는 언어의 문자를 표현하는 유니코드 코드 포인트가 들어간다.</p>
+<br>
+<h3 id="인코딩">인코딩</h3>
+<p>str에는 직접 대응하는 이진 인코딩이 없고, bytes에는 직접 대응하는 텍스트 인코딩이 없다.<br>
+때문에 함수를 호출해야 한다.호출 할 때 여러분이 원하는 인코딩 방식을 명시적으로 지정할 수 도 있고 시스템 디폴트 인코딩을 사용할 수 있는데 일반적으로 utf-8이 시스템 디폴트다.</p>
+<br>  
+<h4 id="인코딩-시나리오">인코딩 시나리오</h4>
+<ul>
+<li>유니코드 데이터를 이진 데이터로 변환해야 할 때: <code>str</code>의 <code>encode</code> 메서드 호출</li>
+<li>이진 데이터를 유니코드 데이터로 변환해야 할 때: <code>bytes</code>의 <code>decode</code> 메서드 호출</li>
+</ul>
+<br>
+<h4 id="유니코드-샌드위치">유니코드 샌드위치</h4>
+<p>유니코드 데이터를 인코딩하거나 디코딩하는 부분을 인터페이스의 가장 먼 경계 지점에 위치시켜라. 이런 방식을 <code>유니코드 샌드위치</code>라고 부른다.</p>
+<p><em>프로그램의 핵심 부분은 유니코드 데이터가 들어 있는 str를 사용해야 하고, 문자 인코딩에 대해 어떤 가정도 해서는 안된다.</em></p>
+<ul>
+<li>핵심 함수에는 이미 인코딩이 된 str이 인자로 전달되어야 한다.</li>
+<li>이런 접근을 하면 다양한 텍스트 인코딩으로 입력 데이터를 받아들일 수 있고, 출력 텍스트 인코딩은 한 가지로 엄격하게 제한할 수 있다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/encode_function_box.png" >
+<figcaption align = "center">[Picture 1] 유니코드 샌드위치 블랙박스</figcaption>
+<br>
+<blockquote>
+<p>str 반환 유니코드 샌드위치 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_str</span>(bytes_or_str): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> isinstance(bytes_or_str, bytes): 
+</span></span><span style="display:flex;"><span>		 value <span style="color:#f92672">=</span> bytes_or_str<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8) </span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>: 
+</span></span><span style="display:flex;"><span>		 value <span style="color:#f92672">=</span> bytes_or_str 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> value </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>bytes 반환 유니코드 샌드위치 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_bytes</span>(bytes_or_str): 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> isinstanceof(bytes_or_str, str): 
+</span></span><span style="display:flex;"><span>		 value <span style="color:#f92672">=</span> bytes_or_str<span style="color:#f92672">.</span>endode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>		 value <span style="color:#f92672">=</span> bytes_or_str 
+</span></span><span style="display:flex;"><span>	 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> value </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="파이썬에서-bytes와-str을-다룰-때-기억해야-하는-점">파이썬에서 bytes와 str을 다룰 때 기억해야 하는 점</h4>
+<h5 id="연산">연산</h5>
+<p>bytes와 str이 똑같이 작동하는 것처럼 보이지만 각각의 인스턴스는 서로 <em>호환되지 않기 때문</em>에 전달중인 문자 시퀸스가 어떤 타입인지 알아야 한다.</p>
+<blockquote>
+<p>연산 불가항목 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bytes <span style="color:#f92672">+</span> str 
+</span></span><span style="display:flex;"><span>bytes <span style="color:#f92672">&gt;</span> str 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;foo&#39;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;foo&#39;</span> <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">False</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h5 id="파일">파일</h5>
+<p>(내장함수 open을 호출해 얻은) 파일 핸들과 관련한 연산들이 디폴트로 <em>유니코드 (str) 문자열을 요구하고, 이진 바이트 문자열을 요구하지 않는다.</em></p>
+<p>이진 쓰기 모드 <code>(’wb’)</code>가 아닌 텍스트 쓰기 모드 <code>(’w’)</code> 로 열면 오류가 난다. bytes로 파일 읽기, 쓰기를 하고 싶다면 이진 읽기모드 <code>(’rb’)</code> 또는 이진 쓰기모드 <code>(’wb’)</code>를 써야 한다.</p>
+<br> 
+<blockquote>
+<p>파일 불가항목 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;data.bin&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f: 
+</span></span><span style="display:flex;"><span>		f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\xf1\xf2\xf3</span><span style="color:#e6db74">&#39;</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> Traceback <span style="color:#f92672">...</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TypeError</span>: write() argument must be str, <span style="color:#f92672">not</span> bytes<span style="color:#f92672">.</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>파일 시스템의 디폴트 텍스트 인코딩을 <code>bytes.encode</code>(쓰기), <code>str.decode</code>(읽기) 에서 사용하는데 utf-8이기 때문에 이진데이터의 경우 utf-8로 읽지 못하는 경우가 생겨 에러가 발생할 수 있다.</p>
+<p>이런 현상을 막고자, utf-8로 인코딩을 못하는 경우에는 읽어올 때 인코딩을 아예 명시해주는 경우도 있다.</p>
+<br> 
+<blockquote>
+<p>인코딩 명시 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;data.bin&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cpl252&#39;</span>) <span style="color:#66d9ef">as</span> f: 
+</span></span><span style="display:flex;"><span>		 data <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="결론-1">결론</h3>
+<p>시스템 디폴트 인코딩을 항상 검사하도록 하자.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python3 <span style="color:#f92672">-</span>c <span style="color:#e6db74">&#39;import locale; print(locale.getpreferredencoding())&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h1 id="c-스타일-형식-문자열을-strformat과-쓰기보다는-f-문자열을-통한-인터플레이션을-사용하라">C 스타일 형식 문자열을 str.format과 쓰기보다는 f-문자열을 통한 인터플레이션을 사용하라.</h1>
+<p>형식화는 미리 정의된 문자열에 데이터 값을 끼워 넣어 사람이 보기 좋은 문자열로 저장하는 과정이다. 파이썬에서는 f-문자열을 통한 인터플레이션 빼고는 각자의 단점이 있다.</p>
+<h3 id="형식-문자열">형식 문자열</h3>
+<p>% 형식화 연산자를 사용한다. 왼쪽에 들어가는 미리 정의된 텍스트 템플릿을 형식 문자열이라고 부른다. <em>C 함수에서 비롯된 방법이다.</em></p>
+<br>
+<blockquote>
+<p>형식 문자열 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;이진수: </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">, 십육진수: </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>, <span style="color:#f92672">%</span>(a, b))</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="형식-문자열-문제점">형식 문자열 문제점</h4>
+<ul>
+<li>형식화 식에서 오른쪽에 있는 값들의 순서를 바꾸거나, 타입을 바꾸면 포멧팅이 안되어 오류가 발생한다.</li>
+<li>형식화를 조금이라도 변경하면 식이 매우 복잡해 읽기가 힘들다.</li>
+<li>같은 값을 여러번 사용하고 싶다면 오른쪽 값을 여러번 복사해야 한다.</li>
+</ul>
+<br>
+<h3 id="내장-함수-format과-strformat">내장 함수 format과 str.format</h3>
+<p>파이썬 3부터는 %를 사용하는 오래된 C스타일 형식화 문자열보다 더 표현력이 좋은 고급 문자열 형식화 기능이 도입됐다. 이 기능은 format 내장 함수를 통해 모든 파이썬 값에 사용할 수 있다.</p>
+<br>
+<blockquote>
+<p>format 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;my_var&#39;</span>
+</span></span><span style="display:flex;"><span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.234</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>formatted <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(key, value) 
+</span></span><span style="display:flex;"><span>print(formatted) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>my_var <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.234</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># format 메서드에 전달된 인자의 순서를 표현하는 위치 인덱스를 전달할 수도 있다. </span>
+</span></span><span style="display:flex;"><span>formatted <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(key, value) 
+</span></span><span style="display:flex;"><span>print(formatted) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1.234</span> <span style="color:#f92672">=</span> my_var 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 형식화 문자열 안에서 같은 위치 인덱스를 여러 번 사용할 수도 있다.</span>
+</span></span><span style="display:flex;"><span>formatted <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">는 음식을 좋아해. </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">가 요리하는 모습을 봐요&#39;</span><span style="color:#f92672">.</span>format(name) 
+</span></span><span style="display:flex;"><span>print(formatted)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>철수는 음식을 좋아해<span style="color:#f92672">.</span> 철수가 요리하는 모습을 봐요<span style="color:#f92672">.</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="format-문제점">format 문제점</h4>
+<ul>
+<li>C 스타일의 형식화와 마찬가지로, 값을 조금 변경하는 경우에는 코드 읽기가 어려워진다. 가독성 면에서 거의 차이가 없으며, 둘 다 읽기에 좋지 않다.</li>
+</ul>
+<br>
+<h3 id="인터폴레이션을-통한-형식-문자열-f-문자열">인터폴레이션을 통한 형식 문자열 (f-문자열)</h3>
+<p>위의 문제들을 완전히 해결하기 위해 파이썬 3.6 부터는 인터폴레이션을 통한 형식 문자열 (짧게 f-문자열)이 도입되었다. <em>이 새로운 언어 문법에서는 형식 문자열 앞에 f 문자를 붙여야 한다.</em>
+바이트 문자열 앞에 b 문자를 붙이고, raw 문자열 앞에 r문자를 붙이는 것과 비슷하다.</p>
+<p>f-문자열은 형식화 식 안에서 현재 파이썬 영역에서 사용할 수 있는 모든 이름을 자유롭게 참조할 수 있도록 허용함으로써 이런 간결함을 제공한다.</p>
+<br>
+<blockquote>
+<p>f-문자열 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;my_var&#39;</span>
+</span></span><span style="display:flex;"><span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.234</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>formatted <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>print(formatted) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>my_var <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.234</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>파이썬에서 제공하는 형식화 문법의 차이 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># f-문자열 </span>
+</span></span><span style="display:flex;"><span>f_string <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">:</span><span style="color:#e6db74">&lt;10</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">:</span><span style="color:#e6db74"> .2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># c 스타일 </span>
+</span></span><span style="display:flex;"><span>c_tuple <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%-10s</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">%.2f</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (key, value)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># c 스타일 + 딕셔너리 </span>
+</span></span><span style="display:flex;"><span>c_dict <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;%</span><span style="color:#e6db74">{key}</span><span style="color:#e6db74">-10s = %</span><span style="color:#e6db74">{value}</span><span style="color:#e6db74">.2f&#39;</span> <span style="color:#f92672">%</span> {<span style="color:#e6db74">&#39;key&#39;</span>: key, <span style="color:#e6db74">&#39;value&#39;</span>: value}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># str.format</span>
+</span></span><span style="display:flex;"><span>str_args <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:&lt;10}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{value: .2f}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(key, value) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># str.format + 키워드 인자</span>
+</span></span><span style="display:flex;"><span>str_kw <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{key:&lt;10}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{value:.2f}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(key<span style="color:#f92672">=</span>key, value<span style="color:#f92672">=</span>value) </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="결론-2">결론</h3>
+<p><em>f-문자열은 간결하지만, 위치 지정자 안에 임의의 파이썬 식을 직접 포함시킬 수 있으므로 매우 강력하다.</em> 값을 문자열로 형식화해야 하는 상황을 만나게 되면 다른 대안 대신 f-문자열을 택하라.</p>
+<br>
+<h1 id="복잡한-식을-쓰는-대신-도우미-함수를-작성하라">복잡한 식을 쓰는 대신 도우미 함수를 작성하라.</h1>
+<p>파이썬은 문법이 간결하므로 상당한 로직이 들어가는 식도 한 줄로 매우 쉽게 작성할 수 있다.
+예를 들어 URL의 query string를 파싱하고 싶다고 하자.</p>
+<br> 
+<blockquote>
+<p>query string 파싱 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> parse_qs 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my_values <span style="color:#f92672">=</span> parse_qs(<span style="color:#e6db74">&#39;빨강=5&amp;파랑=0&amp;초록=&#39;</span>, keep_blank_values<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(repr(my_values)) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;빨강&#39;</span>: [<span style="color:#e6db74">&#39;5&#39;</span>], <span style="color:#e6db74">&#39;파랑&#39;</span>: [<span style="color:#e6db74">&#39;0&#39;</span>], <span style="color:#e6db74">&#39;초록&#39;</span>: [<span style="color:#e6db74">&#39;&#39;</span>] }</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>이런 때에 파라미터가 없거나 비어 있을 경우 0이 디폴트 값으로 대입되면 좋을 것이다. 여러 줄로 작성해야 하는 if 문(if statement)를 쓰거나 도우미 함수를 쓰지 않고, if 식(if expression)으로 한줄로 처리 할 수 있다.</p>
+<p>뿐만 아니라, 모든 파라메터 값을 정수로 변환해서 즉시 수식에서 활용하기를 바란다고 해보겠다. 그럼 식은 아래와 같아진다.</p>
+<br> 
+<blockquote>
+<p>한 줄 대입, 변환 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>red <span style="color:#f92672">=</span> int(my_values<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;빨강&#39;</span>, [<span style="color:#e6db74">&#39;&#39;</span>])[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>green <span style="color:#f92672">=</span> int(my_values<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;초록&#39;</span>, [<span style="color:#e6db74">&#39;&#39;</span>])[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>opacity <span style="color:#f92672">=</span> int(my_values<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;투명도&#39;</span>, [<span style="color:#e6db74">&#39;&#39;</span>])[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">or</span> <span style="color:#ae81ff">0</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<p>현재 이 코드는 너무 읽기 어렵고 시각적 잡음도 많다. 즉, 코드를 이해하기 쉽지 않으므로 코드를 새로 읽는 사람이 이 식이 실제로 어떤 일을 하는지 이해하기 위해 너무 많은 시간을 투자해야 한다.</p>
+<p><em>코드를 짧게 유지하면 멋지기는 하지만, 모든 내용을 한줄에 우겨 넣기 위해 노력할 만큼의 가치는 없다.</em></p>
+<br> 
+<blockquote>
+<p>명확하게 바꾼 코드 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_first_int</span>(values, key, default<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>): 
+</span></span><span style="display:flex;"><span>		found <span style="color:#f92672">=</span> values<span style="color:#f92672">.</span>get(key, [<span style="color:#e6db74">&#39;&#39;</span>]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> found[<span style="color:#ae81ff">0</span>]: 
+</span></span><span style="display:flex;"><span>			 <span style="color:#66d9ef">return</span> int(found[<span style="color:#ae81ff">0</span>]) 
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> default </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<p>식이 복잡해지기 시작하면 바로 식을 더 작은 조간으로 나눠서 로직을 도우미 함수로 옮길지 고려해야 한다. 특히 같은 로직을 반복해 사용할 때는 <code>도우미 함수</code>를 꼭 사용하라. 아무리 짧게 줄여 쓰는 것을 좋아한다 해도, 코드를 줄여 쓰는 것보다 <code>가독성</code>을 좋게 하는 것이 더 가치 있다.</p>
+<br>
+<h3 id="결론-3">결론</h3>
+<p>파이썬의 함축적인 문법이 지저분한 코드를 만들어내지 않도록 하라. 반복하지 말라는 뜻의 <code>DRY</code> 원칙을 따르라.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

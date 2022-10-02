@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on dev_leelee.log</title>
+    <link>https://leeleelee3264.github.io/post/</link>
+    <description>Recent content in Posts on dev_leelee.log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital certificate 적용하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</guid>
+      <description>CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다. Index CA CA에서 인증서 생성하기 인증서 적용하기 Chain of Trust (plus) 인증서가 사용되는 프로세스 모식도 CA CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주</description>
+    </item>
+    
+    <item>
+      <title>Python으로 Myinfo oauth2 client connector 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
+      <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</guid>
+      <description>oauth2를 사용하고 있는 Myinfo API 를 사용하는 connector client를 Python/Django로 구현한다. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한</description>
+    </item>
+    
+    <item>
+      <title>Python decorator로 간단한 profiler 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
+      <description>간단한 프로파일링을 할 수 있는 profiler를 Python decorator로 구현한다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프</description>
+    </item>
+    
+    <item>
+      <title>Digital certificate</title>
+      <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</guid>
+      <description>PKI의 certificate에 대해서 다룬다. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하</description>
+    </item>
+    
+    <item>
+      <title>[Effective Python] Chapter 1: 1장부터 5장까지의 요약</title>
+      <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
+      <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
+      <description>책 [Effective Python] better way를 1장부터 5장까지 요약한다. Index 사용중인 파이썬의 버전을 알아두라 PEP8 스타일 가이드를 따르라 bytes와 str의 차이를 알아두라 C 스타일 형식 문자열을 str.format과 쓰기보다는 f-문자열을 통한 인</description>
+    </item>
+    
+    <item>
+      <title>[Introducing Python] part one (1/2)</title>
+      <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
+      <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</guid>
+      <description>책 [Introducing Python] 절반을 요약한다. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은 인터프리터 언어다. 파이썬이</description>
+    </item>
+    
+    <item>
+      <title>터미널에서 여러 개의 깃허브 계정 사용하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</guid>
+      <description>터미널에서 여러 개의 깃허브 계정을 사용하는 방법을 다룹니다. Index 깃허브 계정 여러 개 세팅하기 매번 해줘야 하는 작업들 레퍼런스 깃허브 게정 여러 개 세팅하기 디렉터리 세팅하기 복수의 깃허브 계정을 사용 할 때, 각 계정들의 root source direc</description>
+    </item>
+    
+    <item>
+      <title>2021 백엔드 엔지니어 인터뷰 - Python, General</title>
+      <link>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</guid>
+      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는 것과, 쓰레드</description>
+    </item>
+    
+    <item>
+      <title>2021 백엔드 엔지니어 인터뷰 - Java</title>
+      <link>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</guid>
+      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에</description>
+    </item>
+    
+    <item>
+      <title>Shell Script 로 MySQL db 전체백업하기</title>
+      <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
+      <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</guid>
+      <description>Shell Script 로 Mysql db 전체백업하기에 대해 다룬다. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는</description>
+    </item>
+    
+    <item>
+      <title>SQL 백업 종류</title>
+      <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
+      <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</guid>
+      <description>SQL 백업 종류에 대해 다룬다. Index 언제 DB 백업을 해야 하나? 백업 개념 MySQL의 백업 커맨드 Linux DB Migration 언제 DB 백업을 해야 하나? 백업의 용도 내가 실무에서 접할 수 있는 디비 백업의 용도는 2가지가 정도이다. (보관) 데이터 유실을 막기 위해</description>
+    </item>
+    
+    <item>
+      <title>MySQL Join &amp; Join Set</title>
+      <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</guid>
+      <description>MySQL의 Join &amp;amp; Join Set에 대해서 다룬다. Index History of Join Join Set Reference 리뷰 후에 알게된 부분들 비등가 조인. Oracle에서는 지원을 하는데 Mysql이 지원을 하는지 모르겠다. 일반 조인이랑 비등가 조인 쿼리를 직접 짜서 결과를 보고 비교</description>
+    </item>
+    
+    <item>
+      <title>MySQL String 함수와 참조 무결성</title>
+      <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</guid>
+      <description>MySQL String 함수와 참조 무결성 (Referential Integrity) 에 대해서 다룹니다. Index MySQL에서 String 함수 참조 무결정 소소한 하이디 SQL &amp;amp; markdown 팁 Reference 리뷰 후에 알게된 부분들 [Markdown 각주/미주 달기] 1 SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수)</description>
+    </item>
+    
+    <item>
+      <title>MySQL SQL과 key, collation</title>
+      <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
+      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</guid>
+      <description>MySQL SQL과 key, collation에 대해 다룬다. Index Structured Query Language Key Collation Reference 리뷰 후에 알게된 부분들 Primary Key가 들어간 column 의 이름도 아닌 제약조건에 이름을 만드는 이유 주임님이 주신 의견: 기본키를 항상 하나의 column으로 만드는 건 아니고</description>
+    </item>
+    
+    <item>
+      <title>MySQL Index</title>
+      <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
+      <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</guid>
+      <description>Summary of post Index Clustered Index / Non-Clustered Index - Concept Clustered Index / Non-Clustered Index - Structure and Index algorithm Side effects of Indexes Related SQL Command with Indexes Reference 리뷰 후에 알게된 부분들 Non-Clustered Index가 여러 개 생성이 가능하지만 무제한으로 만들 수 있는 것은 아니다. 조회는 Clustered Index가 빠르지만, 수정과 입력은 Non-Clustered Ind</description>
+    </item>
+    
+    <item>
+      <title>리눅스 서버 설치와 초기 설정하기</title>
+      <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</guid>
+      <description>리눅스 서버 설치와 초기 설정에 대해 다룬다. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들기] 이 블로</description>
+    </item>
+    
+    <item>
+      <title>Github action으로 넷플릭스 상영 알림 트위터 봇 만들기</title>
+      <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</guid>
+      <description>Twitter API 와 Github Action을 사용하는 트위터 봇을 Python으로 구현한다. [github] [트위터 계정] Index 프로젝트 목표 프로젝트 구현 다음 프로젝트 목표 프로젝트 목표 프로젝트 진행 동기 예전부터 자동으로 응답을 해주는 카톡봇이나 자동으로 트</description>
+    </item>
+    
+    <item>
+      <title>Shell Script로 Blue Green Deployment를 흉내낸 무중단 서버 배포하기</title>
+      <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</guid>
+      <description>Shell Script로 무중단 서버 배포하는 방법을 다룬다. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운</description>
+    </item>
+    
+  </channel>
+</rss>

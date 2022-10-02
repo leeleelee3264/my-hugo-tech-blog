@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>Python으로 Myinfo oauth2 client connector 구현하기 - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="All about Myinfo project" />
+
+
+<meta name="keywords" content="Project" />
+
+
+<meta property="og:title" content="Python으로 Myinfo oauth2 client connector 구현하기" />
+<meta name="twitter:title" content="Python으로 Myinfo oauth2 client connector 구현하기" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/" /><meta property="og:description" content="All about Myinfo project" />
+<meta name="twitter:description" content="All about Myinfo project" /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-07-23T00:00:00+00:00" /><meta property="article:modified_time" content="2022-07-23T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/">Python으로 Myinfo oauth2 client connector 구현하기</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-07-23</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2192 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/project">Project</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>oauth2를 사용하고 있는 Myinfo API 를 사용하는 connector client를 Python/Django로 구현한다.</p>
+<blockquote>
+<p><a href="https://github.com/leeleelee3264/myinfo-connector-python" target="_blank">[github]</a><br>
+<a href="https://leelee-1.gitbook.io/myinfo-connector-python-api-doc/" target="_blank">[api document]</a><br>
+<a href="https://leelee-1.gitbook.io/myinfo-connector-python-api-doc/myinfo-connector-python-api/quick-start" target="_blank">[quick start]</a></p>
+</blockquote>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Myinfo란?</li>
+<li>프로젝트 목표</li>
+<li>프로젝트 구현</li>
+<li>프로젝트 회고</li>
+</ol>
+<br> 
+<h1 id="myinfo란">Myinfo란?</h1>
+<h3 id="싱가폴-mydata-서비스">싱가폴 Mydata 서비스</h3>
+<p>정부가 주도한 Mydata 서비스가 몇 개의 나라에 있다고 하는데, 싱가폴 정부의 Singpass는 그 중에서도 모범사례로 뽑힌다고 한다. Singpass는 <strong>싱가포르의 15세 이상의 인구 중 97%</strong> 가 쓰고 있는 아주 활발한 서비스이다.</p>
+<p>Singpass에 있는 여러가지 서비스 중 Myinfo는 Person Data를 제공하는 서비스로, 한국의 카카오나 네이버 아이디 처럼 ouath2 로그인과 회원가입을 할 수 있다. <em>[Picture 1]</em> 에서 singpass에 대해서 조금 더 자세히 살펴볼 수 있다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://github.com/leeleelee3264-api-docs/myinfo-connector-python-api-docs/raw/main/.gitbook/assets/image.png" >
+<figcaption align = "center">[Picture 1] Introduce Singpass</figcaption>
+<br>
+<h3 id="myinfo-oauth2">Myinfo oauth2</h3>
+<p>Myinfo는 <em>[Picture 2]</em> 와 같은 oauth2 구조를 가진다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/myinfo_oauth.png" >
+<figcaption align = "center">[Picture 2] Myinfo oauth2 구조</figcaption>
+<br>
+<h4 id="resource-owner">Resource Owner</h4>
+<ul>
+<li>Myinfo 사용자</li>
+</ul>
+<h4 id="application">Application</h4>
+<ul>
+<li>내가 구현하는 connector로, Myinfo 사용자의 데이터를 사용하는 주체</li>
+</ul>
+<h4 id="identify-providers--service-authorization-platform">Identify Providers / Service Authorization Platform</h4>
+<ul>
+<li>인증서버</li>
+<li>사용자의 인증정보와 권한 정보를 소유한 서버</li>
+<li>Singpass 로그인 페이지 제공</li>
+</ul>
+<h4 id="resource-server">Resource Server</h4>
+<ul>
+<li>사용자 데이터를 소유한 서버</li>
+<li>인증 서버에 로그인 성공 후 접근</li>
+</ul>
+<br>
+<h3 id="myinfo-resource-api">Myinfo Resource API</h3>
+<h4 id="권한-인증-요청">권한 인증 요청</h4>
+<ul>
+<li><a href="https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getauthorise" target="_blank">[authorise api]</a></li>
+<li><code>GET /v3/authorise</code></li>
+<li>Singpass 로그인 페이지를 불러온다.</li>
+<li>로그인 후 Singpass에서 사용자의 데이터를 불러오는 것에 대한 동의를 진행한다.</li>
+<li>사용자가 동의했을 경우 <code>authcode</code>를 return 한다.</li>
+</ul>
+<h4 id="token-요청">Token 요청</h4>
+<ul>
+<li><a href="https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/gettoken" target="_blank">[token api]</a></li>
+<li><code>POST /v3/token</code></li>
+<li><code>authocode</code>를 사용하여 <code>token</code>을 요청한다.</li>
+<li>PKI를 사용하여 인증을 진행한다.</li>
+<li>인증이 완료되면 <code>token</code>을 return 한다.</li>
+</ul>
+<h4 id="사용자-정보-요청">사용자 정보 요청</h4>
+<ul>
+<li><a href="https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getperson" target="_blank">[person api]</a></li>
+<li><code>GET /v3/person/{sub}</code></li>
+<li><code>token</code> 속의 <code>access token</code>을 사용하여 사용자 정보를 요청한다.</li>
+<li>사용자 정보를 return 한다.</li>
+</ul>
+<br>
+<h1 id="프로젝트-목표">프로젝트 목표</h1>
+<p>Singpass가 제공하는 <a href="https://github.com/singpass/myinfo-connector-java" target="_blank">[Java]</a>와 <a href="https://github.com/singpass/myinfo-connector-nodejs" target="_blank">[node.js]</a> 버전의 client connector 처럼 이번에 프로젝트로 python 버전의 connector를 만들었다. 아예 하나의 REST API 형태로 제공을 하기 위해 프레임워크로 Django를 선택했다.</p>
+<h3 id="프로젝트-목표-1">프로젝트 목표</h3>
+<p>프로젝트를 진행하면서 이루고자 한 목표는 아래와 같다. 대부분의 토이 프로젝트가 제대로 정리가 되어있지 않거나 코드가 엉망으로 짜여질 때가 많아서 이번에는 처음부터 확실하게 목표를 설정했다.</p>
+<br>
+<blockquote>
+<p>Code Quality</p>
+</blockquote>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> DDD 아키텍처로 서버를 구현한다.</li>
+<li><input checked="" disabled="" type="checkbox"> 최소 2회의 리팩토링을 진행한다.</li>
+<li><input checked="" disabled="" type="checkbox"> python lint(flake8, pylint, mypy)를 사용하여 최대한 python style을 고수한다.</li>
+<li><input checked="" disabled="" type="checkbox"> Pipenv를 사용해서 python 패키지를 관리한다.</li>
+</ul>
+<blockquote>
+<p>Documentation</p>
+</blockquote>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Github README를 작성한다.</li>
+<li><input checked="" disabled="" type="checkbox"> API document를 작성한다.</li>
+<li><input checked="" disabled="" type="checkbox"> Project에 대한 블로그 포스팅을 작성한다.</li>
+</ul>
+<br>
+<h3 id="dev-stack">Dev Stack</h3>
+<table>
+<thead>
+<tr>
+<th>stack</th>
+<th>info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend Language</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>Backend Framework</td>
+<td>Django</td>
+</tr>
+<tr>
+<td>Code Architecture</td>
+<td>Domain Driven Desgin</td>
+</tr>
+<tr>
+<td>Python Package Managment</td>
+<td>Pipenv</td>
+</tr>
+<tr>
+<td>API Security</td>
+<td>PKI</td>
+</tr>
+<tr>
+<td>Version Control</td>
+<td>Github</td>
+</tr>
+<tr>
+<td>API Document</td>
+<td>GitBook</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h1 id="프로젝트-구현">프로젝트 구현</h1>
+<h3 id="make-request">Make Request</h3>
+<p>Myinfo oauth2 구조를 반영하여, connector 서버의 호출 flow를 <em>[Picture 3]</em> 같이 설계했다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/singpass.png" >
+<figcaption align = "center">[Picture 3] connector 서버 호출 flow</figcaption>
+<br>
+<h4 id="step-1-get-myinfo-login-url">Step 1: Get myinfo login url</h4>
+<h5 id="request">Request</h5>
+<p><code>GET /users/me/external/myinfo-redirect-login</code></p>
+<pre><code>curl -i -H 'Accept: application/json' &lt;http://localhost:3001/user/me/external/myinfo-redirect-login&gt;
+</code></pre>
+<h5 id="response">Response</h5>
+<pre><code>{
+    &quot;message&quot;: &quot;OK&quot;,
+    &quot;data&quot;: {
+        &quot;url&quot;: &quot;https://test.api.myinfo.gov.sg/com/v3/authorise?client_id=STG2-MYINFO-SELF-TEST&amp;attributes=name,dob,birthcountry,nationality,uinfin,sex,regadd&amp;state=eb03c000-00a3-4708-ab30-926306bfc4a8&amp;redirect_uri=http://localhost:3001/callback&amp;purpose=python-myinfo-connector&quot;,
+        &quot;state&quot;: &quot;eb03c000-00a3-4708-ab30-926306bfc4a8&quot;
+    }
+}
+</code></pre>
+<br>
+<h4 id="step-2-browse-myinfo-login-url">Step 2: Browse myinfo login url</h4>
+<h5 id="request-1">Request</h5>
+<pre><code>curl &lt;https://test.api.myinfo.gov.sg/com/v3/authorise?client_id=STG2-MYINFO-SELF-TEST&amp;attributes=name,dob,birthcountry,nationality,uinfin,sex,regadd&amp;state=eb03c000-00a3-4708-ab30-926306bfc4a8&amp;redirect_uri=http://localhost:3001/callback&amp;purpose=python-myinfo-connector&gt;
+</code></pre>
+<h5 id="response-1">Response</h5>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://camo.githubusercontent.com/f182742864359f6e9805e719a3385f933d6573fc513b52775b4cfe3bed24ffcc/68747470733a2f2f333832303939333537342d66696c65732e676974626f6f6b2e696f2f7e2f66696c65732f76302f622f676974626f6f6b2d782d70726f642e61707073706f742e636f6d2f6f2f7370616365732532466c496e76414f684638715879534552494938455825324675706c6f6164732532464536496a746441704f3259345668304a6d763746253246254531253834253839254531253835254233254531253834253846254531253835254233254531253834253835254531253835254235254531253836254142254531253834253839254531253835254133254531253836254241253230323032322d30372d323325323025453125383425384225453125383525413925453125383425384325453125383525413525453125383625414225323031302e31382e35312e706e673f616c743d6d6564696126746f6b656e3d61356465613939372d656161362d346539372d613664322d333464343438373463313734" >
+<figcaption align = "center">[Picture 4] Myinfo Login Page</figcaption>
+<br>
+<h4 id="step-3-login-and-check-agree-terms">Step 3: Login and check agree terms</h4>
+<h5 id="login">Login</h5>
+<p>Check Login page in <em>[Picture 5]</em></p>
+<h5 id="agree-terms">Agree Terms</h5>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://camo.githubusercontent.com/39e35bf85ce639345ebb9274a0978272542465c4b71d0e89ceb6f9cd251fb79e/68747470733a2f2f333832303939333537342d66696c65732e676974626f6f6b2e696f2f7e2f66696c65732f76302f622f676974626f6f6b2d782d70726f642e61707073706f742e636f6d2f6f2f7370616365732532466c496e76414f684638715879534552494938455825324675706c6f61647325324630526b63314c6f44546a5a4e364d656c57316136253246254531253834253839254531253835254233254531253834253846254531253835254233254531253834253835254531253835254235254531253836254142254531253834253839254531253835254133254531253836254241253230323032322d30372d323325323025453125383425384225453125383525413925453125383425384325453125383525413525453125383625414225323031302e31392e33352e706e673f616c743d6d6564696126746f6b656e3d38613537643731392d393333332d343061662d386662632d616635363662393134343731" >
+<figcaption align = "center">[Picture 5] Myinfo Terms Agreement Page</figcaption>
+<br>
+<h4 id="step-4-callback-api-get-called-by-myinfo">Step 4: Callback API get called by Myinfo</h4>
+<blockquote>
+<p>Myinfo에서 Request를 하는 Step이다.</p>
+</blockquote>
+<p>로그인을 하고 terms에 동의를 하면 <strong>Myinfo에서 connector client의 callback API를 호출</strong>해 <code>authcode</code>를 넘겨준다.</p>
+<h5 id="request-2">Request</h5>
+<p><code>GET /callback?{code}</code></p>
+<pre><code>curl &lt;http://localhost:3001/callback?code=8932a98da8720a10e356bc76475d76c4c628aa7f&amp;state=e2ad339a-337f-45ec-98fa-1672160cf463&gt;
+</code></pre>
+<h5 id="response-2">Response</h5>
+<figure><img src="https://camo.githubusercontent.com/f4b5b1eaa871876c63d801411444637001c07491091f731ebbafdd36865ebeac/68747470733a2f2f333832303939333537342d66696c65732e676974626f6f6b2e696f2f7e2f66696c65732f76302f622f676974626f6f6b2d782d70726f642e61707073706f742e636f6d2f6f2f7370616365732532466c496e76414f684638715879534552494938455825324675706c6f61647325324641523347636e3571474c7733584a4f64446b5549253246254531253834253839254531253835254233254531253834253846254531253835254233254531253834253835254531253835254235254531253836254142254531253834253839254531253835254133254531253836254241253230323032322d30372d323325323025453125383425384225453125383525413925453125383425384325453125383525413525453125383625414225323031302e33322e33342e706e673f616c743d6d6564696126746f6b656e3d38386462353065332d633933372d343831642d393365312d306536396234633763313662"
+         alt="[Picture 6] Callback Response Page" width="500" height="400"/><figcaption>
+            <p>[Picture 6] Callback Response Page</p>
+        </figcaption>
+</figure>
+
+<br>
+<h4 id="final-step-get-person-data">Final Step: Get Person data</h4>
+<blockquote>
+<p>자동화된 Step이다.</p>
+</blockquote>
+<p>Callback API의 응답인 callback 페이지는 자동으로 connector client의 person data API를 호출하도록 했다. 해당 API가 Myinfo에서 사용자 정보를 가져오는 마지막 단계이다.</p>
+<h5 id="request-3">Request</h5>
+<p><code>GET /users/me/external/myinfo</code></p>
+<pre><code>curl -i -H 'Accept: application/json' &lt;http://localhost:3001/user/me/external/myinfo&gt;
+</code></pre>
+<h5 id="response-3">Response</h5>
+<pre><code>{
+    &quot;message&quot;: &quot;OK&quot;,
+    &quot;sodata&quot;: {
+        &quot;regadd&quot;: {
+            &quot;country&quot;: {
+                &quot;code&quot;: &quot;SG&quot;,
+                &quot;desc&quot;: &quot;SINGAPORE&quot;
+            },
+            &quot;unit&quot;: {
+                &quot;value&quot;: &quot;10&quot;
+            },
+            &quot;street&quot;: {
+                &quot;value&quot;: &quot;ANCHORVALE DRIVE&quot;
+            },
+            &quot;lastupdated&quot;: &quot;2022-07-14&quot;,
+            &quot;block&quot;: {
+                &quot;value&quot;: &quot;319&quot;
+            },
+            &quot;source&quot;: &quot;1&quot;,
+            &quot;postal&quot;: {
+                &quot;value&quot;: &quot;542319&quot;
+            },
+            &quot;classification&quot;: &quot;C&quot;,
+            &quot;floor&quot;: {
+                &quot;value&quot;: &quot;38&quot;
+            },
+            &quot;type&quot;: &quot;SG&quot;,
+            &quot;building&quot;: {
+                &quot;value&quot;: &quot;&quot;
+            }
+        },
+        &quot;dob&quot;: &quot;1988-10-06&quot;,
+        &quot;sex&quot;: &quot;M&quot;,
+        &quot;name&quot;: &quot;ANDY LAU&quot;,
+        &quot;birthcountry&quot;: &quot;SG&quot;,
+        &quot;nationality&quot;: &quot;SG&quot;,
+        &quot;uinfin&quot;: &quot;S6005048A&quot;
+    }
+}
+</code></pre>
+<br>
+<h3 id="pki-digital-signature">PKI Digital Signature</h3>
+<p>Myinfo는 PKI Digital Signature를 필요로 한다. 해당 문서에서는 python에서 구현을 할 때 PKI를 사용하는 방법만을 다루기 때문에 PKI에 대한 더 자세한 설명은 링크로 첨부하겠다. <a href="https://leeleelee3264.github.io/infra/2022/06/15/digital-certificate-part-one.html" target="_blank">[LeeLee- Digital Certificate]</a></p>
+<p>python 패키지로는 *<code>jwcrypto</code>*와 <code>Crypto</code>를 사용했다.</p>
+<br>  
+<h4 id="pki-시나리오">PKI 시나리오</h4>
+<blockquote>
+<p>connector client private key</p>
+</blockquote>
+<ul>
+<li><a href="[https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/gettoken]%28https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/gettoken%29">[myinfo token api]</a>를 호출할 때</li>
+<li><a href="[https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getperson]%28https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getperson%29">[myinfo person api]</a>를 호출 할 때</li>
+<li><a href="[https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getperson]%28https://public.cloud.myinfo.gov.sg/myinfo/api/myinfo-kyc-v3.2.2.html#operation/getperson%29">[myinfo person api]</a> 응답 decrypt 할 때
+<ul>
+<li>myinfo에서 connector client의 public key로 응답을 암호화 했기 때문</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>myinfo public key</p>
+</blockquote>
+<ul>
+<li>myinfo token api 응답 verify 할 때
+<ul>
+<li>myinfo에서 myinfo의 private key로 응답을 암호화 했기 때문</li>
+</ul>
+</li>
+<li>myinfo person api 응답 verify 할 때
+<ul>
+<li>myinfo에서 myinfo의 private key로 응답을 암호화 했기 때문</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="public-privatekey-불러오기">public, privateKey 불러오기</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>from jwcrypto import jwk
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PrivateKey <span style="color:#f92672">=</span> jwk.JWK
+</span></span><span style="display:flex;"><span>PublicKey <span style="color:#f92672">=</span> jwk.JWK
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def _get_key<span style="color:#f92672">(</span>self, key: str<span style="color:#f92672">)</span> -&gt; Union<span style="color:#f92672">[</span>PrivateKey, PublicKey<span style="color:#f92672">]</span>:
+</span></span><span style="display:flex;"><span>        encode_key <span style="color:#f92672">=</span> key.encode<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;utf-8&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        key_dict <span style="color:#f92672">=</span> jwk.JWK.from_pem<span style="color:#f92672">(</span>encode_key<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> key_dict</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="connector-client-private-key로-서명하기">connector client private key로 서명하기</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>import base64
+</span></span><span style="display:flex;"><span>from Crypto.Hash import SHA256
+</span></span><span style="display:flex;"><span>from Crypto.PublicKey import RSA
+</span></span><span style="display:flex;"><span>from Crypto.Signature import PKCS1_v1_5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Signature <span style="color:#f92672">=</span> str
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def _sign_on_raw_header<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            self,
+</span></span><span style="display:flex;"><span>            base_string: str,
+</span></span><span style="display:flex;"><span>            private_key: str,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span> -&gt; Signature:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        digest <span style="color:#f92672">=</span> SHA256.new<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        digest.update<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            base_string.encode<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;utf-8&#39;</span><span style="color:#f92672">)</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        pk <span style="color:#f92672">=</span> RSA.importKey<span style="color:#f92672">(</span>private_key<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        signer <span style="color:#f92672">=</span> PKCS1_v1_5.new<span style="color:#f92672">(</span>pk<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        signature <span style="color:#f92672">=</span> str<span style="color:#f92672">(</span>base64.b64encode<span style="color:#f92672">(</span>signer.sign<span style="color:#f92672">(</span>digest<span style="color:#f92672">))</span>, <span style="color:#e6db74">&#39;utf-8&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> signature</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="connector-client-private-key로-응답-decrypt-하기">connector client private key로 응답 decrypt 하기</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>import json
+</span></span><span style="display:flex;"><span>from jwcrypto import <span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>    jwe,
+</span></span><span style="display:flex;"><span>    jwk,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PrivateKey <span style="color:#f92672">=</span> jwk.JWK
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def _decrypt<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            self,
+</span></span><span style="display:flex;"><span>            encrypted_payload: str,
+</span></span><span style="display:flex;"><span>            key: PrivateKey,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span> -&gt; DecryptedPersonData:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        params <span style="color:#f92672">=</span> self._get_decrypt_params<span style="color:#f92672">(</span>encrypted_payload<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        encryption <span style="color:#f92672">=</span> jwe.JWE<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        encryption.deserialize<span style="color:#f92672">(</span>params, key<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> encryption.plaintext
+</span></span><span style="display:flex;"><span>        data_str <span style="color:#f92672">=</span> json.loads<span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> data_str</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="myinfo-public-key로-응답-verify-하기">myinfo public key로 응답 verify 하기</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>import json
+</span></span><span style="display:flex;"><span>from jwcrypto import jwk
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PublicKey <span style="color:#f92672">=</span> jwk.JWK
+</span></span><span style="display:flex;"><span>DecodedPersonData <span style="color:#f92672">=</span> dict
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>def _decode<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>            self,
+</span></span><span style="display:flex;"><span>            encoded_payload: str,
+</span></span><span style="display:flex;"><span>            key: PublicKey,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span> -&gt; DecodedPersonData:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        token <span style="color:#f92672">=</span> jwt.JWT<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        token.deserialize<span style="color:#f92672">(</span>jwt<span style="color:#f92672">=</span>encoded_payload, key<span style="color:#f92672">=</span>key<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> token.claims
+</span></span><span style="display:flex;"><span>        data_dict <span style="color:#f92672">=</span> json.loads<span style="color:#f92672">(</span>data<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        person <span style="color:#f92672">=</span> DecodedPersonData<span style="color:#f92672">(</span>**data_dict<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> person</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h1 id="프로젝트-회고">프로젝트 회고</h1>
+<h3 id="문서화">문서화</h3>
+<p>정해둔 목표를 잘 이행한 기분이 들어서 뿌듯했다. 또한 항상 미흡했던 문서화를 꼼꼼하게 해 둔 거 같아 만족스럽다. 하지만 문서화를 하는 과정에서 어떻게 내가 말하고자 하는 바를 더 깔끔하게 글로 옮길 수 있을까 고민을 많이 했고, 아직도 부족한 부분이 많이 보인다.
+<br></p>
+<h3 id="리팩토링">리팩토링</h3>
+<p>코드 또한 2번 리팩토링을 진행했지만 포스팅을 위해서 다시 코드를 보니 또 리팩토링 해야겠다는 생각이 든다. 프로젝트를 할 때 1,2번의 리팩토링을 하고 프로젝트가 끝나고 2~3달 지나서 리팩토링을 1 번 진행하면 좋을 거 같다.
+<br></p>
+<h3 id="boilerplate">Boilerplate</h3>
+<p>어떤 프로젝트를 하더라도 프레임워크 setting을 하는데 초기 시간을 많이 소요하는데, 앞으로 Django로 계속 프로젝트를 진행할 예정이라면 pre-setting이 어느 정도 되어있는 Django Boilerplate 를 만들어야겠다.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>
