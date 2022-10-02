@@ -48,7 +48,9 @@ tags = ["Infra"]
 
 ### History of Join 
 
-{{< figure height="500" width="600" src="https://leeleelee3264.github.io/static/img/post/sql_standard.png" caption="[Picture 1] history of join" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://leeleelee3264.github.io/static/img/post/sql_standard.png" >
+<figcaption align = "center">[Picture 1] history of join</figcaption>
 
 <br>
 
@@ -86,7 +88,10 @@ INNER JOIN users U ON O.user_id = U.id
 
 Where 조건을 걸지 않아서 orders와 users를 합쳤을 때 나오는 모든 경우의 수가 다 나왔다. 이걸 Cross Join 또는 Cartesian Join이라고 한다.  Join연산은 항상 카티전 Join 과 동일하거나 작은 수의 결과를 리턴한다.
 
-{{< figure height="400" width="500" src="https://leeleelee3264.github.io/static/img/post/cross_join.png" caption="[Picture 2] Cross Join" >}}
+<br>
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://leeleelee3264.github.io/static/img/post/cross_join.png" >
+<figcaption align = "center">[Picture 2] Cross Join</figcaption>
 
 
 <br> 
@@ -145,6 +150,8 @@ _Join은 테이블을 합치기 위해서 사용하는 조건과 값을 뽑아�
 
 Join의 테이블 결합 조건은 ON에 들어가기 때문에 WHERE에는 정말 값을 뽑아내기 위한 조건만 써주면 되기 때문에 복잡한 WHERE 조건이 들어간다고 해도 헷갈리지 않는다.
 
+<br>
+
 > 여러 값을 뽑는 예시 
 
 {{< highlight sql  "linenos=true,hl_inline=false" >}}
@@ -168,6 +175,8 @@ WHERE O.user_id = U.id AND O.sold_date = '2021-07-13'
 
 ##### Join의 장점 2
 _여러개의 테이블을 합칠 때 Join이 훨씬 용이하고, Multiple Table In From은 재앙이 된다._
+
+<br>
 
 > 여러 개의 테이블 합치는 예시 
 
@@ -228,7 +237,9 @@ WHERE O.user_id = U.id AND O.id = P.order_id
 
 위의 예시 데이터로 _[Picture 3]_ 의 Join set을 다뤄보도록 하겠다. 
 
-{{< figure height="400" width="500" src="https://leeleelee3264.github.io/static/img/post/join_set.PNG" caption="[Picture 3] Join Set" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://leeleelee3264.github.io/static/img/post/join_set.PNG" >
+<figcaption align = "center">[Picture 3] Join Set</figcaption>
 
 <br> 
 
@@ -247,6 +258,8 @@ _Join중에서 제일 많이 쓰는 기본형 JOIN._
 _왼쪽 테이블을 기준으로 데이터를 합치는 JOIN._ 
 
 Join 연산에서 기준이 되는 테이블이 table1이다 보니까 쿼리를 짤 때도 데이터를 뽑아오는 중심이 되는 테이블을 table1 자리에 두는 것 같다. 그러다보니 table2의 데이터 존재 여부와 상관없이 일단 table1에 있는 데이터는 다 뽑아오는 Left Join을 Right Join 보다 많이 사용한다.
+
+<br>
 
 > Left Join 예시 
 
@@ -280,6 +293,8 @@ _오른쪽 테이블을 기준으로 데이터를 합치는 JOIN._
 
 Left Join이 있는데 Right Join이 왜 필요할까? Left Join 하나만 있고 테이블 위치만 그때그때 바꿔주면 안되나 하는 의심이 있었다. 검색을 해보니 나랑 똑같은 생각을 한 사람이 있었는데 거기에 달린 답변을 보니 테이블 2개를 사용할 경우에는 테이블 순서를 바꿔가면서 Join연산을 하면 되는데 여러개의 테이블을 사용하면 그럴 수 없었다.
 
+<br>
+
 > Right Join 예시
 
 {{< highlight sql  "linenos=true,hl_inline=false" >}}
@@ -312,6 +327,8 @@ _Full Outer Join = 1 Time of Inner Join + Left Join + Right Join_
 
 합집함을 위한 Join이다. 테이블 1과 테이블 2를 합칠 때 생기는 중복을 처리하고 돌려준 값이라고 생각하면 된다. 아쉽게도 Mysql 에서는 Full Outer Join을 지원하지 않는데 Left Join과 Right Join을 사용해서 똑같은 결과를 만들어낼 수 있다.
 
+<br>
+
 > MySQL Full Outer Join 예시 
 
 {{< highlight sql  "linenos=true,hl_inline=false" >}}
@@ -340,6 +357,8 @@ RIGHT JOIN orders O ON U.id = O.user_id
 | 100 | Peter | 01012345678 | 대전광역시  | Y | 8 | 100 | 20 | 
 | 300 | Jamie | 403926999 | Calgary Alberta Canda | N | \0 | \0 | \0 | 
 | \0 | \0 | \0 | \0 | \0 | 9 | 400 | 200 | 
+
+<br>
 
 재미있는 점은 Left Join과 Right Join을 했을 때 각각 Inner Join을 한 것 과 같은 `교집합` 값이 생기는데 `UNION`을 해서 중복을 제거했다는 점이다!  만약 `UNION ALL`을 사용했으면 중복이 그대로 포함된다.
 

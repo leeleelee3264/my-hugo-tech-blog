@@ -381,8 +381,11 @@ unset color_prompt force_color_prompt
 나는 dev라는 계정을 쓰고 있고, bash shell로 바꾸고 싶었기 때문에 `/bin/bash` 로 수정해주었다.
 수정을 해주고 로그인을 다시 해주면 터미널이 변경된 쉘로 나온다!
 
+<br>
 
-{{< figure height="200" width="700" src="/static/img/post/bash.PNG" caption="[Picture 1] Bash" >}}
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/bash.PNG" >
+<figcaption align = "center">[Picture 1] Bash</figcaption>
+
 
 <br>
 

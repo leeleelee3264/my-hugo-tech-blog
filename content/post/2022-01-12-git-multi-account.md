@@ -123,15 +123,18 @@ IqgHGiVCntP9wmQ== leelee@personal.com
 
 
 ##### github setting 페이지로 이동
-{{< figure height="400" width="500" src="https://www.heady.io/hs-fs/hubfs/Assets%20June%202020/Blog%20Images/1_Zz-0nINK5t3TrX0KIz2rYw.png?width=227&name=1_Zz-0nINK5t3TrX0KIz2rYw.png" caption="[Picture 1] Github Setting 메뉴바" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.heady.io/hs-fs/hubfs/Assets%20June%202020/Blog%20Images/1_Zz-0nINK5t3TrX0KIz2rYw.png?width=227&name=1_Zz-0nINK5t3TrX0KIz2rYw.png" >
+<figcaption align = "center">[Picture 1] Github Setting 메뉴바</figcaption>
 
 <br>
 
 ##### SSH and GPG Keys 항목에서 New SSH key 등록 
 office를 위한 `id_rsa_personal.pub` 와 `id_rsa_office.pud` 를 각각 등록해준다. 
-{{< figure height="400" width="500" src="https://www.heady.io/hs-fs/hubfs/Assets%20June%202020/Blog%20Images/1_-gpWpnwo_0Ang-WMgVrY1A.png?width=900&name=1_-gpWpnwo_0Ang-WMgVrY1A.png" caption="[Picture 2] New SSH key 등록" >}}
 
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.heady.io/hs-fs/hubfs/Assets%20June%202020/Blog%20Images/1_-gpWpnwo_0Ang-WMgVrY1A.png?width=900&name=1_-gpWpnwo_0Ang-WMgVrY1A.png" >
+<figcaption align = "center">[Picture 2] New SSH key 등록</figcaption>
 
 <br>
 

@@ -145,7 +145,9 @@ ROLLBACK;
 
 <br>
 
-{{< figure height="400" width="500" src="/static/img/post/sql_error_transaction.PNG" caption="[Picture 1] Transaction 실패" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/sql_error_transaction.PNG" >
+<figcaption align = "center">[Picture 1] Transaction 실패</figcaption>
 
 
 <br>
@@ -207,7 +209,9 @@ ROLLBACK;
      
 <br>
 
-{{< figure height="400" width="500" src="https://www.gatevidyalay.com/wp-content/uploads/2018/04/Super-Key-Candidate-Key-Primary-Key.png" caption="[Picture 2] Key 다이어그램" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.gatevidyalay.com/wp-content/uploads/2018/04/Super-Key-Candidate-Key-Primary-Key.png" >
+<figcaption align = "center">[Picture 2] Key 다이어그램</figcaption>
 
 <br>
 
@@ -299,7 +303,9 @@ WHERE CHARSET LIKE ('%utf8%')
 
 <br>
 
-{{< figure height="400" width="500" src="/static/img/post/sql_charset.PNG" caption="[Picture 3] SQL Charset" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/sql_charset.PNG" >
+<figcaption align = "center">[Picture 3] SQL Charset</figcaption>
 
 
 <br>

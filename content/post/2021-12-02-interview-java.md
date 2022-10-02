@@ -70,7 +70,9 @@ tags = ["General"]
 #### Spring Boot Actuator 
 `Spring Boot Actuator` 를 이용하면 된다. 이렇게 config 를 러닝 타임에 업데이트 하는 상황은 서버가 하나 떠있을 때 보다는 서버를 여러 개 띄워두는 `Spring Cloud` 환경에서 많이 사용하는 것으로 보인다.
 
-{{< figure height="400" width="500" src="/static/img/post/cloud.png" caption="[Picture 1] Spring Cloud Config" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cloud.png" >
+<figcaption align = "center">[Picture 1] Spring Cloud Config</figcaption>
 
 <br>
 
@@ -100,9 +102,12 @@ Java Database Connectivity의 약자이다.
 
 데이터베이스 연결을 관리하는 자바 API로, 쿼리와 커맨드를 발행하고 데이터베이스에서 건내주는 결과 셋을 처리한다. JDBC는 자바 어플리케이션이 데이터베이스 또는 RDBMS와 소통하기 위한 프로그래밍 레벨 인터페이스를 제공한다.
 
-{{< figure height="400" width="500" src="/static/img/post/jdbc.png" caption="[Picture 2] JDBC 상세" >}}
 
-<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/jdbc.png" >
+<figcaption align = "center">[Picture 2] JDBC 상세</figcaption>
+
+<br>
+
 JDBC는 결과적으로 자바 코드로 데이터베이스를 관리할 수 있게 만들어준다.   
 
 
@@ -118,7 +123,10 @@ JDBC는 결과적으로 자바 코드로 데이터베이스를 관리할 수 있
 
 객체는 플랫폼에서 독립적이지 못하다. 그래서 _[Picture 3]_ 처럼 파일, 메모리, 데이터베이스 처럼 다른 시스템으로 보내려고 할 때 플랫폼에서 독립적인 바이트 스트림으로 변환을 한다.
 
-{{< figure height="400" width="500" src="/static/img/post/seri.png" caption="[Picture 3] 직렬화란?" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/seri.png" >
+<figcaption align = "center">[Picture 3] 직렬화란?</figcaption>
+
 
 <br>
 
@@ -126,7 +134,9 @@ JDBC는 결과적으로 자바 코드로 데이터베이스를 관리할 수 있
 
 자바 직렬화도 마찬가지로 JVM 메모리에 올라가있는 객체를 byte 스트림 (byte 형태의 데이터) 바꾸는 것이다. 
 
-{{< figure height="400" width="500" src="/static/img/post/jseri.png" caption="[Picture 4] 자바 직렬화 상세" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/jseri.png" >
+<figcaption align = "center">[Picture 4] 자바 직렬화 상세</figcaption>
 
 <br> 
 
@@ -187,7 +197,9 @@ Dependency Injection과 Inversion Of Control. Spring에서 처음 접한 개념�
 
 **IoC는 설계 원칙이고 DI 는 IoC 원칙을 지키기 위한 디자인 패턴이다.**  실제로 DI 말고도 IoC를 위한 다양한 패턴이 존재한다.
 
-{{< figure height="400" width="500" src="/static/img/post/ioc.png" caption="[Picture 4] IoC Pattern 구현 방법론" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/ioc.png" >
+<figcaption align = "center">[Picture 4] IoC Pattern 구현 방법론</figcaption>
 
 <br> 
 
@@ -253,7 +265,9 @@ static 키워드를 사용한 메서드와 변수는 해당 클래스의 객체�
 
 Java 8이전에 static 변수와 메서드는 JVM  메모리에서 PermGen에 저장이 되었으나 Java 8에서는 PermGen 가 사라지고 MetaSpace가 그 역할을 대신한다. 변경된 Java 8 JVM 구조는 _[Picture 5]_ 와 같다.
 
-{{< figure height="400" width="500" src="/static/img/post/jvm.png" caption="[Picture 5] IoC Pattern 구현 방법론" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/jvm.png" >
+<figcaption align = "center">[Picture 5] IoC Pattern 구현 방법론</figcaption>
 
 <br>
 

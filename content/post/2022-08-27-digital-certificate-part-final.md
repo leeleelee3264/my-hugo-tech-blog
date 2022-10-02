@@ -32,7 +32,9 @@ CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주요 업무는 �
 공개키와 비밀키만을 이용해 암호화는 수행하면 보안에 매우 취약해진다. _[Picture 1]_ 에서 해커가 사용자 B에게 해커의 공개키를 사용하여 데이터를 보낼 경우 사용자 B는 사용자 A가 보낸 데이터라착각할 수 있다. 이와 같은 해커의 공격 방식을 MTM(Man in the Middle Attack)이라고 한다. 이와 같은 취약점을 해결하기 위해 CA(Certificate Authority) 라는 인증 노드를 사용하게 된다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4669931563.png" caption="[Picture 1] Man in Middle Attack" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4669931563.png" >
+<figcaption align = "center">[Picture 1] Man in Middle Attack</figcaption>
 
 <br> 
 
@@ -43,7 +45,9 @@ CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주요 업무는 �
 - CA는 사용자 A의 공개키를 암화화하여 사용자 B에게 전달한다.
 - 사용자 B는 해당 공개키만을 사용자 A의 공개키라고 믿게 된다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4669997094.png" caption="[Picture 2] PKI에서 CA가 사용되는 과정" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4669997094.png" >
+<figcaption align = "center">[Picture 2] PKI에서 CA가 사용되는 과정</figcaption>
 
 <br>
 
@@ -51,7 +55,9 @@ CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주요 업무는 �
 
 유명한 CA들은 _[Picture 3]_ 같다. CA의 인증서를 대리 구매해주는 서비스들이 외국에도, 한국에도 있지만 직접 CA에 가서 사는 것이 더 좋다. CA에 직접 가서 구매했을 때 QnA나 대응도 더 빠르고, 자세하며 나중에 인증서를 관리할 때에도 더 편했다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666163323.png" caption="[Picture 3] 유명한 CA" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666163323.png" >
+<figcaption align = "center">[Picture 3] 유명한 CA"</figcaption>
 
 <br>
 
@@ -99,7 +105,9 @@ openssl req -new -newkey rsa:2048 -sha256 -nodes -keyout server.key -out server.
 - 생성한 Private key를 사용하여 CSR을 생성한다.
 - CSR을 생성할 때 _[Picture 4]_ 에 대한 정보를 입력해야 한다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4632412194.png" caption="[Picture 4] CSR 입력 사항" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4632412194.png" >
+<figcaption align = "center">[Picture 4] CSR 입력 사항</figcaption>
 
 <br>
 
@@ -244,7 +252,9 @@ CA에서 인증서를 발급받으면 end-entity (내 application)의 인증서�
 Root CA 인증서 + Intermediate 인증서 + end-entity 인증서 = Certificate Chain
 ```
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4668522518.png" caption="[Picture 5] CA bundle" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668522518.png" >
+<figcaption align = "center">[Picture 5] CA bundle</figcaption>
 
 <br>
 
@@ -274,10 +284,22 @@ cat ComodoRSADomainValidationSecureServerCA.crt ComodoRSAAddTrustCA.crt AddTrust
 - Intermediate 인증서: GTS CA 1C3
 - Root 인증서: GTS Root R1
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4665901319.png" caption="[Picture 6] End Entity Certificate" >}}
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666196141.png" caption="[Picture 7] Intermediate Certificate" >}}
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666687519.png" caption="[Picture 8] Root Certificate" >}}
+<br>
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4665901319.png" >
+<figcaption align = "center">[Picture 6] End Entity Certificate</figcaption>
+
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666196141.png" >
+<figcaption align = "center">[Picture 7] Intermediate Certificate</figcaption>
+
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666687519.png" >
+<figcaption align = "center">[Picture 8] Root Certificate</figcaption>
 
 <br>
 
@@ -330,8 +352,9 @@ CA가 서명을 end-entity의 인증서에 서명을 하게 되면 end-entity의
 - Issuer의 Digital Signature (Issuer의 Private key로 서명)
 - end-entity (Subject)의 public key
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666720302.png" caption="[Picture 9] End Entity Certificate 내부 구조" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666720302.png" >
+<figcaption align = "center">[Picture 9] End Entity Certificate 내부 구조</figcaption>
 
 <br>
 
@@ -357,14 +380,18 @@ Chain of Trust는 브라우저가 신뢰할 수 있는 CA가 Issuer로 있는 �
 5. **Root CA → Intermediate CA → End-entity 모두 chain of trust를 통해서 믿을 수 있는 인증서가 된다.**   
 
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4668096789.png" caption="[Picture 10] Chain of Trust 과정" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668096789.png" >
+<figcaption align = "center">[Picture 10] Chain of Trust 과정</figcaption>
 
 <br>
 
 
 ### Chain 계층 
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4668719189.png" caption="[Picture 11] Chain 계층" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668719189.png" >
+<figcaption align = "center">[Picture 11] Chain 계층</figcaption>
 
 <br>
 
@@ -400,7 +427,9 @@ Chain of Trust는 브라우저가 신뢰할 수 있는 CA가 Issuer로 있는 �
 
 > 브라우저와 서버의 request - response 과정 모식도
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666294308.png" caption="[Picture 11] request - response 과정 모식도" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666294308.png" >
+<figcaption align = "center">[Picture 11] request - response 과정 모식도</figcaption>
 
 <br>
 
@@ -419,11 +448,14 @@ Chain of Trust는 브라우저가 신뢰할 수 있는 CA가 Issuer로 있는 �
 
 > CA-signed 인증서 발급 과정 모식도
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666196103.png" caption="[Picture 12] CA-signed 인증서 발급 과정 모식도" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666196103.png" >
+<figcaption align = "center">[Picture 12] CA-signed 인증서 발급 과정 모식도</figcaption>
 
 <br>
 
 > Self-signed 인증서 발급 과정 모식도
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4666490918.png" caption="[Picture 13] Self-signed 인증서 발급 과정 모식도" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666490918.png" >
+<figcaption align = "center">[Picture 13] Self-signed 인증서 발급 과정 모식도</figcaption>

@@ -45,11 +45,15 @@ That is, no two rows of a table have duplicate values in a specified column or s
 
 # MySQL에서 String 함수
 
-{{< figure height="400" width="600" src="https://user-images.githubusercontent.com/35620531/124757648-c5058c00-df68-11eb-911d-6a42dcdfd0bb.PNG" caption="[Picture 1] MySQL String 함수 1" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124757648-c5058c00-df68-11eb-911d-6a42dcdfd0bb.PNG" >
+<figcaption align = "center">[Picture 1] MySQL String 함수 1</figcaption>
 
 <br> 
 
-{{< figure height="400" width="600" src="https://user-images.githubusercontent.com/35620531/124757701-d2bb1180-df68-11eb-84dc-825b9e9f76ca.PNG" caption="[Picture 2] MySQL String 함수 2" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124757701-d2bb1180-df68-11eb-84dc-825b9e9f76ca.PNG" >
+<figcaption align = "center">[Picture 2] MySQL String 함수 2</figcaption>
 
 
 <br>
@@ -198,7 +202,9 @@ PAD라는 단어가 익숙해서 어디서 들어봤나 했는데 저번 회차�
 
 <br>
 
-{{< figure height="400" width="600" src="https://user-images.githubusercontent.com/35620531/124854634-93c9a200-dfe2-11eb-8344-3044609bfe57.PNG" caption="[Picture 3] PAD의 뜻" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124854634-93c9a200-dfe2-11eb-8344-3044609bfe57.PNG" >
+<figcaption align = "center">[Picture 3] PAD의 뜻</figcaption>
 
 <br>
 
@@ -241,11 +247,18 @@ PAD라는 단어가 익숙해서 어디서 들어봤나 했는데 저번 회차�
 
 이렇게 하면 [[Table Generator]](https://www.tablesgenerator.com/markdown_tables) 에 가서 셀 하나하나를 만들거나 결과창을 캡처 해 올 필요가 없어서 굉장히 편리하게 포스팅을 할 수 있다.
 
-{{< figure height="400" width="500" src="https://user-images.githubusercontent.com/35620531/124856705-fbcdb780-dfe5-11eb-9934-4b6f1fde700c.PNG" caption="[Picture 4] 하이디 SQL 격자 행 내보내기" >}}
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124856705-fbcdb780-dfe5-11eb-9934-4b6f1fde700c.PNG" >
+<figcaption align = "center">[Picture 4] 하이디 SQL 격자 행 내보내기</figcaption>
+
 
 <br>
 
-{{< figure height="400" width="500" src="https://user-images.githubusercontent.com/35620531/124856718-fec8a800-dfe5-11eb-9ca6-7b1e80c76984.PNG" caption="[Picture 5] 하이디 SQL 격자 행 내보내기 결과" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/124856718-fec8a800-dfe5-11eb-9ca6-7b1e80c76984.PNG" >
+<figcaption align = "center">[Picture 5] 하이디 SQL 격자 행 내보내기 결과</figcaption>
 
 <br> 
 

@@ -41,7 +41,9 @@ tags = ["Infra"]
 
 대표적인 예가 지금 회사에서 사용하고 있는 개발 서버이다. 상용서버인 API는 서버와 아마존 RDS를 사용하는 디비과 완전히 분리가 되어있기 때문에 구조적 문제가 없다. 그러나 개발서버인 TPI는 디비가 TPI 서버 안에 들어가 있다.
 
-{{< figure height="600" width="500" src="https://user-images.githubusercontent.com/35620531/127328546-12fb8880-5f29-47e1-903c-97f4fa2e6d1c.png" caption="[Picture 1] 회사 서버 구조" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127328546-12fb8880-5f29-47e1-903c-97f4fa2e6d1c.png" >
+<figcaption align = "center">[Picture 1] 회사 서버 구조</figcaption>
 
 <br> 
 
@@ -70,7 +72,9 @@ tags = ["Infra"]
 
 SOA와 MSA의 차이는 여기서 더 자세히 볼 수 있다. [[SOA vs MSA]](http://wiki.webnori.com/display/devbegin/SOA+VS+MSA)
 
-{{< figure height="400" width="500" src="https://user-images.githubusercontent.com/35620531/127329517-f9c0f848-7c05-4796-9ffb-0ee42af67f92.PNG" caption="[Picture 2] 여러가지 아키텍처" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127329517-f9c0f848-7c05-4796-9ffb-0ee42af67f92.PNG" >
+<figcaption align = "center">[Picture 2] 여러가지 아키텍처</figcaption>
 
 <br> 
 
@@ -95,7 +99,9 @@ SOA와 MSA의 차이는 여기서 더 자세히 볼 수 있다. [[SOA vs MSA]](h
 ### 차등 백업
 
 
-{{< figure height="400" width="500" src="https://www.easeus.com/images/en/screenshot/todo-backup/guide/differential-backup.png" caption="[Picture 3] 차등 백업" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.easeus.com/images/en/screenshot/todo-backup/guide/differential-backup.png" >
+<figcaption align = "center">[Picture 3] 차등 백업</figcaption>
 
 <br> 
 
@@ -117,7 +123,9 @@ SOA와 MSA의 차이는 여기서 더 자세히 볼 수 있다. [[SOA vs MSA]](h
 
 ### 증분 백업
 
-{{< figure height="400" width="500" src="https://networkencyclopedia.com/wp-content/uploads/2019/10/incremental-backup.png" caption="[Picture 4] 증분 백업" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://networkencyclopedia.com/wp-content/uploads/2019/10/incremental-backup.png" >
+<figcaption align = "center">[Picture 4] 증분 백업</figcaption>
 
 <br> 
 
@@ -138,7 +146,9 @@ SOA와 MSA의 차이는 여기서 더 자세히 볼 수 있다. [[SOA vs MSA]](h
 <br> 
 
 ### 표로 정리하는 백업의 장단점
-{{< figure height="400" width="600" src="https://user-images.githubusercontent.com/35620531/127329809-136dcb6b-37aa-48ec-b4ff-7cb08b9ca30c.PNG" caption="[Picture 5] 백업의 장단점" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127329809-136dcb6b-37aa-48ec-b4ff-7cb08b9ca30c.PNG" >
+<figcaption align = "center">[Picture 5] 백업의 장단점</figcaption>
 
 <br>
 

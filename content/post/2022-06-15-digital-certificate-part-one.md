@@ -30,7 +30,9 @@ tags = ["Infra"]
 
 디지털 서명을 해야 했기 때문에 code signing 인증서를 발급받으려 했다. 하지만 **SSL 인증서도 디지털 서명을 할 수 있었고**, 목표인 server to server 커뮤니케이션에서 사용하는 **신원 보장용 디지털 서명을 하기 위해서는 SSL 인증서를 발급해야 했다.** 
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/hand_drawing_certificate_simple.png" caption="[Picture 1] 적절하지 않은 인증서 분류" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/hand_drawing_certificate_simple.png" >
+<figcaption align = "center">[Picture 1] 적절하지 않은 인증서 분류</figcaption>
 
 <br>
 
@@ -39,7 +41,9 @@ SSL 인증서는 웹사이트, 정확히 말하면 브라우저에 한정해서 
 
 결국 인증서는 _[Picture 2]_ 처럼 분류를 해야 한다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/hand_drawing_certificate.png" caption="[Picture 2] 적절한 인증서 분류" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/hand_drawing_certificate.png" >
+<figcaption align = "center">[Picture 2] 적절한 인증서 분류</figcaption>
 
 <br>
 
@@ -50,7 +54,9 @@ code signing 인증서로 어플리케이션에 서명을 하게 되면 _[Pictur
 
 <br>
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/code_signing_certificate.png" caption="[Picture 3] code signing 인증서로 서명한 application" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/code_signing_certificate.png" >
+<figcaption align = "center">[Picture 3] code signing 인증서로 서명한 application</figcaption>
 
 <br>
 
@@ -88,7 +94,9 @@ code signing 인증서로 어플리케이션에 서명을 하게 되면 _[Pictur
 
 <br>
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/certificate_difference.png" caption="[Picture 4] 인증서 다이어그램" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/certificate_difference.png" >
+<figcaption align = "center">[Picture 4] 인증서 다이어그램</figcaption>
 
 <br>
 
@@ -205,7 +213,9 @@ Private key, Public key 두 개의 키를 사용한다. 이처럼 Encryption(암
 - 사용자 A의 `private key`는 사용자 A만 소유하고 있기 때문에 사용자 B는 사용자 A만 볼 수 있는 데이터를 전송하게 된 것이다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/public_key_example.png" caption="[Picture 5] Public key를 이용한 암호화" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/public_key_example.png" >
+<figcaption align = "center">[Picture 5] Public key를 이용한 암호화</figcaption>
 
 <br>
 
@@ -214,15 +224,18 @@ Private key, Public key 두 개의 키를 사용한다. 이처럼 Encryption(암
 - 데이터가 사용자 A의 `public key`로 복호화가 안된다면 사용자A가 보냈다는 것을 인증할 수 없다. 
 - 사용자 A의 `public key`로 데이터를 복호화할 수 있다면 사용자 A가 보냈다는 것을 인증할 수 있다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/private_key_example.png" caption="[Picture 6] Private key를 이용한 암호화" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/private_key_example.png" >
+<figcaption align = "center">[Picture 6] Private key를 이용한 암호화</figcaption>
 
 <br>
 
 ##### 해커가 암호화된 데이터를 도청할 경우
 - 사용자 A의 private key가 없기 때문에 해커가 중간에서 데이터를 복호화ㅊ할 수 없다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/haker_example.png" caption="[Picture 7] 해킹 시도" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/haker_example.png" >
+<figcaption align = "center">[Picture 7] 해킹 시도</figcaption>
 
 <br>
 
@@ -246,7 +259,9 @@ X.509는 인터넷의 다양한 분야에서 신원 확인을 위해 광범위�
 
 #### X.509 version 3 인증서 양식
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/certificate_format.png" caption="[Picture 8] X.509 인증서 양식" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/certificate_format.png" >
+<figcaption align = "center">[Picture 8] X.509 인증서 양식</figcaption>
 
 <br>
 
@@ -261,7 +276,9 @@ X.509는 인터넷의 다양한 분야에서 신원 확인을 위해 광범위�
 - 인증서가 서명을 하거나 signature를 검증하기 위해 사용된다면 Key usage extension으로 Digital signature와 Non-repudication 를 설정한다. 
 - 인증서가 key 관리를 위해서만 사용이 된다면 key encipherment를 설정한다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/key_usage.png" caption="[Picture 9] Key usage extension 종류" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/key_usage.png" >
+<figcaption align = "center">[Picture 9] Key usage extension 종류</figcaption>
 
 <br>
 
@@ -277,7 +294,9 @@ Key usage extension이 기본적인 인증서의 사용 목적(purpose)를 나�
 - `critical`이라면 인증서는 설정되어있는 용도로만 사용을 해야 한다. 해당 인증서를 다른 용도로 사용 했을 경우에는 CA 정책에 위반된다.
 - `non-critical` 이라면 설정되어있는 용도 외의 다른 용도로 사용 했을 경우에도 CA의 제한에 걸리지 않는다. 또한 다수의 kye/certificate을 가지고 있는 entity라면 맞는 key/certificate를 찾는데에도 사용이 될 수 있다.
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/extend_key_usage.png" caption="[Picture 10] Extend key usage extension 종류" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/extend_key_usage.png" >
+<figcaption align = "center">[Picture 10] Extend key usage extension 종류</figcaption>
 
 <br>
 

@@ -75,7 +75,9 @@ Clustered Index와 Non-Clustered Index 둘 다 테이블에 있는 데이터 엑
 - (1)속도가 빠르고 (2)모든 Column을 필요로 하는 읽기 전용 어플리케이션이라면 Clustered Index를 만들면 된다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/cluster-structure.png" caption="[Picture 1] Cluster structure" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cluster-structure.png" >
+<figcaption align = "center">[Picture 1] Cluster structure</figcaption>
 
 <br> 
 
@@ -94,7 +96,9 @@ Clustered Index와 Non-Clustered Index 둘 다 테이블에 있는 데이터 엑
 - Heap은 순서를 신경쓰지 않아 크기가 크고, 순서가 중요하지 않은 데이터들의 Insert 연산이 필요한 테이블에 사용된다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/non-cluster-structure.png" caption="[Picture 2] Non-cluster structure" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/non-cluster-structure.png" >
+<figcaption align = "center">[Picture 2] Non-cluster structure</figcaption>
 
 <br> 
 
@@ -110,8 +114,11 @@ Clustered Index와 Non-Clustered Index 둘 다 테이블에 있는 데이터 엑
     - 그래서 연산에서 동일한 값을 찾아내는 = 만 사용이 가능하고, 대소비교를 하거나 Between 을 사용할 수 없게 된다.
   - 데이터 엑세스가 빠른 `배열`을 사용하지 않고 포인터로 분산되어있는 B-Tree를 쓰는 이유는 배열은 탐색을 할 때만 빠르고 다른 연산에 대해서는 B-Tree보다 더 느리기 때문이다.
 
+<br> 
 
-{{< figure height="400" width="500" src="/static/img/post/b_tree.jpg" caption="[Picture 3] B-Tree index algorithm" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/b_tree.jpg" >
+<figcaption align = "center">[Picture 3] B-Tree index algorithm</figcaption>
 
 <br> 
 
@@ -168,7 +175,9 @@ ex) EXPLAIN SELECT * FROM table_name
 EXPLAIN 쿼리를 사용하면 작성한 쿼리의 성능과 index 사용 여부 등을 자세히 알 수 있다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/explain.PNG" caption="[Picture 4] EXPLAIN 쿼리 예시" >}}
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/explain.PNG" >
+<figcaption align = "center">[Picture 4] EXPLAIN 쿼리 예시</figcaption>
+
 
 
 #### Id

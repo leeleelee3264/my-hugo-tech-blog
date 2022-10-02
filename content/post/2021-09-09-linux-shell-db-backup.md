@@ -49,10 +49,11 @@ SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종�
 
 #### 상세 작업 순서
 
-mysql은 데이터베이스 자체를 RENAME 할 수 없어서 prev_mydb를 지우고 다시 만들어야 했다.
+mysql은 데이터베이스 자체를 RENAME 할 수 없어서 prev_mydb를 지우고 다시 만들어야 했다. 백업과정을 _[Picture 1]_ 에서 모식도로 나타냈다.
 
-{{< figure height="700" width="500" src="/static/img/post/db_backup.png" caption="[Picture 1] DB 백업 상세 작업" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/db_backup.png" >
+<figcaption align = "center">[Picture 1] DB 백업 상세 작업</figcaption>
 
 <br>
 

@@ -269,6 +269,7 @@ a = b'h\x6511o'
 c = b'eojwpkmcdlklksm'
 {{< /highlight >}}
 
+<br>
 
 
 ### str 
@@ -302,7 +303,9 @@ str에는 직접 대응하는 이진 인코딩이 없고, bytes에는 직접 대
 - 이런 접근을 하면 다양한 텍스트 인코딩으로 입력 데이터를 받아들일 수 있고, 출력 텍스트 인코딩은 한 가지로 엄격하게 제한할 수 있다.
 
 
-{{< figure height="400" width="500" src="/static/img/post/encode_function_box.png" caption="[Picture 1] 유니코드 샌드위치 블랙박스" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/encode_function_box.png" >
+<figcaption align = "center">[Picture 1] 유니코드 샌드위치 블랙박스</figcaption>
 
 <br>
 

@@ -39,7 +39,9 @@ Cpython은 OS 쓰레드를 사용한다. 파이썬 쓰레드란, OS 쓰레드를
 
 원래는 동시성과 병렬성이 같은 뜻인줄 알았다. 알고보니 동시성은 짧은 시간에 한 가지 일을 처리 하고 금방 바꿔서 또 다른 일을 처리하는 걸 말한다. 결국 한 순간에는 한가지 일만을 처리하고 있다. 그런데 병렬성은 한 순간에 여러가지 일을 처리하고 있다.
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F89e21853-3ee9-4f61-af38-7d2565721d96%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.51.56.png?table=block&id=a7b7d750-8798-4681-a34c-1764bb33c3bf&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 1] 병렬성과 동시성" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F89e21853-3ee9-4f61-af38-7d2565721d96%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.51.56.png?table=block&id=a7b7d750-8798-4681-a34c-1764bb33c3bf&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 1] 병렬성과 동시성</figcaption>
 
 <br>
 
@@ -149,8 +151,9 @@ async await 문법을 잘 지켜야 한다. 또한 쓰레드가 그러하듯, CP
 ### Django 모듈 구조와 흐름
 장고의 흐름은 _[Picture 2]_ 같다. 굉장히 간단한 질문이었는데 장고를 거의 사용하고 있지 않아서 아주 뜨문뜨문 대답을 했다.. 한창 스프링을 쓰고 있었기 때문에 스프링에 빗대어서 대답을 했다.
 
-{{< figure height="900" width="1000" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F465a05b9-db52-49b3-bc64-126f8fa8f85c%2FUntitled.png?table=block&id=8218b060-6268-4212-b14d-87eed3505170&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 2] Django 모듈 구조" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F465a05b9-db52-49b3-bc64-126f8fa8f85c%2FUntitled.png?table=block&id=8218b060-6268-4212-b14d-87eed3505170&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 2] Django 모듈 구조</figcaption>
 
 #### View 
 - Controller
@@ -168,7 +171,9 @@ async await 문법을 잘 지켜야 한다. 또한 쓰레드가 그러하듯, CP
 ### Django wsgi  
 항상 **프로젝트 안의 wsgi가 뭔가 했는데 웹 서버 및 어플리케이션을 위한 파이썬 표준이라고** 한다.    
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ff7701f-b034-4dce-9cf8-23cf9c7da9c3%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.33.55.png?table=block&id=f5dc046d-2528-4d2b-a044-5ddec3cb4ab0&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 3] wsgi 흐름" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ff7701f-b034-4dce-9cf8-23cf9c7da9c3%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.33.55.png?table=block&id=f5dc046d-2528-4d2b-a044-5ddec3cb4ab0&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 3] wsgi 흐름</figcaption>
 
 <br> 
 
@@ -280,7 +285,9 @@ services:
 
 DDD 를 보다보면 유비쿼터스라는 단어가 많이 나온다. 개발자, 디자이너, 기획자가 모두 동일한 의미로 이해하는 단어라는 뜻이다. DDD 패턴은 비즈니스 로직인 도메인을 인프라와 어플리케이션(서비스) 와 분리하기 때문에 비즈니스 자체에 집중을 할 수 있다. 그래서 개발자가 다른 부서와 협업을 할 때 의사소통이 더 원활하게 이뤄질 수 있다. (db, network 등등의 로우 레벨 을 얘기하지 않기 때문)
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb46db34c-7fff-4bc2-9418-ed0a065ca148%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.18.29.png?table=block&id=75ba8884-bbbf-4897-bb3d-b402b310b1fd&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 4] Layer of the Clean Architecture" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb46db34c-7fff-4bc2-9418-ed0a065ca148%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.18.29.png?table=block&id=75ba8884-bbbf-4897-bb3d-b402b310b1fd&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 4] Layer of the Clean Architecture</figcaption>
 
 <br>
 
@@ -288,7 +295,9 @@ DDD 를 보다보면 유비쿼터스라는 단어가 많이 나온다. 개발자
 
 엔티티의 일은 엔티티 안에서 끝이 나야 한다! validation 조차도 UseCase에서 호출하면 안되고, 비즈니스를 제일 잘 아는 Entity에서 검증해야 한다. 
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F737f3e02-6711-4440-9f75-33aec65ccd18%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.39.25.png?table=block&id=3de9c25e-25fe-4658-ad1c-687e4e80d3f5&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 5] Entity Anti Pattern" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F737f3e02-6711-4440-9f75-33aec65ccd18%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.39.25.png?table=block&id=3de9c25e-25fe-4658-ad1c-687e4e80d3f5&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 5] Entity Anti Pattern</figcaption>
 
 <br> 
 
@@ -306,7 +315,9 @@ DAO는 Data Access Object 로, 데이터에 엑세스하기 위한 객체다. �
 
 레포지토리는 도메인과 데이터 매핑 레이어 가운데에 있는 존재이다. DAO 는 말 그대로 못생긴 쿼리를 한 번 숨기는 역할을 하고, 레포지토리는 여러가지 DAO를 활용해서 데이터를 상위 계층으로 전달을 할 수 있다.
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2d8729b8-5138-4945-9da1-c1996c0425e7%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.07.05.png?table=block&id=d2ba0a1f-7391-4b6b-8418-8ce940f61c6a&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 6] DAO and Entity" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2d8729b8-5138-4945-9da1-c1996c0425e7%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-12-21_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.07.05.png?table=block&id=d2ba0a1f-7391-4b6b-8418-8ce940f61c6a&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 6] DAO and Entity</figcaption>
 
 <br> 
 
@@ -342,9 +353,9 @@ Entity 는 DDD의 관점에서 보면 비즈니스 로직이고, JPA로 보면 D
 
 이렇게 GET처럼 똑같은 요청(연산)을 여러번 하더라도 결과가 달라지지 않는 성질을 멱등성(Idempotent)라고 한다. **Rest api에서 제일 많이 사용되는 메서드들 중에서 POST를 제외한 GET, PUT, DELETE은 멱등성을 지켜야 함을 명심하면서 서버 구현을 하도록 해야 한다.**
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fca6813e8-bad2-44e9-8735-a1003b84c518%2FUntitled.png?table=block&id=4dded598-ecc2-4246-97ea-015031993672&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1160&userId=&cache=v2" caption="[Picture 7] HTTP Method" >}}
 
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fca6813e8-bad2-44e9-8735-a1003b84c518%2FUntitled.png?table=block&id=4dded598-ecc2-4246-97ea-015031993672&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1160&userId=&cache=v2" >
+<figcaption align = "center">[Picture 7] HTTP Method</figcaption>
 
 ##### POST VS PUT 
 처음에 HTTP 메서드들을 배웠을 때 POST와 PUT 구분이 어려웠다. 결국 POST나 PUT 둘 다 CREATE이 가능하기 때문에. 그런데 찾아보니 아래와 같은 사항으로 구분을 할 수 있었고, 다시 고려해보면 PUT은 CREATE 보다는 UPDATE에 더 적합해 보인다. 
@@ -402,7 +413,9 @@ RFC에 존재하는 리소스 요청 정책은 2가지 이다. 하나는 SOP (Sa
 
 때문에 서버 로그에서는 정상적으로 응답이 내려갔다고 보이며 디버깅이 상당히 어려워진다.  때문에 **서버에서도 CORS의 존재에 대해 염두해 두고 있어야 한다!**
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F61c41db4-0324-4deb-bfee-cce12ea7af7c%2FUntitled.png?table=block&id=98c8ce39-acd4-450d-912f-e1eb4c12063c&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" caption="[Picture 8] CORS" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F61c41db4-0324-4deb-bfee-cce12ea7af7c%2FUntitled.png?table=block&id=98c8ce39-acd4-450d-912f-e1eb4c12063c&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1310&userId=&cache=v2" >
+<figcaption align = "center">[Picture 8] CORS</figcaption>
 
 <br> 
 
@@ -426,8 +439,9 @@ _[Picture 8]_ 의 설명이 제일 명확했다. 브라우저는 스크립트가
 ##### Options Method
 Options 메소드가 언제 쓰이는지 궁금했었는데 이렇게 `Access-Control-Allow-Origin` 을 알기 위해 선행 요청을 보낼 때도 사용이 된다고 한다.
 
-{{< figure height="400" width="500" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa7a14206-d98c-4549-b81a-86f10527f8a5%2FUntitled.png?table=block&id=8b79cd3e-1a95-47f5-a785-db1192f0ad74&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1280&userId=&cache=v2" caption="[Picture 9] Options Method" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://gabby-zenobia-c10.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa7a14206-d98c-4549-b81a-86f10527f8a5%2FUntitled.png?table=block&id=8b79cd3e-1a95-47f5-a785-db1192f0ad74&spaceId=95c8c354-996d-4b5f-8491-4b7297dbf7e7&width=1280&userId=&cache=v2" >
+<figcaption align = "center">[Picture 9] Options Method</figcaption>
 
 <br> 
 

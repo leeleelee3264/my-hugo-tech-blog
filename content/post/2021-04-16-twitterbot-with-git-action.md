@@ -56,7 +56,10 @@ tags = ["Project"]
 
 ### Twitter Bot Flow
 트위터 봇 플로우는 _[Picture 1]_ 과 같다.
-{{< figure height="400" width="500" src="/static/img/post/twitter_flow.png" caption="[Picture 1] Twitter Bot Flow" >}}
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/twitter_flow.png" >
+<figcaption align = "center">[Picture 1] Twitter Bot Flow</figcaption>
+
 
 <br> 
 
@@ -739,7 +742,8 @@ def post_tweet(container: dict, date):
 [[깃허브 공식 가이드]](https://docs.github.com/en/actions/reference/encrypted-secrets)에 secret을 등록하는 방법이 나와있다. 따라해보다 보면 사진처럼 repo에 노출하지 않아도 사용할 수 있는 secret key들이 만들어진다.
 
 
-{{< figure height="400" width="600" src="/static/img/post/git_secret.PNG" caption="[Picture 2] Repository Secret" >}}
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/git_secret.PNG" >
+<figcaption align = "center">[Picture 2] Repository Secret</figcaption>
 
 <br> 
 
@@ -858,16 +862,24 @@ jobs:
 
 ### 실제 동작 화면
 
-{{< figure height="600" width="400" src="/static/img/post/newflix_account.PNG" caption="[Picture 3] 트위터 계정" >}}
-
 <br>
 
-{{< figure height="600" width="400" src="/static/img/post/netflix_work1.PNG" caption="[Picture 4] 트윗 화면 1" >}}
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/newflix_account.PNG" >
+<figcaption align = "center">[Picture 3] 트위터 계정</figcaption>
 
 <br>
+<br>
 
-{{< figure height="600" width="400" src="/static/img/post/netflix_work2.PNG" caption="[Picture 5] 트윗 화면 2" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/netflix_work1.PNG" >
+<figcaption align = "center">[Picture 4] 트윗 화면 1</figcaption>
+
+<br>
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/netflix_work2.PNG" >
+<figcaption align = "center">[Picture 5] 트윗 화면 2</figcaption>
 
 <br>
 
@@ -891,8 +903,9 @@ jobs:
 
 #### 프로젝트 구조 
 
-{{< figure height="500" width="700" src="https://user-images.githubusercontent.com/35620531/137567303-9155675c-932e-4331-8207-701b45f0f76f.png" caption="[Picture 2] sample image" >}}
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/137567303-9155675c-932e-4331-8207-701b45f0f76f.png" >
+<figcaption align = "center">[Picture 6] 프로젝트 구조</figcaption>
 
 #### Dev Stack 
 | stack      | info |

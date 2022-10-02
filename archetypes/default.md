@@ -46,8 +46,10 @@ tags = [""]
 - 설명 2
 - 설명 3
 
+<br> 
+
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="" >
-<figcaption align = "center">caption</figcaption>
+<figcaption align = "center"></figcaption>
 
 <br> 
 
