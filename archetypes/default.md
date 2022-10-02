@@ -46,7 +46,8 @@ tags = [""]
 - 설명 2
 - 설명 3
 
-{{< figure height="400" width="500" src="/static/img/post/certificate/attachments/4565565736/4669997094.png" caption="[Picture 2] sample image" >}}
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="" >
+<figcaption align = "center">caption</figcaption>
 
 <br> 
 
