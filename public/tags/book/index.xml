@@ -25,5 +25,14 @@
       <description>책 [Introducing Python] 절반을 요약한다. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은 인터프리터 언어다. 파이썬이</description>
     </item>
     
+    <item>
+      <title>[Modern Java in Action] Chapter 1,2,3</title>
+      <link>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</guid>
+      <description>책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? Chapter 2 동작 파라미터화 코드 전달하기 Chapter 3 람다 표현식 Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? 지금까지의 대부분의 자바 프로그램은 코어 중 하나만을 사용</description>
+    </item>
+    
   </channel>
 </rss>
