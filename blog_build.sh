@@ -24,6 +24,8 @@ git push origin master
 
 # commit and push posting resource
 cd ..
+# shellcheck disable=SC2094
+touch date.txt | date >> date.txt
 git add .
 git commit -m "Add posting resource after publishing Date: $TODAY"
 git push
