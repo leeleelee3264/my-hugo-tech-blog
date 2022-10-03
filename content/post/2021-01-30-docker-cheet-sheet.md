@@ -1,5 +1,5 @@
 +++
-title = "Docker Cheat Sheet"
+title = "(en) Docker Cheat Sheet"
 date = "2021-01-30"
 description = "Docker Cheat Sheet에 대해서 다룬다."
 tags = ["Cheat_Sheet"]
@@ -21,6 +21,8 @@ tags = ["Cheat_Sheet"]
 # Dockerfile Cheat Sheet
 I have to make image before running docker container with the image. How to get images I need?
 I can just pull images from my/someone else's docker hub repository or I can even make one all by myself.
+
+
 Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images.
 
 <br> 
