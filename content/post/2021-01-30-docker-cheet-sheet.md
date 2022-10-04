@@ -2,7 +2,7 @@
 title = "(en) Docker Cheat Sheet"
 date = "2021-01-30"
 description = "Docker Cheat Sheet에 대해서 다룬다."
-tags = ["Cheat_Sheet"]
+tags = ["Cheat"]
 +++
 
 <br>
