@@ -1,5 +1,5 @@
 +++
-title = "Digital certificate 적용하기"
+title = "디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지"
 date = "2022-08-27"
 description = "All about CA and apply Digital Certificate."
 tags = ["Infra"]
@@ -12,6 +12,30 @@ showComments = true
 > CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다.  
 
 <br>
+
+# Intro 
+
+[[디지털 인증서 쌩기초 파헤치기]](http://localhost:1313/post/2022-06-15-digital-certificate-part-one/) 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다.
+
+
+기초에 대해서 어느 정도 파악했다면 한 단계 더 나아가서 디지털 인증서를 어떻게 발급받으며, 어떻게 적용하는 지를 알아보자. 또한 클라이언트와 서버가 커넥션을 맺을 때 어떻게 서버가 디지털 인증서를 사용하여 신원을 증명해 내는지를 알아보자. 
+
+
+_[Index 1]_ 에서는 인증서를 발급해주는 기관인 CA에 대해서 다룬다. 더 나아가 _[Index 2]_ 에서는 CA에서 인증서를 발급 받기 위한 requirement를 준비하는 것을 다룬다. 
+_[Index 3]_ 에서는 발급받은 인증서를 서버에 적용하는 방법을 다룬다.
+
+서버에 인증서를 적용하게 되면, 이제 우리 서버는 신원을 증명하기 위해 클라이언트에게 디지털 인증서를 제공한다. 그럼 클라이언트는 여러 단계에 거쳐서 우리 서버의 
+신원을 증명하려는 노력을 한다. 이 과정을 Chain of Trust 라고 하며 _[Index 4]_ 에서 다루고 있다. _[Index 5]_ 에서는 본 포스트에서 다루는 내용을 한 눈에 볼 수 있는 모식도를 제공한다.  
+
+---
+
+
+<br>
+<br>
+
+
+
+
 
 **Index**
 

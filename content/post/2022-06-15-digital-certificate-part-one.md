@@ -1,5 +1,5 @@
 +++
-title = "Digital certificate"
+title = "디지털 인증서 쌩기초 파헤치기"
 date = "2022-06-15"
 description = "Post about digital certificate"
 tags = ["Infra"]

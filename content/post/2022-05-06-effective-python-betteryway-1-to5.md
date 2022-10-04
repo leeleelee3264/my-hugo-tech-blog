@@ -1,5 +1,5 @@
 +++
-title = "[Effective Python] Chapter 1: 1장부터 5장까지의 요약"
+title = "[Effective Python] Betterway 1,2,3,4,5 요약"
 date = "2022-05-06"
 description = "책 [Effective Python] Chapter 1 중 better way 1장부터 5장까지 요약한다."
 tags = ["Book"]

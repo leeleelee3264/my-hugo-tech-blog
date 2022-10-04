@@ -1,5 +1,5 @@
 +++
-title = "(en) Migration Shiny Server with Docker"
+title = "(en) Migrate Shiny Server with Docker"
 date = "2021-01-30"
 description = "Docker를 사용해서 Shiny server를 구동하는 것을 다룬다."
 tags = ["Infra"]
