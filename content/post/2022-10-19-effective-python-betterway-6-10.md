@@ -15,12 +15,12 @@ tags = ["Book"]
 <br> 
 
 **Index**
-1. 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라
-2. index2 
+1. Better way 6 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라
+2. Better way 7 range보다는 enumerate를 사용하라
 
 <br> 
 
-# 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라
+# Better way 6 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라
 파이썬에서는 _언패킹_ 구문이 있다. 언패킹 구문을 사용하면 한 문장 안에서 여러 값을 대입할 수 있다. 교재에서는 
 튜플을 사용할 때 인덱스 말고 언패킹을 사용하는 예제를 보여주고 있다. 언패킹은 튜플 인덱스를 사용하는 것보다 시각적인 잡음이 적다. 
 
@@ -67,3 +67,46 @@ for name, calories in snacks:
 
 
 <br> 
+
+# Better way 7 range보다는 enumerate를 사용하라
+리스트를 이터레이션하면서 리스트의 몇 번째 원소를 처리 중인지 알아야 할 때가 있다.
+range를 사용하면 list의 길이를 알아야 하고, 인덱스를 사용해 배열 원소에 접근해야 한다. 단계가 여러개라 결국 코드가 투박해진다. 
+
+> range
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+for i in range(len(flavor_list)): 
+    flavor = flavor_list[i]
+    print(f'{i}: {flavor})
+{{< /highlight >}}
+
+<br>
+
+
+
+enumerate는 이터레이터를 제너레이터로 감싼다. 그리고 호출이 될 때 마다 루프 인덱스와 이터레이터의 다음 값으로 이뤄진 튜플 쌍을 리턴한다.
+튜플 형태로 넘겨주니 _Better way 6처럼 언패킹을 이용하기도 좋다._
+
+> enumerate
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+for i, flavor in enumerate(flavor_list):
+    print(f'{i}: {flavor})
+{{< /highlight >}}
+
+
+
+<br> 
+
+> enumarete에서 시작할 루프 인덱스 설정해주기
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+for i, flavor in enumerate(flavor_list, 100):
+print(f'{i}: {flavor})
+
+>>> 
+100: 바나나
+101: 딸기
+{{< /highlight >}}
+
+<br>
