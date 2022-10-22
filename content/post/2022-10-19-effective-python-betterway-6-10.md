@@ -18,6 +18,7 @@ tags = ["Book"]
 1. Better way 6 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라
 2. Better way 7 range보다는 enumerate를 사용하라
 3. Better way 8 여러 이터레이터에 대해 나란히 루프를 수행하려면 zip을 사용하라
+4. Better way 9 for나 while 루프 뒤에 else 블록을 사용하지 말라 
 
 <br> 
 
@@ -195,5 +196,110 @@ Rosalind: -100
 <br> 
 
 zip_longest를 사용했을 때 존재하지 않은 값은 `fillvalue` 를 통해 값을 설정해 줄 수 있다. 디폴트 값은 `None`이다. 
+
+<br> 
+
+# Better way 9 for나 while 루프 뒤에 else 블록을 사용하지 말라 
+
+파이썬에서는 루프가 반복 수행하는 내부 블록 바로 다음에 else 블록을 추가할 수 있다. 이 `else` 블록은 루프가 `break`를 통해 빠져나가지 않고 끝까지 루프를 했다면 실행이 된다.
+
+<br>
+
+> 서로소 구하기: 루프 뒤에 else를 사용
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+a = 4
+b = 9
+
+for i range(2, min(a, b) + 1):
+    print('검사중', i)
+    if a % i == 0 and b % i == 0:
+    print('서로소 아님')
+    break
+else:
+    print('서로소')
+
+>>> 
+검사 중 2 
+검사 중 3 
+검사 중 4 
+서로소 
+{{< /highlight >}}
+
+<br> 
+
+if/else문에서 else는 _이 블록 앞의 블록이 실행되지 않으면 이 블록을 싱행하라_ 인데 
+루프 뒤애 오는 else는 루프가 정상적으로 완료되었다면 실행되기 때문에 마치 `and`와 같은 역할을 하고 있다. _이름과 역할이 달라 직관적이지 못하다._ 
+
+<br> 
+
+> 루프가 한 번도 돌지 않아도 실행되는 else 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+for x in []: 
+    print('이 줄은 실행되지 않음')
+else: 
+    print('For Else block!')
+
+>>> 
+For Else block! 
+
+
+while False:
+    print('이 줄은 실행되지 않음')
+else: 
+    print('While Else block!')
+
+>>> 
+While Else block! 
+{{< /highlight >}}
+
+<br> 
+
+또한 빈 시퀸스나 while 루프 조건이 처음부터 False인 경우에도 else 블록이 실행된다. 빈 시퀸스이거나 while 조건이 처음부터 False이면 _루프가 단 한 번도 실행되지 못하는데 말이다._
+
+<br>
+
+#### 서로소 구하기 리팩토링 
+루프 뒤 else를 사용해서 만든 서로소 구하기는 직관적이지 못해 더 직관적이게 도우미 함수를 작성하여 서로소를 구해본다. 
+
+<br> 
+
+> 서로소 구하기: 원하는 조건을 찾자마자 함수를 반환 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+def coprime(a, b): 
+    for i in range(2, min(a, b) + 1): 
+        if a % i == 0 and b % i == 0: 
+            return False 
+    return True 
+
+assert coprime(4, 9)
+assert not coprime(3, 6)
+{{< /highlight >}}
+
+
+<br> 
+
+
+> 서로소 구하기: 원하는 대상을 찾았는지 나타내는 결과 변수를 도입 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+def coprime_alternate(a, b): 
+    is_copirme = True 
+    for i in range(2, min(a, b) + 1): 
+        if a % i == 0 and b % i == 0: 
+            is_coprime = False 
+            break 
+    
+    return is_coprime
+{{< /highlight >}}
+
+
+<br> 
+
+#### 절대로 루프 뒤에 else 블록을 사용하지 말아야 하는 이유 
+- else 블록을 사용함으로써 얻을 수 있는 `표현력`보다는 미래에 이 코드를 이해하려는 사람들이 느끼게 될 `부담감`이 더 크다. 
+- 파이썬에서 루프와 같은 간단한 구성 요소는 그 자체로 `의미`가 `명확`해야 한다.
 
 <br> 
