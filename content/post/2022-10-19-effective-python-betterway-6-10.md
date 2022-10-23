@@ -19,6 +19,7 @@ tags = ["Book"]
 2. Better way 7 range보다는 enumerate를 사용하라
 3. Better way 8 여러 이터레이터에 대해 나란히 루프를 수행하려면 zip을 사용하라
 4. Better way 9 for나 while 루프 뒤에 else 블록을 사용하지 말라 
+5. Better way 10 대입식을 사용해 반복을 피하라
 
 <br> 
 
@@ -301,5 +302,210 @@ def coprime_alternate(a, b):
 #### 절대로 루프 뒤에 else 블록을 사용하지 말아야 하는 이유 
 - else 블록을 사용함으로써 얻을 수 있는 `표현력`보다는 미래에 이 코드를 이해하려는 사람들이 느끼게 될 `부담감`이 더 크다. 
 - 파이썬에서 루프와 같은 간단한 구성 요소는 그 자체로 `의미`가 `명확`해야 한다.
+
+<br> 
+
+# Better way 10 대입식을 사용해 반복을 피하라
+
+`대입식`은 파이썬 언어에서 고질적인 코드 중복 문제를 해결하기 위해 파이썬 3.8에서 새롭게 도입된 구문으로 `왈러스 연산자` (walrus) 라고도 부른다.
+연산자 기호 `:=` 이 마치 바다코끼리 (walrus)의 눈과 엄니를 닮아서 이런 별명이 생겼다.
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://upload.wikimedia.org/wikipedia/commons/2/22/Pacific_Walrus_-_Bull_%288247646168%29.jpg" >
+<figcaption align = "center">[Picture 1] 바다코끼리</figcaption>
+
+<br> 
+
+왈러스 연산자의 장점은 값을 대입할 수 없어 대입문이 쓰일 수 없는 if 조건문 과 같은 위치에 사용할 수 있다는 것이다. _즉, 원래라면 값을 대입할 수 없는 자리에 왈러스 연산자를 씀으로 값을 대입할 수 있다_.
+
+<br> 
+
+> 왈러스 연산자가 하는 일
+
+- Step 1: 대입 
+- Step 2: 대입된 값을 평가
+
+<br> 
+
+> 월러스 연산자 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+# 대입문 
+a = b 
+
+# 왈러스 연산자 
+a := b
+{{< /highlight >}}
+
+<br> 
+
+
+
+### 왈러스 연산자 용법
+
+<br> 
+
+> 왈러스 연산자를 쓰지 않았을 때
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+fresh_fruit = {
+    '사과': 10, 
+    '바나나': 8, 
+    '레몬': 5, 
+}
+
+def make_lemonade(count): 
+    ... 
+
+def out_of_stock(): 
+    ... 
+
+count = fresh_fruit.get('레몬', 0)
+if count: 
+    make_lemonade(count)
+else: 
+    out_of_stock()
+{{< /highlight >}}
+
+<br> 
+
+`count` 변수는 if 문의 첫 번째 블록 안에서만 쓰인다. 하지만 if 앞에서 count를 정의하면서 마치 else 블록이나 그 이후의 코드에서 count 변수에 접근을 할 필요가 있어 보인다. _따라서 실제보다 count 변수가 중요해보인다._  
+
+파이썬에서는 이런 식으로 값을 가져와서 그 값이 0이 아닌지 검사한 후 사용하는 패턴이 많다. 왈러스 연산자를 사용해서 가독성을 높이도록 하자. 
+
+<br> 
+
+> 왈러스 연산자를 썼을 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+if count := fresh_fruit.get('레몬', 0): 
+    make_lemonade(count)
+else: 
+    out_of_stock()
+{{< /highlight >}}
+
+<br> 
+
+`count`가 if문의 첫 번째 블록에서만 의미가 있다는 점이 명확하게 보여 코드가 더 읽기 쉬워졌다. 덩달아 코드도 조금 더 짧아졌다. 
+ 
+<br> 
+
+#### 왈러스 연산자를 이용해 더 중요한 변수에 힘 주기 
+이 패턴은 더 중요한 변수에 힘을 주기에도 좋지만, _if condition에서 값을 비교하고, 해당 스코프 안에서 그 값을 함수 호출할 때 사용했다는 것을 기억하자._ 
+
+<br> 
+
+> 왈러스 연산자를 쓰지 않았을 때
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+pieces = 0 
+count = fresh_fruit.get('바나나', 0) 
+if count >= 2: 
+    pieces = slice_bananas(count)
+else:
+    ... 
+{{< /highlight >}}
+
+<br> 
+
+`pieces` 가 훨씬 중요한 변수인데 if 앞에서 `count` 를 정의해서 마치 count 도 중요해보인다. 
+
+<br> 
+
+
+> 왈러스 연산자를 썼을 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+pieces = 0 
+if (count := fresh_fruit.get('바나나', 0)) >= 2: 
+    pieces = slice_bananas(count)
+else: 
+    ...
+{{< /highlight >}}
+
+<br> 
+
+#### 왈러스 연산자를 이용해 우아하게 switch/case 흉내내기 
+파이썬에는 switch/case 문이 없기 때문에 일반적으로 if, elif, else 문을 사용해서 흉내를 내는 것이 일반적이다. 왈러스 연산자를 쓰지 않는다면 대입하고 평가하는 것이 나눠져있기 때문에 지져분해진다.
+
+<br> 
+
+> 왈러스 연산자를 쓰지 않았을 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+count = fresh_fruit.get('바나나', 0)
+if count >= 2: 
+    pieces = slice_bananas(count)
+    to_enjoy = make_smoothies(pieces)
+else:      # 왜 elif를 안쓰고 else를 썼나 했더니 elif를 쓰면 값을 대입 못한다.. .
+    count = fresh_fruit.get('사과', 0)
+    if count >= 4: 
+        to_enjoy = make_cider(count)
+    else: 
+        count = fresh_fruit.get('레몬', 0)
+        if count: 
+            to_enjoy = make_lemonade(count)
+        else: 
+            to_enjoy = '아무것도 없음'
+{{< /highlight >}}
+
+<br> 
+
+
+
+> 왈러스 연산자를 썼을 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+if (count := fresh_fruit.get('바나나', 0)) >= 2: 
+    pieces = slice_bananas(count)
+    to_enjoy = make_smoothies(pieces)
+elif (count := fresh_fruit.get('사과', 0)) >= 4: 
+    to_enjoy = make_cider(count)
+elif count := fresh_fruit.get('레몬', 0): 
+    to_enjoy = make_lemonade(count)
+else: 
+    to_enjoy = '아무것도 없음'
+{{< /highlight >}}
+
+<br> 
+
+#### 왈러스 연산자를 이용해 우아하게 while문 사용하기
+
+> 왈러스 연산자를 쓰지 않았을 때
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+bottles = []
+fresh_fruit = pick_fruit()
+
+while fresh_fruit: 
+    for fruit, count in fresh_fruit.items(): 
+        batch = make_juice(fruit, count)
+        bottles.extend(batch)
+    fresh_fruit = pick_fruit()
+{{< /highlight >}}
+
+<br> 
+
+이 코드는 `fresh_fruit = pick_fruit()` 호출을 두 번 하고 있기 때문에 반복적이다. 
+
+while을 무한루프로 만들고 중간에 break를 두는 식으로 `fresh_fruit = pick_fruit()` 를 한 번 만 호출 할 수 도 있겠지만 
+while 루프를 맹목적인 무한루프로 만들고, 루프 흐름 제어가 모두 break 문에 달려있어 _while 루프의 유용성이 줄어든다._ 
+
+<br> 
+
+
+> 왈러스 연산자를 썼을 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+bottles = []
+while fresh_fruit := pick_fruit(): 
+    for fruit, count in fresh_fruit.items(): 
+        batch = make_juice(fruit, count)
+        bottles.extend(batch)
+{{< /highlight >}}
+
+<br> 
+
+#### 왈러스 연산자 사용을 고려해야 할 때 
+몇 줄로 이뤄진 코드 그룹에서 같은 식이나 같은 대입문을 여러 번 `되풀이`하는 부분을 발견하면 가독성을 향상시키기 위해 대입식을 도입하는 것을 고려해 봐야 한다.  
 
 <br> 
