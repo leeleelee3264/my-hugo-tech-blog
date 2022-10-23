@@ -1,5 +1,5 @@
 +++
-title = "(en) Implement Drag and Drop to upload file"
+title = "(en) Implement Drag and Drop to Upload File"
 date = "2020-10-08"
 description = "Implement Drag and Drop to upload file"
 tags = ["Frontend"]

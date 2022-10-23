@@ -1,5 +1,5 @@
 +++
-title = "(en) Divide layout in thymeleaf"
+title = "(en) Divide Layout in Thymeleaf"
 date = "2020-10-25"
 description = "Divide layout in thymeleaf"
 tags = ["Frontend"]

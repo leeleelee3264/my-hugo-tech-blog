@@ -1,5 +1,5 @@
 +++
-title = "터미널에서 여러 개의 깃허브 계정 사용하기"
+title = "Use Multiple Github Account in Terminal"
 date = "2022-01-12"
 description = "This post in about how to use Github multiple account in terminal."
 tags = ["General"]

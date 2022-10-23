@@ -1,5 +1,5 @@
 +++
-title = "Python decorator로 간단한 profiler 구현하기"
+title = "Implement Simple Profiler with Python Decorator"
 date = "2022-06-29"
 description = "All about python profiler decorator."
 tags = ["Backend"]

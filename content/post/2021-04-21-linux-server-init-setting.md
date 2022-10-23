@@ -1,5 +1,5 @@
 +++
-title = "리눅스 서버 설치와 초기 설정하기"
+title = "Install Linux Server and Initial Setting"
 date = "2021-04-21"
 description = "리눅스 서버 설치와 초기 설정에 대해 다룬다."
 tags = ["Infra"]

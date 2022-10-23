@@ -1,5 +1,5 @@
 +++
-title = "Github action으로 넷플릭스 상영 알림 트위터 봇 만들기"
+title = "Implement Netflix On-Air Twitter Bot witt Github Action"
 date = "2021-04-16"
 description = "Github action으로 넷플릭스 상영 알림 트위터 봇 만들기에 대해 다룬다."
 tags = ["Project"]

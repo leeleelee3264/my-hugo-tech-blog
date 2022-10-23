@@ -1,5 +1,5 @@
 +++
-title = "Shell Script로 Blue Green Deployment를 흉내낸 무중단 서버 배포하기"
+title = "Implement Shell Script which works like Blue Green Deployment"
 date = "2021-03-15"
 description = "Shell Script로 무중단 서버 배포하는 방법을 다룬다."
 tags = ["Infra"]

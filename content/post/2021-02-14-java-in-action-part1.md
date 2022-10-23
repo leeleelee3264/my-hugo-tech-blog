@@ -1,5 +1,5 @@
 +++
-title = "[Modern Java in Action] Chapter 1,2,3 요약"
+title = "[Modern Java in Action] Chapter 1,2,3 Summary"
 date = "2021-02-14"
 description = "책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다."
 tags = ["Book"]

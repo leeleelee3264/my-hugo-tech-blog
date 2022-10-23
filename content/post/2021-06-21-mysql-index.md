@@ -1,5 +1,5 @@
 +++
-title = "MySQL Index"
+title = "Dive into MySQL - Index"
 date = "2021-06-21"
 description = "MySQL Index에 대해서 다룬다."
 tags = ["Infra"]

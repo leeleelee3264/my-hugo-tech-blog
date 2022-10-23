@@ -1,5 +1,5 @@
 +++
-title = "(en) Load static/dynamic resource Spring jar"
+title = "(en) Load Static/Dynamic Resource Spring Jar"
 date = "2021-01-08"
 description = "Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다."
 tags = ["Backend"]

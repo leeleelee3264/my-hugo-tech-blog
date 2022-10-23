@@ -1,5 +1,5 @@
 +++
-title = "(en) Write shell script to deploy server and rotate log"
+title = "(en) Write Shell Script to Deploy Server and Rotate Log"
 date = "2021-01-05"
 description = "Write shell script to deploy server and rotate log."
 tags = ["Infra"]
