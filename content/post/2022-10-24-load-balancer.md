@@ -52,19 +52,18 @@ Scale Up 보다는 Scale Out 을 더 많이 하는 추세이지만, Scale Out이
 
 서버를 늘려야 하는 이유 중 제일 큰 이유는 몰린 트래픽을 처리하기 위해서이다. 그런데 Scaling을 살펴보던 중 트래픽에도 종류가 있다는 걸 발견했다. 바로 `North-South 트래픽`과 `East-West 트래픽`이다.
 
-![](attachments/4590043141/4701585503.png)
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/attachments/4590043141/4701585503.png" >
+<figcaption align = "center">[Picture 1] 트래픽 종류</figcaption>
+
+
 
 #### East-West 트래픽
-
 *   Server to Server 트래픽이다.
-
 *   데이터 센터 내부에서 발생하는 내부 트래픽이다.
 
 
 #### North-South 트래픽
-
 *   Client to Server 트래픽이다.
-
 *   데이터 센터와 나머지 네트워크 사이에서 일어나는 트래픽이다. 내부 트래픽을 제외한 나머지 트래픽이라고 생각하면 된다.
 
 <br>
@@ -84,16 +83,21 @@ Scale Up 보다는 Scale Out 을 더 많이 하는 추세이지만, Scale Out이
 
 일반적인 웹 트래픽 분산처리 구조에서 로드밸런서는 클라이언트와 서버 사이에 존재한다. 때문에 클라이언트의 요청을 제일 처음으로 만나게 된다. 로드밸런서가 클라이언트의 요청을 나눠 각 서버에 할당하면 웹서버 - WAS 서버로 전달이 되어 클라이언트에게 보낼 응답이 만들어진다.
 
-![](attachments/4590043141/4701585539.png)
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/attachments/4590043141/4701585539.png" >
+<figcaption align = "center">[Picture 2] 웹 트래픽 분산처리 구조</figcaption>
+
+<br> 
+
 
 ### 로드밸런서의 기능
 
 *   클라이언트 요청들을 `분산`해서 서버 그룹에 넘겨준다. 또한 선택된 서버가 만들어낸 응답을 적합한 클라이언트에 리턴해준다.
 *   서버의 핼스체크가 가능하기 때문에 만약 서버가 다운 되었다면, 이를 감지 해 다른 서버로 넘겨준다.
 *   클라이언트가 볼 수 있는 에러를 줄여 UX를 향상시킬 수 있다고 한다.
-*   몇몇 로드밸런서는 `session`을 `영속적`으로 관리한다.
-    *   특정 클라이언트에게서 온 모든 요청을 동일한 서버에 보낼 수 있다.
-    *   HTTP는 이론상 stateless 하게 움직이지만, 많은 서비스에서는 주요 기능을 위해 state 를 저장한다.
+
+
+#### 로드밸런서와 session
+몇몇 로드밸런서는 `session`을 `영속적`으로 관리한다. 세션을 관리함에 따라 특정 클라이언트에게서 온 모든 요청을 동일한 서버에 보낼 수 있다. HTTP는 이론상 `stateless` 하게 움직이지만, 많은 서비스에서는 주요 기능을 위해 state 를 저장한다.
 
 <br>
 
@@ -102,10 +106,15 @@ Scale Up 보다는 Scale Out 을 더 많이 하는 추세이지만, Scale Out이
 
 로드밸런서는 OSI 7 계층에 걸쳐 여러 종류가 있다. 트래픽은 네트워크를 타고 움직이며, 로드밸런서는 이 트래픽을 분산하는 역할이니 어떻게 보면 네트워크 프로토콜 마다 존재하는 게 당연하게 보인다. 로드밸런서의 네이밍 컨벤션 또한 `L(Layer) + 계층` 의 형태로 되어있다.
 
-TODO: summary markdown으로 변경하기
-![](images/icons/grey_arrow_down.png)OSI 7 계층
 
-![](attachments/4590043141/4701585561.png)
+<details>
+ <summary>[참고] OSI 7 계층</summary>
+    <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/attachments/4590043141/4701585561.png" >
+</details>
+
+
+
+<br> 
 
 #### 로드밸런서 종류
 
@@ -128,13 +137,6 @@ TODO: summary markdown으로 변경하기
 ##### Round-Robin (default)
 *   가장 간단한 방식의 알고리즘으로, 로테이션을 돌려서 요청을 서버에게 할당한다.
 *   서버의 특징 (성능, 유효성 등) 을 고려하지 않고 모두 동일하다 생각하고 할당한다.
-*   선점 형 스케줄링 중 하나이다.
-*   프로세스 사이에 우선순위는 없고 순서대로, 시간 단위로 할당한다.
-*   한 프로세스가 너무 오랜 시간 동안 선점을 하고 있으면 강제로 멈추고 다른 프로세스를 올리고, 멈춰진 프로세스는 큐의 가장 끝으로 밀려난다.
-*   프로세스를 교체하기 때문에 Context Switching 오버헤드가 있지만 응답시간이 짧아지기 때문에 실시간 시스템에 유리하다.
-
-TODO: summary
-![](images/icons/grey_arrow_down.png)(plus) CPU에서의 Round-Robin
 
 
 
@@ -174,9 +176,12 @@ TODO: summary
 
 `NLB`는 Network Load Balancer의 약자이고 `ALB`는 Application Load Balancer의 약자이다. 본 문서에는 다루지 않았으나 `CLB` 라는 용어도 있는데 Classic Load Balancer의 약자이다. 그리고 이 모든 Load Balancer 서비스를 묶어서 `ELB` 라고 하는데 Elastic Load Balancer의 약자이다.
 
-![](attachments/4590043141/4701389031.png?width=680)
+<br> 
 
-<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/attachments/4590043141/4701389031.png" >
+<figcaption align = "center">[Picture 3] NLB와 ALB를 한 번에 쓴다면? </figcaption>
+
+
 
 #### NLB
 
@@ -225,9 +230,9 @@ Nginx를 다루면서 로드밸런서와 리버스 프록시가 많이 헷갈렸
 
 <br>
 
-> A load balancer receives user requests, distributes them accordingly among a group of servers, then forwards each server response to its respective user.
+> A `load balancer` receives user requests, distributes them accordingly among a group of servers, then forwards each server response to its respective user.
 
-> A reverse proxy facilitates a user’s requests to a web server/application server and the server’s response.
+> A `reverse proxy` facilitates a user’s requests to a web server/application server and the server’s response.
 
 <br>
 
