@@ -17,6 +17,7 @@ tags = ["Book"]
 **Index**
 1. Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라
 2. Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 
+3. Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 
 
 <br> 
 
@@ -146,7 +147,6 @@ x[-2::-2]
 x[-1:2:-2]
 {{< /highlight >}}
 
-<br> 
 
 _중요한 점은 슬라이싱 구문에 스트라이딩까지 들어가면 아주 혼란스럽다는 것이다._ 각괄호 안에 수가 세 개나 들어 있으면 코드 밀도가 너무 높아서 읽기 어렵다. 
 특히 증가값이 `음수`인 경우는 더 그렇다.
@@ -171,3 +171,80 @@ z = y[1:-1]     # 슬라이드
 
 <br> 
 
+# Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라
+
+> 인덱스와 슬라이싱으로 목표한 원소 & 나머지 원소 처리하기
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+oldest = car[0]
+second_oldest = car[1]
+others = car[2:]
+{{< /highlight >}}
+
+
+파이썬을 처음 사용하는 사람은 목표한 원소와 나머지 원소를 가져올 때 슬라이싱을 자주 사용한다. 하지만 이런 방법은 인덱스와 슬라이스로 인해 시각적 잡음이 많다.
+또한 인덱스 관련 오류를 낼 확률도 높아진다.
+
+<br> 
+
+> 별표 식과 언패킹으로 목표한 원소 & 나머지 원소 처리하기 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+oldest, second_oldest, *others = car 
+print(oldest, second_oldest, others)
+
+>>> 
+20 19 [15, 9, 8]
+{{< /highlight >}}
+
+
+`별표 식`을 사용하면 언패킹 패턴의 다른 부분에 들어가지 못하는 모든 값을 `별`이 붙은 부분에 다 담을 수 있다.
+별표는 여러 위치에서 사용이 가능하다. _단, 단독으로 사용하는 것은 안된다._ 
+
+<br> 
+
+> 여러 위치에서 사용하는 별표 식 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+oldest, *others, youngest = car 
+
+*others, second_youngest, youngest = car
+{{< /highlight >}}
+
+
+별표 식은 항상 `list` 인스턴스가 된다. 언패킹하는 시퀸스에 남는 원소가 없으면 별표 식 부분은 `빈 리스트`가 된다. 
+이런 특징은 원소가 최소 `N`개 들어 있다는 사실을 미리 아는 시퀸스를 처리할 때 유용하다. 
+
+<br> 
+
+#### 별표 식 활용
+
+별표 식의 장점은 언패킹할 리스트를 깔끔하게 가져올 수 있다는 것이다.
+
+> 인덱스와 슬라이스를 쓸 때 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+csv = list(csv_file)
+
+header = csv[0]
+rows = csv[1:]
+
+{{< /highlight >}}
+
+<br> 
+
+> 별표 식을 쓸 때
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+csv = list(csv_file)
+
+header, *rows = csv_file
+{{< /highlight >}}
+
+<br> 
+
+#### 별표 식 주의점
+별표 식은 항상 `리스트`를 만들어내기 때문에 별표 식을 사용해서 언패킹을 하고 _리스트 연산을 할 경우 메모리를 다 사용해서 프로그램이 멈출 수 있다_. 
+꼭 결과 데이터가 모두 메모리에 들어갈 수 있다고 확신할 때만 별표 식을 사용하도록 해야 한다. 
+
+<br> 
