@@ -18,6 +18,7 @@ tags = ["Book"]
 1. Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라
 2. Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 
 3. Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 
+4. Better way 14 복잡한 기준을 사용해 정렬할 때는 key 파라메터를 사용하라
 
 <br> 
 
@@ -246,5 +247,87 @@ header, *rows = csv_file
 #### 별표 식 주의점
 별표 식은 항상 `리스트`를 만들어내기 때문에 별표 식을 사용해서 언패킹을 하고 _리스트 연산을 할 경우 메모리를 다 사용해서 프로그램이 멈출 수 있다_. 
 꼭 결과 데이터가 모두 메모리에 들어갈 수 있다고 확신할 때만 별표 식을 사용하도록 해야 한다. 
+
+<br> 
+
+# Better way 14 복잡한 기준을 사용해 정렬할 때는 key 파라메터를 사용하라
+
+정렬에 사용하고 싶은 애트리뷰트가 객체에 들어있는 경우가 많다. 이런 상황을 지원하기 위헤 `sort()` 는 `key` 라는 파라메터가 있다.
+key 함수에는 정렬 중인 리스트의 원소가 전달된다. key는 함수이기 때문에 `lambda`와 함께 사용한다. 
+
+<br> 
+
+> lambda로 key 사용하기 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+tools.sort(key=lambda x:x.name)
+{{< /highlight >}}
+
+<br> 
+
+#### 여러 기준을 사용해 정렬해야 할 때 
+
+`튜플`은 기본적으로 비교가 가능하며 자연스러운 순서가 정해져있다. 이는 sort에 필요한 `__lt__` 정의가 들어있다는 뜻이다. __lt__는 튜플의 각 
+위치를 이터레이션하면서 각 인덱스에 해당하는 원서를 한 번에 하나씩 비교한다. 
+
+<br> 
+
+> 튜플 정렬
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+drill = (4, '드릴')
+sander = (4, '연마기')
+
+assert drill[0] === sander[0]   # 무게가 같다 
+assert drill[1] < sander[1]     # o 보다 ㄷ 이 더 먼저와서 drill이 더 작다
+assert drill < sander           # 그러므로 드릴이 더 먼저다 
+{{< /highlight >}}
+
+비교하는 두 튜플의 첫 번째 위치에 있는 값이 서로 같으면 두 번째 위치에 있는 값을 비교하고, 또 같으면 세 번째 위치 값을 비교하고 결정이 날 때까지 이 과정을 반복한다. 
+
+<br> 
+
+> 튜플 정렬을 활용한 애트리뷰트 비교 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+tools.sort(key=lambda x : (x.weight, x.name))
+{{< /highlight >}}
+
+<br>
+
+> 튜플 정렬을 활용한 애트리뷰트 비교 내림차순 ver 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+tools.sort(key=lambda x : (x.weight, x.name), reverse=True)
+{{< /highlight >}}
+
+
+<br> 
+
+#### 여러 기준 사용할 때 정렬에 내림차순, 오름차순 모두 사용하기 
+
+> `-` 연산자로 무게는 내림차순하고 이름은 오름차순 하기 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+tools.sort(key=lambda x: (-x.weight, x.name))
+{{< /highlight >}}
+
+튜플을 활용한 여러 기준 정렬의 제약 사항은 _모든 비교 기준의 정렬 순서가 같아야 한다_. 예를들어 무게가 오름차순 정렬이라면 이름도 오름차순 정렬이어야 한다.
+But 만약 `숫자` 값일 경우 `-` 연산자를 사용해서 내림차순 정렬을 해, 정렬 방향을 혼합할 수 있다. 오직 숫자 값 일때만 가능하다.
+
+<br> 
+
+> `-` 연산자가 통하지 않을 때
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+tools.sort(key=lambda x: x.name)                    # name 기준 오름차순 
+tools.sort(key=lambda x: x.weight, reverse=True)    # weight 기준 내림차순  
+{{< /highlight >}}
+
+_최종적으로 리스트에서 얻어내고 싶은 정렬 기준 역순으로 정렬을 수행해야 한다._
+즉 예제에서는 weight으로 내림차순 후 name으로 오름차순을 하고 싶었기 때문에 name으로 오름차순을 먼저 해주고 weight 내림차순을 해줬다. 
+
+이러듯 제약사항이 있기 때문에 평소에는 `튜플 + - 연산자`를 사용하고, sort를 여러 번 호출하는 방법은 꼭 필요한 때에만 사용해야 한다. 
+
 
 <br> 
