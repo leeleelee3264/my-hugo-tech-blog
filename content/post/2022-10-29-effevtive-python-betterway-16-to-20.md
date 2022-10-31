@@ -16,7 +16,7 @@ tags = ["Book"]
 
 **Index**
 1. Better way 16 in을 사용하고 딕셔너리 키가 없을 때 KeyError를 처리하기보다는 get을 사용하라
-2. index2 
+2. Better way 17 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault 보다 defaultdict를 사용하라
 
 <br> 
 
@@ -131,18 +131,84 @@ names = votes.setdefault(key, [])
 names.append(who)
 {{< /highlight >}}
 
+<br> 
+
+> setdefault 동작 방식 
 - setdefault는 키를 사용해 딕셔너리의 값을 가져오려고 시도한다. 
 - 키가 없으면 제공받은 디폴트 값을 딕셔너리에 대입한 다음, 키를 사용하여 딕셔러니 값을 반환한다. 
 - 따라서 이 값은 새로 저장된 디폴트 값 일 수도 있고, 이미 딕셔너리에 있던 키 값일 수도 있다. 
 
 <br> 
 
-치명적인 단점은 메서드 이름인 `setdefault`가 _메서드의 동작을 직접적으로 드러내지 못하는 것이다_. 
-
+치명적인 단점은 메서드 이름인 `setdefault`가 _메서드의 동작을 직접적으로 드러내지 못하는 것이다_.
 값을 얻는 동작도 포함이 되어있지만 이름이 set 이라서 마치 값을 넣어주는 동작만 할 것 같아 코드를 
-읽자마자 무슨 역할을 하려는지 모를 수 있다. 차라리 `get_or_set` 이라고 했어야 한다.
+읽자마자 무슨 역할을 하려는지 모를 수 있다. 
 
-setdefault를 꼭 사용해야 하는 순간이 있다면 대신 `defaultdict` 사용을 고려해봐야 한다.  
+
 
 <br> 
+
+# Better way 17 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault 보다 defaultdict를 사용하라
+
+직접 만들지 않는 딕셔너리를 다룰 때 `get` 을 쓰거나 상황을 고려하여 `setdefault`를 쓰는 것이 좋다. 하지만 직접 딕셔너리 생성을 제어할 수 있다면,
+예를 들어 클래스 내부에서 딕셔너리 인스턴스를 사용한다면 setdefault도 있지만 `collections` 내장 모듈에 있는 `defaultdict` 클래스 사용을 고려할 수 있다. 
+
+_defaultdict 클래스는 키가 없을 때 자동으로 디폴트 값을 지정해준다._
+
+<br> 
+
+> setdefault를 사용하는 클래스 내부 딕셔너리
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+class Visits: 
+    def __init__(self): 
+        self.data = {} 
+
+    def add(self, country, city): 
+        city_set = self.data.setdefault(country, set()) 
+        city_set.add(city) 
+
+
+## example ## 
+visits = Visits()
+visits.add('영국', '런던')
+visits.add('캐나다', '오타와')
+{{< /highlight >}}
+
+새로 만든 클래스의 add는 setdefault의 복잡도를 제대로 감춰, 더 나은 인터페이스를 제공한다. 
+하지만 여전히 setdefault의 이름은 직관적이지 못하고, _주어진 나라가 data 딕셔너리에 있든 없든 호출할 때마다 새로운 
+set 인스턴스를 만들기 때문에 효율적이지 못하다._ 
+
+<br> 
+
+> defaultdict를 사용하는 클래스 내부 딕셔너리 
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+from collections import defaultdict 
+
+class Visits: 
+    def __init__(self): 
+        self.data = defaultdict(set)
+    
+    def add(self, country, city): 
+        set.data[country].add(city) 
+
+
+## example ## 
+visits = Visits()
+visits.add('영국', '런던')
+visits.add('영국', '버스')
+
+print(visits.data)
+
+>>> 
+defaultdict(<class 'set'>, {'영국': {'버스', '런던'}})
+{{< /highlight >}}
+
+이제 add 코드는 data 딕셔너리에 있는 키에 접근하면 항상 기존 set 인스턴스가 반환된다.
+이전 코드에서는 add 메서드가 아주 많이 호출되면 집합 생성에 따른 비용도 커지는데, 이 구현에서는 불필요한 set이 만들어지는 경우는 없다.
+
+<br> 
+
+
 
