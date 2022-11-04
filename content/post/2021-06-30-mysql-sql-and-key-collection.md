@@ -1,6 +1,6 @@
 +++
-title = "Dive into MySQL - SQL & key & collation"
 date = "2021-06-30"
+title = "MySQL 스터디 (2/5) - SQL & key & collation"
 description = "MySQL SQL과 key, collation에 대해 다룬다."
 tags = ["Infra"]
 +++

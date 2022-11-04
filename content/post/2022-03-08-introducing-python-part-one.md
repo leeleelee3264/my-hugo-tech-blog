@@ -1,5 +1,5 @@
 +++
-title = "[Introducing Python] part one (1/2) Summary"
+title = "[Book] Introducing Python 정리 (1/2)"
 date = "2022-03-08"
 description = "책 [Introducing Python] 절반을 요약한다."
 tags = ["Book"]

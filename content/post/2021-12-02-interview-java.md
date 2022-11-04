@@ -1,5 +1,5 @@
 +++
-title = "2021 Backend Engineer Job Interview - Java"
+title = "2021 백엔드 개발자 인터뷰 (1/2) - Java"
 date = "2021-12-02"
 description = "2021 백엔드 엔지니어 인터뷰의 면접질문에 대해 다룹니다."
 tags = ["General"]

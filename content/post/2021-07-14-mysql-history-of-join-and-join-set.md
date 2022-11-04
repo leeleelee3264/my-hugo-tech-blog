@@ -1,5 +1,5 @@
 +++
-title = "Dive into MySQL - Join & Join Set"
+title = "MySQL 스터디 (4/5) - Join & Join Set"
 date = "2021-07-14"
 description = "MySQL의 Join & Join Set에 대해서 다룬다."
 tags = ["Infra"]

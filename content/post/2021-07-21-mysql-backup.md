@@ -1,5 +1,5 @@
 +++
-title = "Dive into MySQL - Backup"
+title = "MySQL 스터디 (5/5) - Backup"
 date = "2021-07-21"
 description = "SQL 백업 종류에 대해 다룬다"
 tags = ["Infra"]

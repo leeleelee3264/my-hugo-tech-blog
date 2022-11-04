@@ -1,5 +1,5 @@
 +++
-title = "Essential in Cloud: Load Balancer"
+title = "클라우드 필수 교양 - 로드밸런서"
 date = "2022-10-24"
 description = "로드밸런서에 대해서 간략하게 다룬다."
 tags = ["Infra"]
@@ -204,7 +204,7 @@ Scale Up 보다는 Scale Out 을 더 많이 하는 추세이지만, Scale Out이
 #### ALB
 
 ##### 특징
-*   `HTTP/HTTP` 트래픽을 담당하며 유연하다.
+*   `HTTP/HTTPS` 트래픽을 담당하며 유연하다.
 *   HTTP 헤더 컨텐츠를 보고 요청을 어디로 라우트 해야 하는지 판단한다. 이를 `Content Based Routing`이라 한다.
 *   _어플리케이션의 유효성을 깊게 판단할 수 있다._
 *   특정 페이지의 HTTP GET을 성공적으로 가져왔는지 판단한다.

@@ -1,5 +1,5 @@
 +++
-title = " Linux Command Cheat Sheet"
+title = "Linux Command Cheat Sheet"
 date = "2020-12-12"
 description = "Linux Command Cheatsheet."
 tags = ["Cheat"]

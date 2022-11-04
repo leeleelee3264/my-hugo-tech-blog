@@ -1,5 +1,5 @@
 +++
-title = "Dive into MySQL - String Function & Referential Integrity"
+title = "MySQL 스터디 (3/5) - String Function & Referential Integrity"
 date = "2021-07-08"
 description = "MySQL String 함수와 참조 무결성에 대해 다룹니다."
 tags = ["Infra"]

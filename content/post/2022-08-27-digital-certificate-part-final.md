@@ -1,5 +1,5 @@
 +++
-title = "Dive into Digital Certificate - from CA to Chain of Trust"
+title = "디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust"
 date = "2022-08-27"
 description = "All about CA and apply Digital Certificate."
 tags = ["Infra"]
