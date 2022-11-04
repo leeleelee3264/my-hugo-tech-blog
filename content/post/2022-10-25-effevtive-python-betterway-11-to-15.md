@@ -22,6 +22,7 @@ tags = ["Book"]
 5. Better way 15 딕셔너리 삽입 순서에 의존할 때는 조심하라 
 6. Better way 16 in을 사용하고 딕셔너리 키가 없을 때 KeyError를 처리하기보다는 get을 사용하라
 7. Better way 17 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault 보다 defaultdict를 사용하라
+8. Better way 18 `__missing__` 을 사용해 키에 따라 다른 디폴트 값을 생성하는 방법을 알아두라
 
 <br> 
 
@@ -727,6 +728,89 @@ defaultdict(<class 'set'>, {'영국': {'버스', '런던'}})
 이전 코드에서는 add 메서드가 아주 많이 호출되면 집합 생성에 따른 비용도 커지는데, 이 구현에서는 불필요한 set이 만들어지는 경우는 없다.
 
 <br> 
+
+
+# Better way 18 `__missing__` 을 사용해 키에 따라 다른 디폴트 값을 생성하는 방법을 알아두라
+
+앞에서 키가 없는 경우 `get` 또는 `setdefault`, `defaultdict` 를 사용하는 방법을 알아봤지만 이 모든 것을 사용하기가 적당하지 않은 경우도 있다.
+
+저자가 제일 추천하는 방법인 defaultdict을 써서 문제를 해결해보도록 하겠다. 
+
+<br> 
+
+> defaultdict  
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+from collections import defaultdict 
+
+def open_picture(profile_path): 
+    try: 
+        return open(profile_path, 'a+b')
+    except OSError: 
+        print('경로를 열 수 없습니다: {profile_path}')
+        raise 
+
+pictures = defaultdict(open_picture)
+handle = pictures[path]
+handle.seek(0)
+image_data = handle.read()
+
+>>> 
+Traceback ... 
+TypeError: open_picture() missing 1 required positional argument: 'profile_path'
+{{< /highlight >}}
+
+_defaultdict 생성자에 전달한 함수는 인자를 받을 수 없다._ 이로 인해 파일 경로를 사용해 open을 호출할 방법이 없다. 
+
+<br> 
+
+> setdefault
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+try: 
+    handle = pictures.setdefault(path, open(path, 'a+b'))
+except OSError:
+    print('경로를 열 수 없습니다: {profile_path}')
+    raise
+else: 
+    handle.seek(0)
+    image_data = handle.read()
+{{< /highlight >}}
+
+그렇다고 setdefault를 쓴다고 상황을 해결할 수 있지는 않다. 
+
+_setdefault의 고질적인 문제로 딕셔너리에 경로가 있는지 여부와 관계없이 open이 항상 호출된다._ 
+이로 인해 같은 프로그램상에 존재하던 열린 파일 핸들과 혼동될 수 있는 새로운 파일 핸들이 생길 수 도 있다. 
+
+<br> 
+
+> `__missing__`
+
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+class Pictures(dict): 
+    def __missing__(self, key): 
+        value = open_picture(key)
+        self[key] = value 
+        return value 
+
+pictures = Pictures()
+handle = pictures[path]
+handle.seek(0)
+image_data = handle.read()
+{{< /highlight >}}
+
+_dict 타입의 하위 클래스를 만들고 `__missing__` 특별 메서드를 구현하면 키가 없는 경우를 처리하는 로직을 커스텀화 할 수 있다._
+
+<br> 
+
+> `__missing__` 동작 방식
+
+- pictures[path]라는 딕셔너리 접근에서 path가 딕셔너리에 없으면 `__missing__` 메서드가 호출된다.
+- `__missing__` 은 키에 해당하는 _디폴트 값을 생성해 딕셔너리에 넣어준_ 다음에 호출한 쪽에 그 값을 반환해야 한다.
+- 그 이후 딕셔너리에 같은 key로 접근하면 이미 해당 원소가 딕셔너리에 들어 있으므로 `__missing__` 이 호출되지 않는다.
+
+<br> 
+
 
 
 
