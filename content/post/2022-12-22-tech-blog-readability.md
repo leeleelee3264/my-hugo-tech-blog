@@ -1,5 +1,5 @@
 +++
-title = "(작성중)[Project] 블로그 리팩토링: 읽고 싶어지는 기술 블로그 만들기"
+title = "(작성중)[Project] 블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기"
 date = "2022-12-22"
 description = "개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다."
 tags = ["Project"]
@@ -19,7 +19,8 @@ tags = ["Project"]
 **Index**
 1. Intro
 2. Hugo 도입기
-3. 프로젝트 회고  
+3. 읽고 싶은 기술 블로그 만들기
+4. 프로젝트 회고  
 
 <br> 
 
@@ -69,7 +70,7 @@ tags = ["Project"]
 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/ti.png" >
-<figcaption align = "center">[Picture 1] 직관적인 블로그 이름과 다소 부적절한 닉네임</figcaption>
+<figcaption align = "center">[Picture 1] 직관적인 블로그 이름과 다소 도발적인 닉네임</figcaption>
 
 <br> 
 
@@ -104,7 +105,7 @@ tags = ["Project"]
 티스토리를 잘 쓰던 중, 갑자기 Github Page를 사용해 기술 블로그를 운영하기로 마음먹는다. 계기는 단순하다. `One Day One Commit`을 해서 Github에 `잔디심기`를 하고 싶었다. 
 티스토리를 사용하면 매일 잔디를 심기가 어렵기 때문에 과감하게 포기하고, Github Page로 옮겨가는 프로젝트를 진행했다. 
 
-블로그에 [[Jekyll로 이전하는 방법]](https://calgaryhomeless.tistory.com/1)에 대해서도 포스팅을 했다.
+티스토리 블로그에 [[Jekyll로 이전하는 방법]](https://calgaryhomeless.tistory.com/1)에 대해서도 포스팅을 했다.
 
 <br> 
 
@@ -151,7 +152,7 @@ Hugo를 선택한 이유로 _Go를 기반으로 만들어졌다_ 가 있는데 �
 <br> 
 
 > Hugo의 문제점 
-- 아직까지는 없다. 
+- Jekyll과 마찬가지로 직업 호스팅 해야 하고 검색 노출이 잘 안된다. 
 
 <br> 
 
@@ -205,9 +206,6 @@ cd my-hugo-tech-blog
 hugo new site quickstart
 {{< /highlight >}}
 
-테마 사이트에 들어가보면 각각 테마의 Introduction에 해당 테마를 `git`의 `submodule`로 가져오라고 하고 있다. 
-내가 선택한 Fuji 테마의 깃허브 주소인 `https://github.com/dsrkafuu/hugo-theme-fuji.git` 예시로 사용하겠다.
-
 <br> 
 
 > 블로그에 테마 적용하기 
@@ -219,6 +217,9 @@ git submodule https://github.com/dsrkafuu/hugo-theme-fuji.git
 # 테마의 configuration 복사해준다
 cp themes/fugi/config.toml . 
 {{< /highlight >}}
+
+테마 사이트에 들어가보면 각각 테마의 Introduction에 해당 테마를 `git`의 `submodule`로 가져오라고 하고 있다.
+내가 선택한 Fuji 테마의 깃허브 주소인 `https://github.com/dsrkafuu/hugo-theme-fuji.git` 예시로 사용하겠다.
 
 
 Hugo에서 블로그의 configuration은 `config.toml` 이라는 파일에서 관리가 된다. 각 테마 안에 config.toml 파일이 존재하는데 내가 만든 사이트에 해당 테마를 적용하고 싶다면 테마의 config.toml을 
@@ -237,19 +238,107 @@ hugo server
 
 > Webstorm에서 블로그 실행하기
 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/hugo.png" >
+<figcaption align = "center">[Picture 6] Webstrom Run Configuration</figcaption>
+
+<br> 
+
+Jetbrains의 Webstorm은 Hugo를 지원하고 있다. `Run Configuration` 에서 Hugo를 위한 새로운 Configuration을 만들고 `Command to run` 항목에 
+`hugo server` 를 선택하면 Webstorm에서도 손쉽게 Hugo 블로그를 실행할 수 있다. 
 
 <br> 
 
 ### Hugo로 Github에 Publishing 하기 
+TODO
 
 
-### 포스트 구성 정하기 
+<br> 
+
+# 읽고 싶은 기술 블로그 만들기 
+Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적 리팩토링인 읽고 싶은 기술 블로그 만들기 에 대해 언급하도록 하겠다. 
+
+<br> 
+
+### 포스트 규칙 만들기 
+
+<u>가독성 향상</u>을 위해 모든 포스트가 따라야 하는 규칙, 즉 컨벤션을 만들고 기존에 작성했던 포스트들을 
+새로운 규칙을 적용하여 전면 수정을 진행했다. 결과적으로 통일감 있고, 포스트에 내용들이 번잡스럽게 담기지 않아 가독성이 많이 좋아졌다. 
+
+<br> 
+
+> 규칙 
+
+1. 포스트 앞에는 항상 `summary`와 `index`를 작성한다.
+2. middle title, small title, image, example 사이에 적절하게 `br`를 두어 공간을 확보한다. 
+3. image caption은 [Picture 1] 설명설명 식으로 작성한다.
+4. 여러 줄의 코드를 쓸 때에는 Hugo의 `highlight`를 사용한다. 넘버링이 default로 되어있다.
+5. 한 줄의 코드를 쓰거나 코드가 아닐 경우에 (url 등) `markdown code block`을 사용한다.
+6. link 를 할 때에는 링크에 대괄호를 써 [링크] 로 표기해 식별할 수 있도록 한다.
+7. 정렬을 할 때는 1,2,3,4 보다는 - 으로 `dot` 정렬을 사용한다.
+
+<br>
+
+<details>
+ <summary>규칙을 적용해 수정한 포스트 예시 1</summary>
+  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/blue_green.png" >
+  <figcaption align = "center">[Picture 7] 규칙 적용 포스트 1</figcaption>
+</details>
+
+<details>
+ <summary>규칙을 적용해 수정한 포스트 예시 2</summary>
+  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/shiny.png" >
+  <figcaption align = "center">[Picture 8] 규칙 적용 포스트 2</figcaption>
+</details>
 
 
 
 <br> 
 
-# 프로젝트 회고 
+### 셀장님의 피드백
+
+본격적인 글쓰기 리팩토링을 하기 전에 기존에 작성했던 포스트 중 하나를 회사의 셀장님께 피드백을 부탁드렸다. 워낙 글을 잘 쓰시는 분이라 정말 필요한 피드백을 주셨다. 셀장님의 리뷰를 십분 반영해서 완성한 포스트가 [[디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust]](https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/)이다.
+
+<br> 
+
+> 피드백 핵심
+
+1. 제목이 명확하면서 구미를 당겨야 한다. 
+   1. 정직한 이름의 <u>Digital Certificate</u> 보다는 <u>Digital Certificate 쌩기초</u> 이런 식으로 작명한다.
+2. 글의 흐름이 너무 길면 읽기 힘들다. 
+   1. 길면 끊어서 여러 편으로 작성한다. 
+   2. 웬만하면 `4000`자가 넘어가지 않도록 한다.
+3. 글이 너무 정보 전달만 하려 하면 안된다. 이야기를 한다는 느낌으로 글을 써야 한다.
+4. 왜 이러한 주제와 목차를 다루게 되었는지 배경 설명을 하면 좋다.
+
+
+
+<br>
+
+
+모든 포스트에 통용되는 규칙을 만드는 것은 가독성 향상에 큰 도움이 된다. 하지만 이런 규칙 외에도 필요한 것은 구성이다. 결국 블로그 구성이 엉망으로 되어있으면 읽기 싫어지기 때문이다.
+결국 기존 포스트들의 내용적인 측면에서도 수정을 진행해야 했다.
+
+
+<br> 
+
+# 프로젝트 회고
+
+### 마음의 짐을 내려놓으며
+막 경력을 시작하여 아무것도 모를 때 만들었던 기술 블로그라 미흡한 부분이 많았지만, 이번에 리팩토링을 거치면서 제법 보완을 해 뿌듯하다. 
+매번 내 블로그에 들어올 때 마다 마음이 묘하게 무거웠는데 이제 한 결 가벼워진 기분이다. _리팩토링의 가장 큰 수확은 내가 쓴 글을 나중에 읽어도 
+읽기 싫거나 지루하지 않다는 점이다._ 
+
+앞으로도 나뿐만 아니라 다른 사람들에게도 지루하지 않고, 나중에 생각이 나서 다시 들어와서 읽는 기술 블로그가 되도록 노력해야 겠다. 
+
+
+<br> 
+
+### 새로운 과제: 조금 더 근면성실하게 포스팅 하기 
+2022년에는 겨우겨우 *12*개의 포스팅을 했다. 바쁘다는 핑계로 2021년보다 훨씬 못한 숫자의 포스팅을 하게 되어 안타깝다. 
+2023년에는 딱 이것의 2배인 *24*개의 포스팅을 하면 좋겠다. 
+
+항상 블로그 포스팅에는 사소한 주제보다는 의미있는, 큰 규모의 글을 다뤄야 한다는 부담 때문에 더 자주 포스팅을 하지 못한다. 
+앞으로는 부담을 내려두고 정말 기록을 위한 사소한 주제를 다뤄야겠다. 
 
 
 
