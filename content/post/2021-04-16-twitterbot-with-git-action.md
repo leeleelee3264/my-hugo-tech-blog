@@ -1,5 +1,5 @@
 +++
-title = "[Project] 깃허브 액션으로 넷플릭스 트위터 봇 만들기"
+title = "깃허브 액션으로 넷플릭스 트위터 봇 만들기"
 date = "2021-04-16"
 description = "Github action으로 넷플릭스 상영 알림 트위터 봇 만들기에 대해 다룬다."
 tags = ["Project"]

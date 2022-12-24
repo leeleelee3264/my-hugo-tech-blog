@@ -1,5 +1,5 @@
 +++
-title = "[Project] Python으로 Myinfo Oauth 클라이언트 커넥터 만들기"
+title = "Python으로 Myinfo Oauth 클라이언트 커넥터 만들기"
 date = "2022-07-23"
 description = "All about Myinfo project"
 tags = ["Project"]

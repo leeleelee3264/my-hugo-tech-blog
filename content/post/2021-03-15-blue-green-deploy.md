@@ -1,5 +1,5 @@
 +++
-title = "[Project] Shell Script로 무중단 배포 흉내내기"
+title = "Shell Script로 무중단 배포 흉내내기"
 date = "2021-03-15"
 description = "Shell Script로 무중단 서버 배포하는 방법을 다룬다."
 tags = ["Project"]

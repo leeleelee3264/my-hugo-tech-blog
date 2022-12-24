@@ -1,5 +1,5 @@
 +++
-title = "[Project] Shell Script로 MySQL DB 전체백업 구현하기"
+title = "Shell Script로 MySQL DB 전체백업 구현하기"
 date = "2021-09-09"
 description = "Shell Script 로 Mysql db 전체백업하기에 대해 다룬다."
 tags = ["Project"]
