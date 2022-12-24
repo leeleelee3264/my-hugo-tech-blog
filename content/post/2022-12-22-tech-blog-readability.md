@@ -1,5 +1,5 @@
 +++
-title = "(작성중)[Project] 블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기"
+title = "[Project] 블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기"
 date = "2022-12-22"
 description = "개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다."
 tags = ["Project"]
@@ -11,20 +11,21 @@ tags = ["Project"]
 <br> 
 
 > 2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다. 
-> > [[기존 Jekyll 블로그]](https://leeleelee3264.github.io/old-blog/)
+> > [[티스토리 블로그]](https://calgaryhomeless.tistory.com/?page=1)   
+> > [[Jekyll 블로그]](https://leeleelee3264.github.io/old-blog/)
 
 <br> 
 <br> 
 
 **Index**
-1. Intro
+1. Intro: 기술 블로그, 이대로 괜찮은가? 
 2. Hugo 도입기
 3. 읽고 싶은 기술 블로그 만들기
 4. 프로젝트 회고  
 
 <br> 
 
-# Intro
+# Intro: 기술 블로그, 이대로 괜찮은가?
 
 ### 문서화의 중요성 
 
@@ -116,8 +117,8 @@ tags = ["Project"]
 <br> 
 
 > Jekyll의 문제점
-- 호스팅을 직접 해야 해서 번거롭고, Jekyll 설치를 해야 하는 등 진입장벽이 있다. 
-- 검색 노출이 잘 안되어 방문자 수가 별로 없다. 
+- Github Page, Jekyll 자체의 진입장벽이 있다. 
+- 검색 노출이 잘 안되어 방문자 수가 별로 없다. (Github Page의 문제점)
 - 설치를 잘못해서 내 로컬에서 Jekyll을 실행할 수 없었다. 
   - 결과적으로 Github에 배포를 완료해야만 포스팅을 볼 수 있었다. _즉, 로컬에서 프리뷰를 할 수 없었다._ 
 
@@ -128,8 +129,8 @@ tags = ["Project"]
 
 <br> 
 
-참고로 Jekyll은 `Ruby`로 작성되었다. 로컬에서 바로 바로 프리뷰를 보며 에디팅을 할 수 없었기 때문에 가독성은 더 엉망이 되었다. 그 당시에는 포스팅이 어떻게 보일지 미리 고민을 하지 않고 무작정 글을 쓰기만 했다. 
-그리고 이때에도 구성에 대해서 고민하지 않았다. 돌이켜보면 그 때는 재미있는 글, 읽고 싶은 글을 쓰는 것에 전혀 관심이 없었나보다. 
+(참고로 Jekyll은 `Ruby`로 작성되었다). 로컬에서 바로 바로 프리뷰를 보며 에디팅을 할 수 없었기 때문에 가독성은 더 엉망이 되었다. 그 당시에는 포스팅이 어떻게 보일지 미리 고민을 하지 않고 무작정 글을 쓰기만 했다. 
+그리고 이때에도 구성에 대해서 고민하지 않았다. 돌이켜보면 그 때는 재미있는 글, 읽고 싶은 글을 쓰는 것에 전혀 관심이 없었나 싶다. 
 
 <br> 
 
@@ -152,13 +153,13 @@ Hugo를 선택한 이유로 _Go를 기반으로 만들어졌다_ 가 있는데 �
 <br> 
 
 > Hugo의 문제점 
-- Jekyll과 마찬가지로 직업 호스팅 해야 하고 검색 노출이 잘 안된다. 
+- 검색 노출이 잘 안되어 방문자 수가 별로 없다. (Github Page의 문제점)
 
 <br> 
 
 ### 테마 선택 
 
-블로그 리팩토링에서 블로그 테마도 중요한 부분을 차지한다. 테마를 바꾸는 게 소소한 재미이기도 하고 블로그의 인상과 가독성을 크게 좌지우지 하기 때문에 심사숙고 해서 선택해야 한다. 한참 테마 쇼핑을 하다가 [[Fuji]](https://themes.gohugo.io/themes/hugo-theme-fuji/) 라는 테마를 선택했다. 
+블로그 리팩토링에서 블로그 테마도 중요한 부분을 차지한다. 테마를 바꾸는 게 소소한 재미이기도 하고 블로그의 인상과 가독성을 크게 좌지우지 하기 때문에 심사숙고 해서 선택해야 했다. 한참 테마 쇼핑을 하다가 [[Fuji]](https://themes.gohugo.io/themes/hugo-theme-fuji/) 라는 테마를 선택했다. 
 
 <br> 
 
@@ -179,7 +180,20 @@ Hugo를 선택한 이유로 _Go를 기반으로 만들어졌다_ 가 있는데 �
 ### Hugo 설치 및 블로그 생성 
 
 Jekyll과 마찬가지로 Hugo로 블로그를 운영하기 위해서는 로컬에 Hugo를 설치해야 한다. Hugo는 공식문서가 굉장히 잘 되어있는데, [[공식문서 quick-start]](https://gohugo.io/getting-started/quick-start/) 를 
-보면서 하나씩 따라하면 굉장히 빠르게 Hugo 블로그를 생성할 수 있다. 
+보면서 하나씩 따라하면 빠르게 Hugo 블로그를 생성할 수 있다. 
+
+<br> 
+
+> Go 설치하기
+
+아직 Homebrew에서 Go 설치를 지원하지 않아서, 공식 홈페이지인 [[Go 다운로드]](https://go.dev/doc/install)에 가서 패키지 파일을 다운로드 받아야 한다. 
+다운로드 후, 압축을 풀고 `.pkg` 로 끝나는 파일을 클릭하면 설치 화면이 나와, 순차적으로 설치를 진행하면 된다.  
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+# 완료 후, 설치가 잘 되었나 버전을 찍어본다
+go version
+{{< /highlight >}}
+
 
 <br> 
 
@@ -187,18 +201,24 @@ Jekyll과 마찬가지로 Hugo로 블로그를 운영하기 위해서는 로컬�
 
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 brew install hugo
+# 설치가 잘 되었나 버전을 찍어본다
+hugo version 
 {{< /highlight >}}
 
 <br>
 
-이제부터는 위에서 선택한 테마를 적용해서 나만의 블로그를 생성하는 방법에 대해 다뤄보겠다. 
+이제부터는 위에서 선택한 테마를 적용해서 나만의 블로그를 생성하는 방법에 대해 다뤄보겠다.
+테마 사이트에 들어가보면 각각 테마의 Introduction에 해당 테마를 `git`의 `submodule`로 가져오라고 하고 있다.
+내가 선택한 Fuji 테마의 깃허브 주소인 `https://github.com/dsrkafuu/hugo-theme-fuji.git` 예시로 사용하겠다.
+
+
 
 <br> 
 
 > 블로그 만들기 
 
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
-# 블로그 디렉터리를 만들어준다 
+# 블로그 레포지토리를 만들어준다 
 mkdir my-hugo-tech-blog  
 cd my-hugo-tech-blog 
 
@@ -210,6 +230,7 @@ hugo new site quickstart
 
 > 블로그에 테마 적용하기 
 
+
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 git init 
 git submodule https://github.com/dsrkafuu/hugo-theme-fuji.git
@@ -218,8 +239,6 @@ git submodule https://github.com/dsrkafuu/hugo-theme-fuji.git
 cp themes/fugi/config.toml . 
 {{< /highlight >}}
 
-테마 사이트에 들어가보면 각각 테마의 Introduction에 해당 테마를 `git`의 `submodule`로 가져오라고 하고 있다.
-내가 선택한 Fuji 테마의 깃허브 주소인 `https://github.com/dsrkafuu/hugo-theme-fuji.git` 예시로 사용하겠다.
 
 
 Hugo에서 블로그의 configuration은 `config.toml` 이라는 파일에서 관리가 된다. 각 테마 안에 config.toml 파일이 존재하는데 내가 만든 사이트에 해당 테마를 적용하고 싶다면 테마의 config.toml을 
@@ -248,8 +267,156 @@ Jetbrains의 Webstorm은 Hugo를 지원하고 있다. `Run Configuration` 에서
 
 <br> 
 
-### Hugo로 Github에 Publishing 하기 
-TODO
+> 새 페이지 만들기 
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+hugo new {파일 이름}
+{{< /highlight >}}
+
+위의 커맨드로 설정된 테마가 적용된 hugo 페이지를 만들 수 있다. 
+
+<br> 
+
+### Hugo로 Github Page에 베포하기 
+Jekyll은 Github에서 공식 지원을 하기 때문에 Github Page를 배포 하려면 github.io 레포지토리를 만들고 Push만 해주면 끝이었다. 
+<u>하지만 Hugo는 공식 지원을 하지 않다보니 몇 가지 세팅을 해줘야 한다.</u> 세팅이 끝나면 아래의 3가지 결과물이 나온다. 순서에 따라서 한 번 만들어보도록 하겠다. 
+
+<br> 
+
+> 결과물  
+
+1. 블로그 레포지토리 (이전 단계에서 이미 생성)
+2. {username}.github.io 레포지토리 
+3. 배포 스크립트 
+
+<br> 
+
+#### 블로그 레포지토리 
+위에서 `my-hugo-tech-blog` 라는 이름의 Blog 레포지토리를 이미 로컬에 만들었다. github 사이트에서 블로그 레포지토리를 만들고, 연결만 해주면 된다. 
+
+<br> 
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/my_hugo.png" >
+<figcaption align = "center">[Picture 7] Github에 만든 블로그 레포지토리</figcaption>
+
+<br> 
+
+> github 연결 
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+cd my-hugo-tech-blog
+git remote add origin https://github.com/my-hugo-tech-blog.git public
+git push
+{{< /highlight >}}
+
+<br> 
+
+#### {username}.github.io 레포지토리 
+
+{username} 은 `github 계정의 username`을 넣어준다. 나의 github 계정 username인 `leeleelee3264`를 예시로 사용하겠다. 
+github 사이트에서 leeleelee.github.io 레포지토리를 만들어, 연결해준다. 
+
+<br>
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/leelee.png" >
+<figcaption align = "center">[Picture 7] Github에 만든 github.io 레포지토리</figcaption>
+
+<br> 
+
+> 로컬에 github.io 레포지토리 생성 후, github 연결 
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+mkdir leeleelee3264.github.io
+cd leeleelee3264.github.io
+git init 
+
+# 미리 만들어둔 github의 {username}.github.io 레포지토리에 연결한다. 
+git remote add origin https://github.com/leeleelee3264@github.io.git public
+git push 
+{{< /highlight >}}
+
+<br> 
+
+
+#### 배포 스크립트
+
+레포지토리 2개를 모두 만들었다면 마지막으로 중요한 작업이 하나 더 남았다. 바로 `github.io 레포지토리`를 `블로그 레포지토리`의 `서브 모듈`로 추가해줘야 한다.
+
+배포를 위해서는 블로그 레포지토리에서 hugo로 블로그를 빌드해야 한다. hugo로 블로그를 빌드하면 `public`이라는 결과물 폴더가 만들어진다. 이 폴더를 github.io 레포지토리에 내보내야 Github Page로 배포가 된다.
+처음에 이 과정을 잘 이해하지 못해 많은 시간을 소요했다.  
+
+<br> 
+
+> Github Page 배포 과정 
+1. 블로그 레포지토리에서 hugo로 블로그 빌드하여 public 폴더 생성
+2. public 폴더를 github.io 레포지토리로 내보내기 
+3. Github가 github.io의 내용물을 Github Page로 배포
+
+<br> 
+
+> [중요!] github.io 레포지토리를 블로그 레포지토리 서브 모듈로 추가
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+cd my-hugo-tech-blog
+
+# public 폴더를 서브모듈로 추가해준다
+git submodule add https://github.com/leeleelee3264/leeleelee3264.github.io.git public
+{{< /highlight >}}
+
+<br> 
+
+이렇게 서브모듈로 추가를 해주면 포스팅을 작성 완료 했을 때 마다 hugo 블로그를 빌드하고 커밋하고, 서브 모듈인 github.io 레포지토리에도 커밋을 해줘야 한다. 
+매번 배포를 할 때 마다 두 개의 레포지토리를 커밋하기가 번거롭기 때문에 쉘 스크립트를 작성했다.
+
+<br> 
+
+> 배포 스크립트 blog_build.sh
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+#! /bin/sh
+
+echo ""
+echo ""
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "Build blog with hugo"
+echo "Author: LeeLee"
+echo "Date: 2022-09-17"
+echo "This script is for build blog and commit to git."
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo ""
+echo ""
+
+TODAY=$(date)
+
+# build blog
+hugo -t fuji
+
+# commit and push build result to github.io
+cd public || exit
+# shellcheck disable=SC2094
+touch date.txt | date >> date.txt
+git add .
+git commit -m "Publish blog to github.io Date: $TODAY"
+git push origin master
+
+# commit and push posting resource
+cd ..
+git add .
+git commit -m "Add posting resource after publishing Date: $TODAY"
+git push
+
+{{< /highlight >}}
+
+
+<br> 
+
+이제 배포를 할 일이 있으면 작성한 쉘 스크립트를 실행하기만 하면 된다.
+
+> 스크립트 실행
+
+{{< highlight bash  "linenos=true,hl_inline=false" >}}
+./blog_build.sh
+{{< /highlight >}}
 
 
 <br> 
@@ -268,31 +435,26 @@ Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적
 
 > 규칙 
 
-1. 포스트 앞에는 항상 `summary`와 `index`를 작성한다.
+1. 포스트 앞에는 항상 `1줄 summary`와 `index`를 작성한다.
 2. middle title, small title, image, example 사이에 적절하게 `br`를 두어 공간을 확보한다. 
 3. image caption은 [Picture 1] 설명설명 식으로 작성한다.
 4. 여러 줄의 코드를 쓸 때에는 Hugo의 `highlight`를 사용한다. 넘버링이 default로 되어있다.
 5. 한 줄의 코드를 쓰거나 코드가 아닐 경우에 (url 등) `markdown code block`을 사용한다.
 6. link 를 할 때에는 링크에 대괄호를 써 [링크] 로 표기해 식별할 수 있도록 한다.
-7. 정렬을 할 때는 1,2,3,4 보다는 - 으로 `dot` 정렬을 사용한다.
+7. 정렬을 할 때는 1,2,3,4 보다는 `-` 을 사용하는 `dot` 정렬을 사용한다.
 
 <br>
 
-<details>
- <summary>규칙을 적용해 수정한 포스트 예시 1</summary>
-  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/blue_green.png" >
-  <figcaption align = "center">[Picture 7] 규칙 적용 포스트 1</figcaption>
-</details>
+> 규칙을 적용해 수정한 포스트 예시 
 
-<details>
- <summary>규칙을 적용해 수정한 포스트 예시 2</summary>
+
   <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/shiny.png" >
-  <figcaption align = "center">[Picture 8] 규칙 적용 포스트 2</figcaption>
-</details>
-
-
+  <figcaption align = "center">[Picture 7] 규칙 적용 포스트</figcaption>
 
 <br> 
+
+
+
 
 ### 셀장님의 피드백
 
@@ -307,8 +469,8 @@ Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적
 2. 글의 흐름이 너무 길면 읽기 힘들다. 
    1. 길면 끊어서 여러 편으로 작성한다. 
    2. 웬만하면 `4000`자가 넘어가지 않도록 한다.
-3. 글이 너무 정보 전달만 하려 하면 안된다. 이야기를 한다는 느낌으로 글을 써야 한다.
-4. 왜 이러한 주제와 목차를 다루게 되었는지 배경 설명을 하면 좋다.
+3. 글이 너무 정보 전달만 하려 하면 안된다. <u>이야기를 한다는 느낌으로 글을 써야 한다.</u>
+4. 왜 이러한 주제와 목차를 다루게 되었는지 `배경 설명`을 하면 좋다.
 
 
 
@@ -316,7 +478,17 @@ Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적
 
 
 모든 포스트에 통용되는 규칙을 만드는 것은 가독성 향상에 큰 도움이 된다. 하지만 이런 규칙 외에도 필요한 것은 구성이다. 결국 블로그 구성이 엉망으로 되어있으면 읽기 싫어지기 때문이다.
-결국 기존 포스트들의 내용적인 측면에서도 수정을 진행해야 했다.
+셀장님의 피드백을 적극 받아드려 포스트의 구성을 수정했다. 대표적으로 <u>이야기를 한다는 느낌으로 글은 전개하기 위해 배경을 설명하는 Intro를 도입했다.</u> 
+
+<br> 
+
+> Intro의 도입 
+
+
+  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/intro.png" >
+  <figcaption align = "center">[Picture 8] Intro 적용 포스트 </figcaption>
+
+
 
 
 <br> 
@@ -335,7 +507,16 @@ Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적
 
 ### 새로운 과제: 조금 더 근면성실하게 포스팅 하기 
 2022년에는 겨우겨우 *12*개의 포스팅을 했다. 바쁘다는 핑계로 2021년보다 훨씬 못한 숫자의 포스팅을 하게 되어 안타깝다. 
-2023년에는 딱 이것의 2배인 *24*개의 포스팅을 하면 좋겠다. 
+포스팅의 빈도가 낮아지니 더불어 잔디도 많이 심지 못했다. 2023년에는 딱 이것의 2배인 *24*개의 포스팅을 하고, 잔디도 더 많이 심도록 노력하겠다. 
+
+<br> 
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/green.png" >
+  <figcaption align = "center">[Picture 9] 듬성듬성 잔디</figcaption>
+
+<br> 
+
 
 항상 블로그 포스팅에는 사소한 주제보다는 의미있는, 큰 규모의 글을 다뤄야 한다는 부담 때문에 더 자주 포스팅을 하지 못한다. 
 앞으로는 부담을 내려두고 정말 기록을 위한 사소한 주제를 다뤄야겠다. 

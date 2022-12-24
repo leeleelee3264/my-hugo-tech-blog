@@ -1,6 +1,6 @@
 +++
-title = "[Book] Effective Python (3/10) - 함수"
-date = "2022-11-14"
+title = "(작성중)[Book] Effective Python (3/10) - 함수"
+date = "2099-11-14"
 description = "책 [Effective Python] Chapter 3를 요약한다."
 tags = ["Book"]
 +++
