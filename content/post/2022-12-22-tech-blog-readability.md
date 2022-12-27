@@ -322,6 +322,7 @@ github 사이트에서 leeleelee.github.io 레포지토리를 만들어, 연결�
 <figcaption align = "center">[Picture 7] Github에 만든 github.io 레포지토리</figcaption>
 
 <br> 
+<br> 
 
 > 로컬에 github.io 레포지토리 생성 후, github 연결 
 
