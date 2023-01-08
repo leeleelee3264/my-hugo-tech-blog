@@ -11,7 +11,7 @@ tags = ["Project"]
 
 > Twitter API 와 Github Action을 사용하는 트위터 봇을 Python으로 구현한다.
 > > [[github]](https://github.com/leeleelee3264/twitter_project)  
-> > [[트위터 계정]](https://twitter.com/DevLeelee)
+> > [[트위터 계정]](https://twitter.com/now_netflixKR)
 
 <br> 
 

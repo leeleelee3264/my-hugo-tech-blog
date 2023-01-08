@@ -233,7 +233,7 @@ hugo new site quickstart
 
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 git init 
-git submodule https://github.com/dsrkafuu/hugo-theme-fuji.git
+git add submodule https://github.com/dsrkafuu/hugo-theme-fuji.git themes/fuji
 
 # 테마의 configuration 복사해준다
 cp themes/fugi/config.toml . 
