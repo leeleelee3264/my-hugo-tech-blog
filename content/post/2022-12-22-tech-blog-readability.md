@@ -218,12 +218,9 @@ hugo version
 > 블로그 만들기 
 
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
-# 블로그 레포지토리를 만들어준다 
-mkdir my-hugo-tech-blog  
-cd my-hugo-tech-blog 
-
 # hugo 블로그를 만들어준다
-hugo new site quickstart
+hugo new site my-hugo-tech-blog
+cd my-hugo-tech-blog
 {{< /highlight >}}
 
 <br> 
@@ -233,10 +230,10 @@ hugo new site quickstart
 
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 git init 
-git add submodule https://github.com/dsrkafuu/hugo-theme-fuji.git themes/fuji
+git submodule add https://github.com/dsrkafuu/hugo-theme-fuji.git themes/fuji
 
 # 테마의 configuration 복사해준다
-cp themes/fugi/config.toml . 
+cp themes/fuji/exampleSite/config.toml . 
 {{< /highlight >}}
 
 

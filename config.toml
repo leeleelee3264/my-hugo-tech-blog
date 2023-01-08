@@ -131,10 +131,11 @@ name = "Archives"
 url = "/archives/"
 weight = 3
 
-[[menu.nav]]
-name = "Search"
-url = "/search/"
-weight = 4
+#[[menu.nav]]
+#name = "Search"
+#url = "/search/"
+#weight = 4
+#
 #[[menu.nav]]
 #name = "RSS"
 #url = "/index.xml"
