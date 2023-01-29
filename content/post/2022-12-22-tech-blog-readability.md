@@ -1,7 +1,7 @@
 +++
-title = "블로그 리팩토링 - Hugo 도입과 읽고 싶어지는 기술 블로그 만들기"
+title = "[Project] How to make a readable tech blog with Hugo"
 date = "2022-12-22"
-description = "개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다."
+description = "Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo."
 tags = ["Project"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> 2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다. 
+> Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo to make more readable blog.
 > > [[티스토리 블로그]](https://calgaryhomeless.tistory.com/?page=1)   
 > > [[Jekyll 블로그]](https://leeleelee3264.github.io/old-blog/)
 

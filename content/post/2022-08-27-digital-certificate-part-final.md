@@ -1,7 +1,7 @@
 +++
-title = "디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust"
+title = "[Infra] Digital certificate (2/2) - Advanced"
 date = "2022-08-27"
-description = "All about CA and apply Digital Certificate."
+description = "The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust."
 tags = ["Infra"]
 showComments = true
 +++
@@ -9,7 +9,7 @@ showComments = true
 <br>
 <br>
 
-> CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다.  
+> The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust.
 
 <br>
 

@@ -1,7 +1,7 @@
 +++
-title = "클라우드 필수 교양 - 로드밸런서"
+title = "[Infra] Load balancer"
 date = "2022-10-24"
-description = "로드밸런서에 대해서 간략하게 다룬다."
+description = "The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compare load balance to reverse proxy."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br>
 
-> 로드 밸런서에 대해서 간략하게 알아본다.
+> The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compares load balance to reverse proxy.
 
 <br>
 

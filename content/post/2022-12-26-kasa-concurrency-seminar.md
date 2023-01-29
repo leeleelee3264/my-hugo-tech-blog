@@ -1,7 +1,7 @@
 +++
-title = "Seminar by LeeLee - Handling Concurrent Request in Django"
+title = "[Seminar] Handling concurrency in Django"
 date = "2022-12-26"
-description = "2022-11-30 사내에서 진행한 세미나 - Handling Concurrent Request in Django를 다룬다."
+description = "Seminar for handling concurrent request in Django in Kasa 2022-11-30. Keys of handling concurrent request are 1) using queue, 2) using Django ORM, 3) using Redis. Especially in 2), Django ORM support select_or_update with @transaction.atomic."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> 2022-11-30 사내에서 진행한 세미나 - Handling Concurrent Request in Django를 다룬다.
+> Seminar for handling concurrent request in Django in Kasa 2022-11-30. Keys of handling concurrent request are 1) using queue, 2) using Django ORM, 3) using Redis. Especially in 2), Django ORM support select_or_update with @transaction.atomic.
 
 <br> 
 
