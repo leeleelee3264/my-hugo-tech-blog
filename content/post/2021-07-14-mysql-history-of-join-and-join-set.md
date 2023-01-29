@@ -1,7 +1,7 @@
 +++
-title = "MySQL 스터디 (4/5) - Join & Join Set"
+title = "MySQL Study (4/5) - Join & Join Set"
 date = "2021-07-14"
-description = "MySQL의 Join & Join Set에 대해서 다룬다."
+description = "Handles MySQL join & join set: Inner join, left join, right join and full outer join."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> MySQL의 Join & Join Set에 대해서 다룬다.
+> Handles MySQL join & join set: Inner join, left join, right join and full outer join.
 
 <br> 
 

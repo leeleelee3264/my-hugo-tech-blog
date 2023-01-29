@@ -1,14 +1,14 @@
 +++
-title = "MySQL 스터디 (5/5) - Backup"
+title = "[Infra] MySQL Study (5/5) - Backup"
 date = "2021-07-21"
-description = "SQL 백업 종류에 대해 다룬다"
+description = "Handles MySQL backup: Full backup, differential backup, incremental backup."
 tags = ["Infra"]
 +++
 
 <br>
 <br> 
 
-> SQL 백업 종류에 대해 다룬다.
+> Handles MySQL backup: Full backup, differential backup, incremental backup.
 
 <br> 
 
