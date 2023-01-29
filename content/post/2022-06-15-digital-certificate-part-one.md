@@ -1,7 +1,7 @@
 +++
-title = "디지털 인증서 파헤치기 (1/2) - 쌩기초"
+title = "[Infra] Digital certificate (1/2) - Very basic"
 date = "2022-06-15"
-description = "Post about digital certificate"
+description = "The post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> PKI의 certificate에 대해서 다룬다. 
+> The post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509.
 
 <br> 
 

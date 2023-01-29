@@ -1,14 +1,14 @@
 +++
-title = "[Book] Introducing Python 정리 (1/2)"
+title = "[Book] Introducing Python (1/2)"
 date = "2022-03-08"
-description = "책 [Introducing Python] 절반을 요약한다."
+description = "Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package."
 tags = ["Book"]
 +++
 
 <br>
 <br> 
 
-> 책 [Introducing Python] 절반을 요약한다.
+> Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package.
 
 <br> 
 

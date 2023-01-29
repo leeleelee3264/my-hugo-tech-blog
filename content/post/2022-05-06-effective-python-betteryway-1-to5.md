@@ -1,14 +1,14 @@
 +++
-title = "[Book] Effective Python (1/10) - 파이썬답게 생각하기"
+title = "[Book] Effective Python (1/10) - Think like Python"
 date = "2022-05-06"
-description = "책 [Effective Python] Chapter 1 중 better way 1장부터 5장까지 요약한다."
+description = "Summary of Effective Python written by Breet Slatkin. This chapter covers PEP8, bytes and str, f formatter, range, enumerate, zip."
 tags = ["Book"]
 +++
 
 <br>
 <br> 
 
-> 책 [Effective Python] better way를 1장부터 10장까지 요약한다.
+> Summary of Effective Python written by Breet Slatkin. This chapter covers PEP8, bytes and str, f formatter, range, enumerate, zip.
 
 <br> 
 
