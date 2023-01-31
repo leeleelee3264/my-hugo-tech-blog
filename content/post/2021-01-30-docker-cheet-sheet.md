@@ -1,14 +1,14 @@
 +++
-title = "(en) Docker Cheat Sheet"
+title = "[Cheat Sheet] (en) Docker Cheat Sheet"
 date = "2021-01-30"
-description = "Docker Cheat Sheet에 대해서 다룬다."
+description = "Cheat sheet for Docker. It consists of Dockerfile like FROM, RUN, ENTRYPOINT, VOLUME and Docker command like docker build, docker image, docker run."
 tags = ["Cheat"]
 +++
 
 <br>
 <br> 
 
-> Docker Cheat Sheet에 대해서 다룬다. 
+> Cheat sheet for Docker. It consists of Dockerfile like FROM, RUN, ENTRYPOINT, VOLUME and Docker command like docker build, docker image, docker run.
 
 <br> 
 

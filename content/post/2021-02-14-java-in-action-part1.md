@@ -1,14 +1,14 @@
 +++
-title = "[Modern Java in Action] Chapter 1,2,3 요약"
+title = "[Book] Modern Java in Action - Chapter 1,2,3"
 date = "2021-02-14"
-description = "책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다."
+description = "Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda."
 tags = ["Book"]
 +++
 
 <br>
 <br> 
 
-> 책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다.  
+> Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda. 
 
 <br> 
 

@@ -1,7 +1,7 @@
 +++
-title = "MySQL 스터디 (3/5) - String Function & Referential Integrity"
+title = "[Infra] MySQL Study (3/5) - String Function & Referential Integrity"
 date = "2021-07-08"
-description = "MySQL String 함수와 참조 무결성에 대해 다룹니다."
+description = "Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> MySQL String 함수와 참조 무결성 (Referential Integrity) 에 대해서 다룹니다.  
+> Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL.  
 
 <br> 
 

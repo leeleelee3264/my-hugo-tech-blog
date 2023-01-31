@@ -1,5 +1,5 @@
 +++
-title = "MySQL Study (4/5) - Join & Join Set"
+title = "[Infra] MySQL Study (4/5) - Join & Join Set"
 date = "2021-07-14"
 description = "Handles MySQL join & join set: Inner join, left join, right join and full outer join."
 tags = ["Infra"]

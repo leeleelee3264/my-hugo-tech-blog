@@ -1,7 +1,7 @@
 +++
-title = "깃허브 액션으로 넷플릭스 트위터 봇 만들기"
+title = "[Project] Making Netflix Twitter bot with Github action"
 date = "2021-04-16"
-description = "Github action으로 넷플릭스 상영 알림 트위터 봇 만들기에 대해 다룬다."
+description = "Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Twitter API 와 Github Action을 사용하는 트위터 봇을 Python으로 구현한다.
+> Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow.
 > > [[github]](https://github.com/leeleelee3264/twitter_project)  
 > > [[트위터 계정]](https://twitter.com/now_netflixKR)
 
