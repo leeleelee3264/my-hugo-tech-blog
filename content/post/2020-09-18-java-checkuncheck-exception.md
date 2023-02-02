@@ -1,14 +1,14 @@
 +++
-title = "(en) Handle SQL Exception in Spring boot"
+title = "[Backend] (en) How to deal with SQL exception in Spring boot"
 date = "2020-09-18"
-description = "Handle SQL Exception in Spring boot"
+description = "Handles SQL Exception in Spring boot: Checked exception, unchecked exception,"
 tags = ["Backend"]
 +++
 
 <br>
 <br> 
 
-> Handle SQL Exception in Spring boot.
+> Handles SQL Exception in Spring boot: Checked exception, unchecked exception,
 
 <br> 
 

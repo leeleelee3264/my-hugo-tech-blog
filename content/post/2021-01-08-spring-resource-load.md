@@ -1,7 +1,7 @@
 +++
-title = "(en) Load Static/Dynamic Resource Spring Jar"
+title = "[Backend] (en) Load static/dynamic resource Spring Jar"
 date = "2021-01-08"
-description = "Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다."
+description = "Handles how to load static or dynamic resource in Spring jar: ClassPathResource, ResourceLoader."
 tags = ["Backend"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Backend"]
 <br>
 <br> 
 
-> Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다
+> Handles how to load static or dynamic resource in Spring jar: ClassPathResource, ResourceLoader.
 
 <br> 
 

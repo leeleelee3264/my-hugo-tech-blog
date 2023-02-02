@@ -1,14 +1,14 @@
 +++
-title = "(en) Git Cheat Sheet"
+title = "[Cheat Sheet] (en) Git cheat sheet"
 date = "2020-09-24"
-description = "Git Cheat Sheet"
+description = "Cheat sheet for Git: log, diff, branch, switch, checkout, restore, commit, reset etc."
 tags = ["Cheat"]
 +++
 
 <br>
 <br> 
 
-> Git Cheat Sheet
+> Cheat sheet for Git: log, diff, branch, switch, checkout, restore, commit, reset etc.
 
 <br> 
 

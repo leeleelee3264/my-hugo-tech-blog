@@ -1,14 +1,14 @@
 +++
-title = "(en) Java Stream Cheat Sheet"
+title = "[Cheat Sheet] (en) Java stream cheat sheet"
 date = "2020-10-07"
-description = "Java Stream Cheat Sheet"
+description = "Cheat sheet for Java stream: computIfPresent, computeIfAbsent, disjoint, joining."
 tags = ["Cheat"]
 +++
 
 <br>
 <br> 
 
-> Java Stream Cheat Sheet
+> Cheat sheet for Java stream: computIfPresent, computeIfAbsent, disjoint, joining.
 
 <br> 
 

@@ -1,7 +1,7 @@
 +++
-title = "(en) Make Forked repo to Standalone repo"
+title = "[General] (en) How to change forked repo to standalone repo"
 date = "2020-09-19"
-description = "Make Forked repo to Standalone repo"
+description = "Handles forked repo to standalone repo."
 tags = ["General"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["General"]
 <br>
 <br> 
 
-> Make Forked repo to Standalone repo. 
+> Handles forked repo to standalone repo.
 
 <br> 
 

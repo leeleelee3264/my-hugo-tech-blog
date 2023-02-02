@@ -1,7 +1,7 @@
 +++
-title = "(en) Java Regex Cheat Sheet"
+title = "[Cheat Sheet] (en) Java regex cheat sheet"
 date = "2021-01-11"
-description = "Java Regex Cheat Sheet에 대해서 다룬다."
+description = "Cheat sheet for Java Regex: Changing plain text, extracting substring."
 tags = ["Cheat"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Cheat"]
 <br>
 <br> 
 
-> Java Regex Cheat Sheet에 대해서 다룬다.
+> Cheat sheet for Java Regex: Changing plain text, extracting substring.
 
 <br> 
 

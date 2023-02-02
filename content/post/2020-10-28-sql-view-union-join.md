@@ -1,14 +1,14 @@
 +++
-title = "(en) MySQL View and UNION/JOIN"
+title = "[Infra] (en) MySQL View and UNION/JOIN"
 date = "2020-10-28"
-description = "MySQL View and UNION/JOIN"
+description = "Handles MySQL View and UNION/JOIN"
 tags = ["Infra"]
 +++
 
 <br>
 <br> 
 
-> MySQL View and UNION/JOIN 
+> Handles MySQL View and UNION/JOIN
 
 <br> 
 

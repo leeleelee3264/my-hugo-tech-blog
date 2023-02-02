@@ -1,7 +1,7 @@
 +++
-title = "(en) Implement Drag and Drop to Upload File"
+title = "[Frontend] (en) How to implement drag and drop?"
 date = "2020-10-08"
-description = "Implement Drag and Drop to upload file"
+description = "Implement drag and drop to upload file."
 tags = ["Frontend"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Frontend"]
 <br>
 <br> 
 
-> Implement Drag and Drop to upload file
+> Implement drag and drop to upload file.
 
 <br> 
 

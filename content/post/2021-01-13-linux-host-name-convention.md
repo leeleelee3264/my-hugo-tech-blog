@@ -1,7 +1,7 @@
 +++
-title = "(en) Name Convention of Host and URL"
+title = "[Infra] (en) Name convention of host and URL"
 date = "2021-01-13"
-description = "Name Convention of Host and URL"
+description = "Name Convention of Host and URL: Reserved characters and unsafe characters."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Let's learn about name convention of host and URL.
+> Name Convention of Host and URL: Reserved characters and unsafe characters.
 
 <br> 
 

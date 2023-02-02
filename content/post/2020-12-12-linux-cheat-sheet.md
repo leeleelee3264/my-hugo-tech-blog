@@ -1,7 +1,7 @@
 +++
-title = "Linux Command Cheat Sheet"
+title = "[Cheat Sheet] Linux command cheat sheet"
 date = "2020-12-12"
-description = "Linux Command Cheatsheet."
+description = "Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc."
 tags = ["Cheat"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Cheat"]
 <br>
 <br> 
 
-> Linux Command Cheatsheet.
+> Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc.
 
 <br> 
 

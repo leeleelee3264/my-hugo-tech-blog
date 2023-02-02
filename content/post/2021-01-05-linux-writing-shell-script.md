@@ -1,5 +1,5 @@
 +++
-title = "(en) Write Shell Script to Deploy Server and Rotate Log"
+title = "[Infra] (en) Write Shell script to deploy server and rotate log"
 date = "2021-01-05"
 description = "Write shell script to deploy server and rotate log."
 tags = ["Infra"]
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Write shell script to deploy server and rotate log
+> Write shell script to deploy server and rotate log.
 
 <br> 
 

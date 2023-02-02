@@ -1,7 +1,7 @@
 +++
-title = "(en) Migrate Shiny Server with Docker"
+title = "[Infra] (en) Running Shiny server with Docker"
 date = "2021-01-30"
-description = "Docker를 사용해서 Shiny server를 구동하는 것을 다룬다."
+description = "Handles running Shiny server with Docker."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Docker를 사용해서 Shiny server를 구동하는 것을 다룬다.
+> Handles running Shiny server with Docker.
 
 <br> 
 

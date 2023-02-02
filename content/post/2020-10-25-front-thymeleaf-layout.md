@@ -1,7 +1,7 @@
 +++
-title = "(en) Divide Layout in Thymeleaf"
+title = "[Frontend] (en) How to divide Layout in Thymeleaf"
 date = "2020-10-25"
-description = "Divide layout in thymeleaf"
+description = "Handles dividing layout in thymeleaf."
 tags = ["Frontend"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Frontend"]
 <br>
 <br> 
 
-> Divide layout in thymeleaf.
+> Handles dividing layout in thymeleaf.
 
 <br> 
 
