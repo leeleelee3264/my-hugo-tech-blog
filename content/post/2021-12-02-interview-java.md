@@ -1,14 +1,14 @@
 +++
 title = "[General] 2021 Backend developer job interview (1/2) - Java"
 date = "2021-12-02"
-description = "Handling 2021 backend developer job interview question with Java. Questions for Spring boot, JDBC, serializer, interface and abstract class, DI and IOC, static."
+description = "Handling 2021 backend developer job interview question with Java."
 tags = ["General"]
 +++
 
 <br>
 <br> 
 
-> Handling 2021 backend developer job interview question with Java. Questions for Spring boot, JDBC, serializer, interface and abstract class, DI and IOC, static.
+> Handling 2021 backend developer job interview question with Java.
 
 <br> 
 

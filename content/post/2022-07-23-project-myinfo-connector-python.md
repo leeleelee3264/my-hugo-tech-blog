@@ -1,5 +1,5 @@
 +++
-title = "[Project] Building Myinfo oauth2 client with Django"
+title = "[Project] How to build Myinfo oauth2 client with Django"
 date = "2022-07-23"
 description = "Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto."
 tags = ["Project"]

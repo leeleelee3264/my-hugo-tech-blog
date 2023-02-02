@@ -1,5 +1,5 @@
 +++
-title = "[Infra] Load balancer"
+title = "[Infra] What is Load balancer"
 date = "2022-10-24"
 description = "The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compare load balance to reverse proxy."
 tags = ["Infra"]

@@ -1,5 +1,5 @@
 +++
-title = "[Project] How to make a readable tech blog with Hugo"
+title = "[Project] How to make a readable tech blog with Hugo?"
 date = "2022-12-22"
 description = "Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo."
 tags = ["Project"]

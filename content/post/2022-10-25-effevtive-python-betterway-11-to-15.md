@@ -1,7 +1,7 @@
 +++
 title = "[Book] Effective Python (2/10) - List & Dictionary"
 date = "2022-10-25"
-description = "Summary of Effective Python written by Breet Slatkin. This chapter covers List and Dictionary. In List, sequence slicing, unpacking. In Dictionary, get, defaultdict, __missing__."
+description = "Summary of Effective Python written by Breet Slatkin. In this post, we covers List & Dictionary."
 tags = ["Book"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Book"]
 <br>
 <br> 
 
-> Summary of Effective Python written by Breet Slatkin. This chapter covers List and Dictionary. In List, sequence slicing, unpacking. In Dictionary, get, defaultdict, __missing__.
+> Summary of Effective Python written by Breet Slatkin. In this post, we covers List & Dictionary.
 
 <br> 
 

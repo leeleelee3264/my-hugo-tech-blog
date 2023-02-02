@@ -1,7 +1,7 @@
 +++
 title = "[Book] Introducing Python (1/2)"
 date = "2022-03-08"
-description = "Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package."
+description = "Summary of Introducing python written by Bill Lubanovic. It covers data type: list, tuple, dictionary and set. Also covers code structure and module, package."
 tags = ["Book"]
 +++
 

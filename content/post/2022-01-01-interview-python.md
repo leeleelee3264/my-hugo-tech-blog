@@ -1,14 +1,14 @@
 +++
 title = "[General] 2021 Backend developer job interview (2/2) - Python, General"
 date = "2022-01-01"
-description = "Handling 2021 backend developer job interview question with python and general knowledge. In Python, thread, concurrency and parallelism, Django and ORM. In general, DDD architecture, DAO, DTO and Entity, request method."
+description = "Handling 2021 backend developer job interview question with python and general knowledge."
 tags = ["General"]
 +++
 
 <br>
 <br> 
 
-> Handling 2021 backend developer job interview question with python and general knowledge. In Python, thread, concurrency and parallelism, Django and ORM. In general, DDD architecture, DAO, DTO and Entity, request method.
+> Handling 2021 backend developer job interview question with python and general knowledge.
 
 <br> 
 

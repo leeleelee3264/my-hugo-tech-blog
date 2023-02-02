@@ -1,7 +1,7 @@
 +++
 title = "[Infra] Digital certificate (1/2) - Very basic"
 date = "2022-06-15"
-description = "The post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509."
+description = "This post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509."
 tags = ["Infra"]
 +++
 

@@ -1,5 +1,5 @@
 baseURL = "https://leeleelee3264.github.io/"
-title = "dev_leelee.log"
+title = "leelee.log"
 
 theme = "fuji"
 hasCJKLanguage = true
@@ -32,7 +32,7 @@ post = "/:section/:filename/" # Custom post links, e.g. "/:year/:month/:title/"
 
 [params]
 author = "leeleelee3264"                # You can also set author in post front matter individually
-subTitle = "Logfile of Developer LeeLee"
+#subTitle = "Logfile of Developer LeeLee"
 defaultTheme = "auto"              # default theme when first visit (auto|dark|light)
 
 # Source URL of the website, will appear in the footer
@@ -67,7 +67,7 @@ copyrightStartYear = "2020"
 
 # Open Graph & Twitter Card variables
 # You can also set description and images in post front matter individually
-description = "A minimal Hugo theme with nice theme color."
+description = "Tech blog for LeeLee"
 og = "/static/img/og.png"                                          # This will use the image called og.png in static/img folder
 
 # Posts shown in homepage
