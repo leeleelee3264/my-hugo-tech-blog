@@ -255,7 +255,7 @@ Aspect Oriented Programming의 약자로, 관점(관심사)를 기준으로 흩�
 > AS-IS 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/aaa.png" >
-<figcaption align = "center">흩어져있는 코드</figcaption>
+<figcaption align = "center">[Picture 1] 흩어져있는 코드</figcaption>
 
 
 - 같은 동작을 여러 곳에서 하고 있는데, 그 때마다 구현을 했다. 
@@ -267,7 +267,7 @@ Aspect Oriented Programming의 약자로, 관점(관심사)를 기준으로 흩�
 > TO-BE 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/bbb.png" >
-<figcaption align = "center">모여있는 코드</figcaption>
+<figcaption align = "center">[Picture 2] 모여있는 코드</figcaption>
 
 <br>
 
@@ -303,32 +303,253 @@ A.java --> (컴파일) --> A.class
 <br>
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/proxy.png" >
-<figcaption align = "center">프록시 패턴 예시</figcaption>
+<figcaption align = "center">[Picture 3] 프록시 패턴 예시</figcaption>
 
 <br>
 
-##### 프록시 패턴 만들어보기 
+### 프록시 패턴 만들어보기 
 
+**시나리오**
+- `Cash`에서 시간을 축정하는 기능을 추가하고 싶어서 `CashPerf` 프록시 클래스를 만들었다.
+- CashPerf를 사용한다고 해도 클라이언트인 `Store`에는 아무런 변경이 없다. 
+  - Store를 생성할 떄 의존성으로 Cash 대신 CashPerf를 넣어준다. 이 둘의 인터페이스인 `Payment`를 사용하기 때문에 이렇게 변경해도 문제가 없다. 
+
+
+> 인터페이스 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/payment.png" >
-<figcaption align = "center">payment 인터페이스</figcaption>
+<figcaption align = "center">[Picture 4] payment 인터페이스</figcaption>
 
+
+> 비즈니스 로직 클래스 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/cash.png" >
-<figcaption align = "center">cash 클래스</figcaption>
+<figcaption align = "center">[Picture 5] cash 클래스</figcaption>
 
+
+> 프록시 클래스 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/cashperf.png" >
-<figcaption align = "center">cash perf 클래스</figcaption>
+<figcaption align = "center">[Picture 6] cash perf 클래스</figcaption>
+
+- stopwatch로 시간을 측정하는 부분을 추가했다. 
+- _프록스 클래스인 cash perf 클래스에서 비즈니스 로직 클래스인 cash를 호출한다._ 
+
+> 클라언트 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/store.png" >
-<figcaption align = "center">Store 클래스</figcaption>
+<figcaption align = "center">[Picture 7] Store 클래스</figcaption>
 
+> 테스트 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/store_test.png" >
-<figcaption align = "center">Store Test 클래스</figcaption>
+<figcaption align = "center">[Picture 8] Store Test 클래스</figcaption>
+
 
 
 <br>
 
+### Spring AOP 실습 
+
+**목표**
+- Spring AOP를 사용해서 API의 응답시간을 측정한다.
+
+
+> LogExecutionTime 어노테이션 구현
+
+{{< highlight java  "linenos=true,hl_inline=false" >}}
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.METHOD) //이 어노테이션을 어디에 쓸 것인지
+@Retention(RetentionPolicy.RUNTIME) // 이 어노테이션 정보를 언제까지 유지할 것인지
+public @interface LogExecutionTime {
+}
+{{< /highlight >}}
+
+- 이렇게 어노테이션만 있으면 아무런 일도 일어나지 않고, 그냥 주석과 다름이 없다. 
+- <U>이 어노테이션을 읽어서 처리하는 부분이 있어야 한다.</U> -> `Aspect`가 필요하다.
+
+<br>
+
+> 사용처
+
+{{< highlight java  "linenos=true,hl_inline=false" >}}
+@GetMapping("/owners/new")
+@LogExecutionTime
+public String initCreationForm(Map<String, Object> model) {
+    Owner owner = new Owner();
+    model.put("owner", owner);
+    return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
+}
+{{< /highlight >}}
+
+
+<br>
+
+> Aspect 구현
+
+{{< highlight java  "linenos=true,hl_inline=false" >}}
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
+
+@Component
+@Aspect
+public class LogAspect {
+
+	Logger logger = LoggerFactory.getLogger(LogAspect.class);
+
+	@Around("@annotation(LogExecutionTime)")
+	public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
+
+		Object proceed = joinPoint.proceed();
+
+		stopWatch.stop();
+		logger.info(stopWatch.prettyPrint());
+
+		return proceed;
+	}
+}
+{{< /highlight >}}
+
+- @LogExecutionTime를 읽어서 처리하는 부분이다. 
+- [Line 15] Around: 어디 사이에 Aspect를 실행하면 되는지 알려준다. 여기서는 LogExecutionTime 어노테이션 사이로 설정한다.
+- [Line 16] jointPoint: @LogExecutionTime를 부착한 API 메서드를 뜻한다. 
+  - [Line 17]jointPoint를 실행하기 전에 먼저 실행한다. 
+  - [Line 20] jointPoint인 API 메서드를 실행한다.
+  - [Line 22] jointPoint를 실행한 후 실행한다.
+  - [Line 25] jointPoint 실행 결과를 반환한다.
+
+
+<br>
+
+#### 프록시 패턴예제와 Spring AOP 실습 이해 
+
+
+프록시 패턴 예제에서는 부가기능을 담은 프록시 클래스인 CashPerf를 만들어줬는데 Spring에서는 _@LogExecutionTime를 보고 Spring AOP가 OwnerController 프록시 클래스를 자동으로 만들어준다_. 
+그리고 이 프록시 클래스 버전의 OwnerController를 직접 주입해주기 까지 한다.
+
+OwnerController -> Cash : 비즈니스 로직이 담긴 클래스
+@LogExecutionTime를 보고 Spring AOP가 만들어준 OwnerController 프록시 클래스  -> CashPerf : 부가 기능이 구현된 프록시 클래스
+
+
+<br>
+
+
+AOP는 공부할 부분이 굉장히 많다. 추후에는 `After`, `Before` 와 Aspect로 Exception 처리로직 만들기, 어노테이션 말고도 어디에 또 Around를 걸 수 있는지 등을 공부할 수 있다. 
+
+<br>
+
+
 # 스프링 PSA
+Portable Service Abstraction의 약자이다. <U>PSA의 목표는 사용하는 기술스택이 달라도 우리의 코드는 달라지지 않아야 한다는 것이다.</U> 
+
+### Service Abstraction
+
+Spring으로 `서블릿 어플리케이션`을 만들고 있는데 실제로 `Controller`를 만들어보면 서블릿에 관련된 것을 특별히 코딩하지 않는다. URL 매핑도 `@GetMapping`, `@PostMapping` 을 사용해서 끝내버린다.
+서블릿을 직접 조작한다면 아래와 같은 코드를 짜야 했을 것이다. 
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/sb.png" >
+<figcaption align = "center">[Picture 9] 서블릿을 직접 사용한다면</figcaption>
+
+<br>
+
+이렇게 간단하게 만들어도 그 밑에서는 서블릿 기반으로 동작한다. _이게 가능한 이유는 밑단의 서블릿 서비스를 추상화 했기 때문이다._ Spring 에서는 서블릿이 포함된 MVC외에도 다양한 Service Abstraction을 제공한다.   
+
+<br>
+
+
+
+### Portable 
+`Spring web mvc`는 내장된 `tomcat`으로 돌아가고 있다. 이 상태에서 `Spring web flux` 를 도입하면 내장된 서버가 `netty`로 바뀐다. 완벽한 호환이 되는 것은 아니지만, 이렇게 내장 서버를 변경한다고 해도 별도의 변경 없이 실행이 된다.
+
+
+_Spring에서 내장서버를 이미 추상화를 시켰기 떄문에 변경이 되어도 지장없이 실행되는 것이다._ 말 그대로 내장서버가 Portable(휴대용)이 된 것이다. Spring의 내장서버로는 `tomcat`, `netty`, `jetty`, `undertow` 가 있다.
+
+
+
+#### PSA 예시 1: @Controller
+- 요청을 매핑할 수 있는 Controller 역할을 한다. 
+- @GetMapping 등으로 요청을 매핑한다. 
+  - 매핑: 명시한 URL이 요청으로 들어왔을 때 GetMapping을 부착한 해당 메서드에서 처리한다는 뜻이다. 
+  - path를 많이 명시해두지만 header, value, consumes, produces 등 요청과 관련된 것들로도 매핑이 가능하다. 
+
+> @GetMapping 
+
+
+{{< highlight java  "linenos=true,hl_inline=false" >}}
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@RequestMapping(
+method = {RequestMethod.GET}
+)
+public @interface GetMapping {
+@AliasFor(
+annotation = RequestMapping.class
+)
+String name() default "";
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] value() default {};
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] path() default {};
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] params() default {};
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] headers() default {};
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] consumes() default {};
+
+    @AliasFor(
+        annotation = RequestMapping.class
+    )
+    String[] produces() default {};
+}
+{{< /highlight >}}
+
+
+#### PSA 예시 2: @Transactional 
+
+Spring에서 DB의 All or Nothing인 트랜잭션 개념을 지키기 위해서는 `@Transactional` 만 부착하면 된다. 해당 어노테이션을 쓰지 않는다면 `JDBC 트랜잭션`을 사용해 직접 처리해야 한다.
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/sb.png" >
+<figcaption align = "center">[Picture 10] JDBC Transaction</figcaption>
+
+<br>
+
+- setAutoCommit을 false로 둬서 DB에 자동으로 반영되는 것을 방지한다. 
+
+TODO: 나머지 부분 더 쓰기 
+TODO: 글자간격 등 에디팅 하기 
+TODO: 발행하기
+
+
+
+
+#### PSA 예시 3: Spring Cache 
+Spring에서 사용하는 Cache도 PSA로 되어있다. 구현체로는 `javax.cache`, `ehcahe` 등이 있다.
