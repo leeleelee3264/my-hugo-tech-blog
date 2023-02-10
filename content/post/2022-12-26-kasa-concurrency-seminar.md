@@ -1,5 +1,5 @@
 +++
-title = "[Backend] Handling concurrency in Django"
+title = "[Seminar] Handling concurrency in Django"
 date = "2022-12-26"
 description = "Seminar for handling concurrent request in Django in Kasa 2022-11-30."
 tags = ["Project"]
