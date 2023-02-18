@@ -1,14 +1,14 @@
 +++
-title = "[Book] Modern Java in Action - Chapter 1,2,3"
+title = "[Book] [Modern Java in Action] 노트 정리 - Chapter 1,2,3"
 date = "2021-02-14"
-description = "Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda."
+description = "Raoul-Gabriel Urma 의 저서 [Modern Java in Action]을 요약한다. Chapter 1에서는 Java 8의 새로운 트랜드를 다룬다. Chapter 2에서는 behavior parameterization를 다루며, Chapter 3에서는 lambda를 다룬다."
 tags = ["Book"]
 +++
 
 <br>
 <br> 
 
-> Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda. 
+> Raoul-Gabriel Urma 의 저서 [Modern Java in Action]을 요약한다. Chapter 1에서는 Java 8의 새로운 트랜드를 다룬다. Chapter 2에서는 behavior parameterization를 다루며, Chapter 3에서는 lambda를 다룬다.
 
 <br> 
 

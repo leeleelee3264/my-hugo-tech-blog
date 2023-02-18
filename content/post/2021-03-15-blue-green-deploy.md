@@ -1,7 +1,7 @@
 +++
-title = "[Project] Making blue green deployment with Shell script"
+title = "[Project] Shell Script로 무중단 배포 흉내내보기"
 date = "2021-03-15"
-description = "Handles making blue green deployment with Shell script and Nginx. Also covers deployment method: Blue Green Deployment, Rolling Development, Canary Deployment."
+description = "Shell script로 무중단 배포를 흉내내는 방법을 알아본다. 또한 deployment method에 대해서 다룬다: Blue Green Deployment, Rolling Development, Canary Deployment."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Handles making blue green deployment with Shell script and Nginx. Also covers deployment method: Blue Green Deployment, Rolling Development, Canary Deployment.
+> Shell script로 무중단 배포를 흉내내는 방법을 알아본다. 또한 deployment method에 대해서 다룬다: Blue Green Deployment, Rolling Development, Canary Deployment.
 
 <br> 
 

@@ -1,7 +1,7 @@
 +++
-title = "[Project] How to make a readable tech blog with Hugo?"
+title = "[Project] 읽고 싶어지는 기술 블로그 만들기"
 date = "2022-12-22"
-description = "Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo."
+description = "어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다."
 tags = ["Project"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo to make more readable blog.
+> 어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다.
 > > [[티스토리 블로그]](https://calgaryhomeless.tistory.com/?page=1)   
 > > [[Jekyll 블로그]](https://leeleelee3264.github.io/old-blog/)
 

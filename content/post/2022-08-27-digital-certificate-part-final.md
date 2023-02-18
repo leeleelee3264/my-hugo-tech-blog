@@ -1,7 +1,7 @@
 +++
-title = "[Infra] Digital certificate (2/2) - Advanced"
+title = "[Infra] 네트워크 필수교양, 인증서 (2/2) - 심화학습"
 date = "2022-08-27"
-description = "The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust."
+description = "이 포스트에서는 인증서의 심화 개념인 Certificate Authority, root CA, CA bundle, chain of trust에 대해서 알아본다."
 tags = ["Infra"]
 showComments = true
 +++
@@ -9,7 +9,7 @@ showComments = true
 <br>
 <br>
 
-> The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust.
+> 이 포스트에서는 인증서의 심화 개념인 Certificate Authority, root CA, CA bundle, chain of trust에 대해서 알아본다.
 
 <br>
 

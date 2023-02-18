@@ -1,7 +1,7 @@
 +++
-title = "[Project] MySQL DB full backup with shell script"
+title = "[Project] Shell script로 MySQL DB full backup 구현하기"
 date = "2021-09-09"
-description = "Implement shell script for MySQL DB full backup with mysql command options."
+description = "Shell script로 MySQL DB full backup을 구현하는 방법에 대해 알아본다."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Implement shell script for MySQL DB full backup with mysql command options.
+> Shell script로 MySQL DB full backup을 구현하는 방법에 대해 알아본다.
 
 <br> 
 

@@ -1,7 +1,7 @@
 +++
-title = "[Infra] What is Load balancer"
+title = "[Infra] 클라우드 필수 교양, 로드 밸런서"
 date = "2022-10-24"
-description = "The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compare load balance to reverse proxy."
+description = "이 포스트에서는 scale up, scale out, 트래픽과 함께 기초적인 로드 밸런서 지식을 다룬다. 끝에서는 로드 밸런스와 리버스 프록시를 비교한다."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br>
 
-> The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compares load balance to reverse proxy.
+> 이 포스트에서는 scale up, scale out, 트래픽과 함께 기초적인 로드 밸런서 지식을 다룬다. 끝에서는 로드 밸런스와 리버스 프록시를 비교한다.
 
 <br>
 

@@ -1,7 +1,7 @@
 +++
 title = "[Infra] MySQL Study (3/5) - String Function & Referential Integrity"
 date = "2021-07-08"
-description = "Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL."
+description = "MySQL string function에 대해서 알아본다: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL.  
+> MySQL string function에 대해서 알아본다: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL.
 
 <br> 
 

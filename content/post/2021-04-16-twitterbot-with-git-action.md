@@ -1,7 +1,7 @@
 +++
-title = "[Project] Making Netflix Twitter bot with Github action"
+title = "[Project] Github Action을 활용한 Netflix 트위터 봇 만들기"
 date = "2021-04-16"
-description = "Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow."
+description = "Github Action을 활용해서 Netflix 트위터 봇을 만들어보자. 기술 스택: Python, tweepy, Twitter API, auth, Github action, Github action workflow."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow.
+> Github Action을 활용해서 Netflix 트위터 봇을 만들어보자. 기술 스택: Python, tweepy, Twitter API, auth, Github action, Github action workflow.
 > > [[github]](https://github.com/leeleelee3264/twitter_project)  
 > > [[트위터 계정]](https://twitter.com/now_netflixKR)
 

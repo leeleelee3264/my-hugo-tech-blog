@@ -1,14 +1,14 @@
 +++
-title = "[General] 2021 Backend developer job interview (2/2) - Python, General"
+title = "[General] 2021년 백엔드 개발자 면접 질문 (2/2) - Python, 기본 지식"
 date = "2022-01-01"
-description = "Handling 2021 backend developer job interview question with python and general knowledge."
+description = "2021년 백엔드 개발자 면접 질문 중 Python과 기본지식과 관련된 질문을 정리한다."
 tags = ["General"]
 +++
 
 <br>
 <br> 
 
-> Handling 2021 backend developer job interview question with python and general knowledge.
+> 2021년 백엔드 개발자 면접 질문 중 Python과 기본지식과 관련된 질문을 정리한다.
 
 <br> 
 

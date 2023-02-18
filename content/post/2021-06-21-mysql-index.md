@@ -1,7 +1,7 @@
 +++
 title = "[Infra] MySQL Study (1/5) - Index"
 date = "2021-06-21"
-description = "Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index."
+description = "MySQL Index에 대해서 알아본다: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index.
+> MySQL Index에 대해서 알아본다: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index.
 
 <br> 
 

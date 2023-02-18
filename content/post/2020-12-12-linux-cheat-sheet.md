@@ -1,7 +1,7 @@
 +++
 title = "[Cheat Sheet] Linux command cheat sheet"
 date = "2020-12-12"
-description = "Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc."
+description = "Linux command를 위한 Cheat Sheet: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc."
 tags = ["Cheat"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Cheat"]
 <br>
 <br> 
 
-> Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc.
+> Linux command를 위한 Cheat Sheet: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc.
 
 <br> 
 

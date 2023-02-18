@@ -1,14 +1,14 @@
 +++
-title = "[General] 2021 Backend developer job interview (1/2) - Java"
+title = "[General] 2021년 백엔드 개발자 면접 질문 (1/2) - Java"
 date = "2021-12-02"
-description = "Handling 2021 backend developer job interview question with Java."
+description = "2021년 백엔드 개발자 면접 질문 중 Java와 관련된 질문을 정리한다."
 tags = ["General"]
 +++
 
 <br>
 <br> 
 
-> Handling 2021 backend developer job interview question with Java.
+> 2021년 백엔드 개발자 면접 질문 중 Java와 관련된 질문을 정리한다.
 
 <br> 
 

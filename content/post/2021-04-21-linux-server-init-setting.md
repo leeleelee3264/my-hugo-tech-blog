@@ -1,7 +1,7 @@
 +++
-title = "[Infra] Installation and setup Ubuntu"
+title = "[Infra] Ubuntu 설치와 초기 설정하기"
 date = "2021-04-21"
-description = "Handles installation and setting for Ubuntu. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB."
+description = "Ubuntu 설치와 초기 설정 방법에 대해 알아본다. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB."
 tags = ["Infra"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Handles installation and setting for Ubuntu. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB.
+> Ubuntu 설치와 초기 설정 방법에 대해 알아본다. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB.
 
 <br> 
 

@@ -1,7 +1,7 @@
 +++
-title = "[Book] Effective Python (2/10) - List & Dictionary"
+title = "[Book] [Effective Python] 노트 정리 (2/10) - List & Dictionary"
 date = "2022-10-25"
-description = "Summary of Effective Python written by Breet Slatkin. In this post, we covers List & Dictionary."
+description = "Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 List & Dictionary를 다룬다."
 tags = ["Book"]
 +++
 
@@ -10,7 +10,7 @@ tags = ["Book"]
 <br>
 <br> 
 
-> Summary of Effective Python written by Breet Slatkin. In this post, we covers List & Dictionary.
+> Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 List & Dictionary를 다룬다.
 
 <br> 
 

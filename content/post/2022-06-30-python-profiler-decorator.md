@@ -1,7 +1,7 @@
 +++
-title = "[Project] Making simple profiler with Python decorator"
+title = "[Project] Python decorator를 사용해 초간단 프로파일러 만들기"
 date = "2022-06-29"
-description = "Making simple profiler with Python decorator to check memory performance, executed query and elapsed time."
+description = "이 포스트에서는 Python decorator를 사용해 메모리 퍼포먼스, 실행된 쿼리, 시간 측정 등을 하는 초간단 프로파일러를 만드는 법을 배워본다."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Making simple profiler with Python decorator to check memory performance, executed query and elapsed time.
+> 이 포스트에서는 Python decorator를 사용해 메모리 퍼포먼스, 실행된 쿼리, 시간 측정 등을 하는 초간단 프로파일러를 만드는 법을 배워본다.
 
 <br> 
 

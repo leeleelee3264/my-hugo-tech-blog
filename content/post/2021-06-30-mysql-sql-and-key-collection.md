@@ -1,7 +1,7 @@
 +++
 date = "2021-06-30"
 title = "[Infra] MySQL Study (2/5) - SQL & key & collation"
-description = "Handles MySQL SQL & key & collation. SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4."
+description = "MySQL SQL & key & collation에 대해서 알아본다, SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4."
 tags = ["Infra"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Infra"]
 <br>
 <br> 
 
-> Handles MySQL SQL & key & collation. SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4.
+> MySQL SQL & key & collation에 대해서 알아본다, SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4.
 
 <br> 
 

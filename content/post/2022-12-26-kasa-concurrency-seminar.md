@@ -1,7 +1,7 @@
 +++
-title = "[Seminar] Handling concurrency in Django"
+title = "[Seminar] Django에서 동시성을 다루는 방법으로 인생 첫 세미나 진행하기"
 date = "2022-12-26"
-description = "Seminar for handling concurrent request in Django in Kasa 2022-11-30."
+description = "Kasa에서 2022-11-30 Handling Concurrent request in Django를 주제로 진행한 세미나를 정리한다."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Seminar for handling concurrent request in Django in Kasa 2022-11-30.
+> Kasa에서 2022-11-30 Handling Concurrent request in Django를 주제로 진행한 세미나를 정리한다..
 
 <br> 
 

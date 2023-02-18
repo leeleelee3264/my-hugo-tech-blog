@@ -1,7 +1,7 @@
 +++
-title = "[Project] How to build Myinfo oauth2 client with Django"
+title = "[Project] Django로  Myinfo oauth2 클라이언트 만들기"
 date = "2022-07-23"
-description = "Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto."
+description = "이 포스트에서는 Django로 Myinfo oauth2 클아이언트를 만드는 프로젝트를 다룬다. 끝에서는 Python에서 jwcrypto와 Crypto를 이용해 PKI를 다루는 법을 알아본다."
 tags = ["Project"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["Project"]
 <br>
 <br> 
 
-> Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto..
+> 이 포스트에서는 Django로 Myinfo oauth2 클아이언트를 만드는 프로젝트를 다룬다. 끝에서는 Python에서 jwcrypto와 Crypto를 이용해 PKI를 다루는 법을 알아본다.
 > > [[github]](https://github.com/leeleelee3264/myinfo-connector-python)  
 [[api document]](https://leelee-1.gitbook.io/myinfo-connector-python-api-doc/)  
 [[quick start]](https://leelee-1.gitbook.io/myinfo-connector-python-api-doc/myinfo-connector-python-api/quick-start)

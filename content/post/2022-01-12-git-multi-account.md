@@ -1,7 +1,7 @@
 +++
-title = "[General] Using multiple Github account in terminal"
+title = "[General] 터미널에서 여러 개의 Github 계정 사용하는 방법"
 date = "2022-01-12"
-description = "This post in about how to use Github multiple account in terminal with SSH key, ssh config and ssh-keygen"
+description = "이 포스트에서는 SSH key, ssh config 와 ssh-keygen를 사용하여 여러 개의 Github 계정을 사용하는 방법을 알아본다."
 tags = ["General"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["General"]
 <br>
 <br> 
 
-> This post in about how to use Github multiple account in terminal with SSH key, ssh config and ssh-keygen
+> 이 포스트에서는 SSH key, ssh config 와 ssh-keygen를 사용하여 여러 개의 Github 계정을 사용하는 방법을 알아본다.
 
 <br> 
 
