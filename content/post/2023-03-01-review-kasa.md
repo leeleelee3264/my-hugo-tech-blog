@@ -71,8 +71,11 @@ DevOps 업무를 해보고 싶었기 때문에 염려도 되는 한 편, <U>새�
 원래 Offering 기획을 하신 분이 내가 입사를 하기 전에 이미 퇴사를 하신 상태였고, 새로운 기획 담당자들과 함께 기획사항을 분석했다. 기획은 모두 싱가폴에 상주하고 있는 실무자들이 하기 때문에 문서 작성, 회의 등은 모두 `영어`로 이루어졌고, 
 팀에 공유를 하기 위해 다시 한국어로 번역을 하는 식으로 진행했다. 
 
+<br>
+
+
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/qna.png" >
-<figcaption align = "center">[Picture] 총 160개의 질문</figcaption>
+<figcaption align = "center">[Picture] 질문 예시</figcaption>
 
 
 <br>
@@ -82,7 +85,7 @@ DevOps 업무를 해보고 싶었기 때문에 염려도 되는 한 편, <U>새�
 
 이 작업을 하면서 개발자는 코딩만 잘하면 되는 것이 아니라 <U>요구사항을 파고 들어 분석을 해야 하며, 분석 과정에서 기획자나 다른 실무진들과 원활하면서도 긴밀하게 소통을 하기 위해 노력해야 한다는 것을 배웠다.</U> 
 
-또한, `잘 질문하는 방법`에 대해서 많이 고민했다. 
+분석을 하면서 총 160개의 질문을 작성하며 `잘 질문하는 방법`에 대해서 어떻게 해야 내가 모르는 부분을 정확이 질문하는지 많이 고민했다. 
 
 
 
@@ -117,28 +120,93 @@ DevOps 업무를 해보고 싶었기 때문에 염려도 되는 한 편, <U>새�
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/script.png" >
 <figcaption align = "center">[Picture] API 명세 예시</figcaption>
 
+<br>
+
+## 싱가포르 정부 Mydata API인 Myinfo 서비스 연결 
+`Myinfo`는 2017년부터 정부 주도하에 디지털화된 신원확인 체계를 수립하려는 `NDI` (National Digital Identity) 프로젝트의 일부이다.
+<U>카사 싱가포르는 자산이 10억 이상일때만 회원가입을 할 수 있는데</U> 이를 증명하기 위한 통장 잔액, 세금 내역서 등의 `증명서류`를 까다롭게 요구할 수 밖에 없었고, 이는 `온보딩의 병목`이 되었다. 
+
+때문에 Finance를 포함한 싱가포르 국민의 모든 데이터를 제공하는 Myinfo 서비스를 도입하게 되었다. Myinfo의 데이터는 정부가 제공하는 리소스이기 때문에 믿을 수 있었고, 사용자도 증명서류 없이 데이터를 불러오기만 하면 
+되니 `온보딩 이탈률을 50% 가까이 줄일 수 있었다`. 
+
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/req_one.png" >
+<figcaption align = "center">[Picture] Myinfo Requirements</figcaption>
+
+<br>
+
+정부의 사업이다보니 API Key 와 Secret을 발급받으면 API를 사용할 수 있는 기존의 API 서비스와는 다르게 조건 사항이 많았다. 
+3, 4, 5 항목은 크게 문제가 없었지만 `Transaction Log`와 `X.509 Public Key` 부분이 까다로웠다. 
+
+<br>
+
+> Transaction Log 
+
+기존에 로그를 `AWS Opensearch`로 남기고, `AWS Opensearch Dashboard`로 보고 있던 터라, 동일한 방식으로 로그를 남겼다.
+
+
+Myinfo에서 가져오는 데이터를 로깅해야 했는데 여기에는 `NRIC`(싱가포르 주민번호)와 이름 등의 개인정보가 포함이 되어있었다. 당시에 코리아 프로덕트가 `ISMS` 심사를 준비하고 있었기 때문에 
+싱가포르 프로덕트 또한 ISMS 규정에 맞춰 <U>개인 식별 정보인 NRIC를 암호화 해서 로그를 남겨야 했다.</U> 
+
+암호화 뿐 만 아니라,  암호화 키 또한 주기적으로 변경해야 했다. 따라서 `AWS KMS` 서비스를 사용해서 개인 식별 정보를 암호화하고, `스케쥴러`로 주기적으로 기존 암호화 키를 폐기하고 새로운 암호화 키를 발급받았다. 
 
 
 <br>
 
-## 싱가포르 정부 Mydata 서비스 연결 
+> X.509 Public Key
 
+Myinfo 서버에 데이터를 요청하고, 받기 위해서는 모든 요청과 데이터를 암호화하는 `PKI 구조`를 취해야 했다. 
+
+##### PKI 사용 시나리오
+
+Myinfo로 보내는 요청이 Kasa에서 온 것임을 확인하기 위해 Kasa의 `Private key`로 서명을 해야 했고, Myinfod에 Kasa의 Private key로 만든 `X.509 인증서`, 즉 `Public key`를 제출해야 했다.  
+
+또한 Myinfo에서 온 데이터를 확인할 때는 이 응답이 Myinfo에서 온 것을 확인하기 위해 Myinfo에서 발급해준 Myinfo Public key로 `verify`를 하고, 한 번 더 Kasa의 Private key로 `decrypt`를 해야 했다.     
+
+<br>
+
+
+<img class="img-zoomabㅅle medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/req_two.png" >
+<figcaption align = "center">[Picture] Myinfo에서 허가하는 Root CA</figcaption>
+
+<br>
+
+
+Myinfo에서 허가하는 `Root CA`가 별도로 있기 때문에 `digicert`와 `netrust`에 하나 하나 직접 문의를 하다가 결국 netrust에서 발급을 했다.
+
+
+인증서 자체에 대한 지식이 전무했고 비용과 싱가포르 정부의 기업 인증 등 많은 어려움에 봉착했다. 또한 <U>경영팀, 인프라 팀과 정보보안 팀의 그레이존에 있는 부분이 많았지만 팀의 업무를 가리지 않고 모두 담당을 하니 많은 것을 배울 수 있었고,</U> 
+실제로 Kasa에서 했던 `가장 보람있는 프로젝트` 였다.
+
+<br>
+
+
+프로젝트를 하면서 공부했던 포스팅은 아래에서 확인이 가능하다.
+- [[[Infra] 네트워크 필수교양, 인증서 (1/2) - 쌩기초]](https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/)
+- [[[Infra] 네트워크 필수교양, 인증서 (2/2) - 심화학습]](https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/)
+- [[[Project] Django로 Myinfo oauth2 클라이언트 만들기]](https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/)
 
 
 <br>
 
-## 공모 종료와 DABS 할당 로직 개발 
+## 공모 청산 모듈 개발
 
-## 공모금 이체 로직 개발
+#### 공모 종료와 DABS 할당량 계산 
 
-## DABS 발행 로직 개발 
+
+#### 공모금 이체와 DABS 할당 
+
+#### DABS 발행
+
+
+<br>
 
 ## 대사 개발 
 
 ## Notification 모듈 개발 
 
-
-## 싱가포르 금융관리국 MAS regulation 획득을 위한 펜테스트 지원 
 
 <br>
 
