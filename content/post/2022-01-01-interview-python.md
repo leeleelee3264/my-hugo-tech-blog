@@ -458,15 +458,45 @@ Oauth2에 대해 대답을 하다가 나온 문제였다. 둘이 어떤 개념�
 
 <br> 
 
-| / | Authentication | Authorization |
-| --- | --- | --- |
-| 역할 | 사용자 신원 확인 | 리소스, 기능 에 대한 엑세스 권한 확인 |
-| 목적 | 사용자가 누구인지 확인/판별 | 사용자가 해당 리소스/기능에 대해 사용 권한이 있는지 확인/판별 |
-| 방법 | 로그인, 생체인식 | session key, JWT, Oauth |
+| / | Authentication      | Authorization                       |
+| --- |---------------------|-------------------------------------|
+| 역할 | 사용자 신원 확인           | 리소스, 기능 에 대한 엑세스 권한 확인              |
+| 목적 | 사용자가 누구인지 확인/판별     | 사용자가 해당 리소스/기능에 대해 사용 권한이 있는지 확인/판별 |
+| 방법 | 비밀번호 인증, 2FA, Oauth | RBAC, ABAC, MAC, DAC                |
 
 절차는 Authentication ➡️ Authorization 이 이루어진다고 보면 된다.
 
-Authentication이 되었다고 해도 보내는 리퀘스트마다 이 사용자가 정말로 자격이 있는지 매번 확인을 하는 절차가 Authentication이라고 생각한다.
+Authentication이 되었다고 해도 보내는 리퀘스트마다 이 사용자가 정말로 자격이 있는지 매번 확인을 하는 절차가 Authorization이라고 생각한다.
+
+#### Authorization 방법 
+
+> RBAC 
+
+- Role-based access control 
+- 조직에서 사용자에게 부여한 역할을 근간으로 access 권한을 부여한다.
+- 예시: 매니저에게 스케줄 접근 권한을 부여한다.
+- ABAC보다 더 구현하기가 쉽다. 
+
+
+> ABAC
+
+- Attribute-based access control 
+- 직함, 부서와 같은 사용자의 특성에 따라서 권한을 부여한다.  
+- 예시: 백엔드 개발팀에게 DB 접근 권한을 부여한다. 
+- RBAC보다 더 유연하고, 복잡한 access control을 수용할 수 있다. 
+
+
+> MAC
+
+- Mandatory access control 
+- 미리 정의된 역할, 정책, 규정 등에 따라서 권한을 부여한다. 
+
+> DAC 
+
+- Discretionary access control
+- 리소스의 소유자가 임의로 접근 권한을 부여한다. 
+
+
 
 <br> 
 
