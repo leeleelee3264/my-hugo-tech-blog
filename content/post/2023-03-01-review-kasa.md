@@ -58,6 +58,36 @@ DevOps 업무를 해보고 싶었기 때문에 염려도 되는 한 편, <U>새�
 # Work
 ## JWT를 이용한 토큰 기반 서버 인증 개발 
 
+FE가 API를 호출할 때 토큰 기반으로 인증을 할 수 있도록 `JWT`를 이용해 `토큰 기반 서버 인증`을 개발했다. 평소 요청은 `access token` 으로 하고, 만료되면 `refresh token`을 사용해 새로운 access token을 
+발급하는 구조를 선택했다. `rest_framework_simplejwt` 라이브러리를 사용해서 `토큰 생성`, `revoke`, `refresh`를 구현했다.
+
+회사에서는 3단계의 로그인 절차가 필요하다. `ID/PW 로그인`, `OTP 로그인`, `투자 계좌 로그인`의 절차로, 투자 계좌 로그인까지 해야 정식으로 서비스를 사용할 수 있다.
+단계마다 토큰을 발급했다.
+
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/token.png" >
+<figcaption align = "center">[Picture] 질문 예시</figcaption>
+
+<br>
+
+
+처음에는 토큰의 유효 기간이나 폐기등의 토큰 정책을 유념하지 않았다. 하지만 `싱가포르 금융감독기관`의 인증인 `MAS Regulation`을 받기 위해서는 `서버 보안 강화`해야 했고, 토큰 정책도 포함이 되어있었다. 
+
+
+#### 토큰 보안 강화
+
+access의 만료시간은 `10분`, refresh의 만료시간은 `12시간`이었는데, refresh의 만료시간이 너무 길어, access token을 재발급 받을 때마다 refresh token도 재발급하는 `ROTATE_REFRESH_TOKENS`을 적용해 <U>refresh token의 수명을 10분으로 줄였다.</U> 
+
+조사 결과 `링크드인`의 accsss 만료시간은 1일, refresh 만료시간은 6일이었고, `구글 클라우드`의 access 만료시간은 30분, refresh는 200일이었다. 
+refresh 수명이 짧아지면, 사용자가 활동이 없을 때 쉽게 로그아웃 되는 단점이 있지만, 앱이 아닌 `웹 서비스`이고, 싱가포르 금융 규제상 비교적 짧은 token 수명을 가지게 되었다. 
+
+또한 기존 refresh token을 `블랙리스트로 등록`하고, access token은 10분이 지나기 전에 새로 발급받으면 기존의 access token을 사용할 수 있기 때문에 `Redis 캐시`에 폐기된 access token을 관리하고 주기적으로 데이터를 지워주며 토큰의 보안을 강화했다.
+
+토큰 구조는 Statue를 관리하지 않아 편리하지만 <U>만료가 되기 전까지는 사용이 가능하기 때문에 폐기 정책을 까다롭게 관리</U>해야 한다는 걸 깨달았다. 
+
+<br>
 
 
 ## API 접근제한을 위한 Permission, Middleware 개발 
