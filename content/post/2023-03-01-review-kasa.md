@@ -56,10 +56,10 @@ DevOps 업무를 해보고 싶었기 때문에 염려도 되는 한 편, <U>새�
 <br>
 
 # Work
-## JWT를 이용한 토큰 기반 서버 인증 개발 
+## JWT를 이용한 Token Authentication 개발
 
-FE가 API를 호출할 때 토큰 기반으로 인증을 할 수 있도록 `JWT`를 이용해 `토큰 기반 서버 인증`을 개발했다. 평소 요청은 `access token` 으로 하고, 만료되면 `refresh token`을 사용해 새로운 access token을 
-발급하는 구조를 선택했다. `rest_framework_simplejwt` 라이브러리를 사용해서 `토큰 생성`, `revoke`, `refresh`를 구현했다.
+FE가 API를 호출할 때 토큰 기반으로 인증을 할 수 있도록 `JWT`를 이용해 `Token Authentication`을 개발했다. 평소 요청은 `access token` 으로 하고, 만료되면 `refresh token`을 사용해 새로운 access token을 
+발급하는 구조를 선택했다. `Django rest framework의 simplejwt` 라이브러리를 사용해서 `토큰 생성`, `revoke`, `refresh`를 구현했다.
 
 회사에서는 3단계의 로그인 절차가 필요하다. `ID/PW 로그인`, `OTP 로그인`, `투자 계좌 로그인`의 절차로, 투자 계좌 로그인까지 해야 정식으로 서비스를 사용할 수 있다.
 단계마다 토큰을 발급했다.
@@ -68,12 +68,12 @@ FE가 API를 호출할 때 토큰 기반으로 인증을 할 수 있도록 `JWT`
 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/token.png" >
-<figcaption align = "center">[Picture] 질문 예시</figcaption>
+<figcaption align = "center">[Picture 1] Token Authentication 흐름</figcaption>
 
 <br>
 
 
-처음에는 토큰의 유효 기간이나 폐기등의 토큰 정책을 유념하지 않았다. 하지만 `싱가포르 금융감독기관`의 인증인 `MAS Regulation`을 받기 위해서는 `서버 보안 강화`해야 했고, 토큰 정책도 포함이 되어있었다. 
+처음에는 토큰의 유효 기간이나 폐기등의 토큰 정책을 유념하지 않았다. 하지만 `싱가포르 금융감독기관`의 인증인 `MAS Regulation`을 준수하기 위해랙 `서버 보안 강화`해야 했고, 토큰 정책도 포함이 되어있었다. 
 
 
 #### 토큰 보안 강화
@@ -83,14 +83,26 @@ access의 만료시간은 `10분`, refresh의 만료시간은 `12시간`이었�
 조사 결과 `링크드인`의 accsss 만료시간은 1일, refresh 만료시간은 6일이었고, `구글 클라우드`의 access 만료시간은 30분, refresh는 200일이었다. 
 refresh 수명이 짧아지면, 사용자가 활동이 없을 때 쉽게 로그아웃 되는 단점이 있지만, 앱이 아닌 `웹 서비스`이고, 싱가포르 금융 규제상 비교적 짧은 token 수명을 가지게 되었다. 
 
-또한 기존 refresh token을 `블랙리스트로 등록`하고, access token은 10분이 지나기 전에 새로 발급받으면 기존의 access token을 사용할 수 있기 때문에 `Redis 캐시`에 폐기된 access token을 관리하고 주기적으로 데이터를 지워주며 토큰의 보안을 강화했다.
+또한 기존 refresh token을 내부 DB에서 `블랙리스트로 등록`하고, access token은 10분이 지나기 전에 새로 발급받으면 기존의 access token을 사용할 수 있기 때문에 `Redis 캐시`에 폐기된 access token을 관리하고 주기적으로 데이터를 지워주며 토큰의 보안을 강화했다.
 
-토큰 구조는 Statue를 관리하지 않아 편리하지만 <U>만료가 되기 전까지는 사용이 가능하기 때문에 폐기 정책을 까다롭게 관리</U>해야 한다는 걸 깨달았다. 
+토큰 구조는 Statue를 관리하지 않아 편리하지만 <U>만료가 되기 전까지는 사용이 가능하기 때문에 폐기 정책을 까다롭게 관리</U>해야 한다.
 
 <br>
 
 
-## API 접근제한을 위한 Permission, Middleware 개발 
+## API 접근제한을 위한 Permission 개발 
+`TokenAuthentication`으로 토큰 인증이 끝이 나면 유저에 대한 식별이 가능하다. 
+  BE API는 `사용자`와 `운영자` 전용 API를 모두 포함하고 있다. 더 나아가 사용자가 3단 로그인을 하며, 운영자 또한 공모 운영자, 회원관리 운영자 등으로 나눠져있기 때문에 `Role-based access control (RBAC)` 정책을 채택했다. 
+
+Django rest framework의 `Permission System`을 확장해서 요구사항에 맞는 확장된 커스텀 Permission을 만들었다. 이렇게 만들어진 Permission은 각 API View에 `permission_classes`을 설정해 API 접근 관리를 했다. 
+
+기존에는 아예 운영자용, 사용자용 API 서버를 따로 두었기 때문에 접근 권한을 까다롭게 고민하지 못하고, `Authentication`에만 집중을 했는데 이번 기회로 `Authorization`의 구조도 구축하는 할 수 있었다.
+
+
+
+
+
+
 
 <br>
 
@@ -104,7 +116,7 @@ refresh 수명이 짧아지면, 사용자가 활동이 없을 때 쉽게 로그�
 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/qna.png" >
-<figcaption align = "center">[Picture] 질문 예시</figcaption>
+<figcaption align = "center">[Picture 2] 질문 예시</figcaption>
 
 
 <br>
@@ -147,7 +159,7 @@ refresh 수명이 짧아지면, 사용자가 활동이 없을 때 쉽게 로그�
 <br>
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/script.png" >
-<figcaption align = "center">[Picture] API 명세 예시</figcaption>
+<figcaption align = "center">[Picture 3] API 명세 예시</figcaption>
 
 <br>
 
@@ -162,7 +174,7 @@ refresh 수명이 짧아지면, 사용자가 활동이 없을 때 쉽게 로그�
 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/req_one.png" >
-<figcaption align = "center">[Picture] Myinfo Requirements</figcaption>
+<figcaption align = "center">[Picture 4] Myinfo Requirements</figcaption>
 
 <br>
 
@@ -198,7 +210,7 @@ Myinfo로 보내는 요청이 Kasa에서 온 것임을 확인하기 위해 Kasa�
 
 
 <img class="img-zoomabㅅle medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/req_two.png" >
-<figcaption align = "center">[Picture] Myinfo에서 허가하는 Root CA</figcaption>
+<figcaption align = "center">[Picture 5] Myinfo에서 허가하는 Root CA</figcaption>
 
 <br>
 
@@ -359,9 +371,24 @@ Django로 백엔드 서버를 다루면서 마주했던 `동시성` 관련 이�
 
 <br>
 
+## NHN Forward 2022 참석 
+NHN Forward 2022는 처음으로 참석한 오프라인 개발자 컨퍼런스다. 
+듣고 싶은 세션이 너무 많아 하루 종일 빡빡한 스케쥴로 파르나스 여기저기를 옮겨다녔다. 참여한 기업 부스가 많아서 참석 경품을 정말 한 바가지 받아서 컨퍼런스에 참여하지 못한 동료들에게 나눠주는 등 즐거운 시간이었다. 
+
+앞으로는 컨퍼런스에 <U>참석으로 그치는 것이 아닌 현장에서 열심히 듣고, 집에 와서 모르는 내용을 찾아보고 정리해야 할 필요를 느꼈다.</U> 그리고 시간이 넉넉하더라도 꼭 일찍 등록을 하고, 세미나실에도 미리 들어가서 자리를 확보 해야겠다! 
+
+<br>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/nhn.jpeg" >
+<figcaption align = "center">[Picture 6] NHN Forward 초대창</figcaption>
+
+
+
+<br>
+
 ## Naver Deview 2023 참석 
 2023년 02월에 Naver 개발자 컨퍼런스인 Deview 2023에 참석했다.
-2022년에 NHN의 Forward 이후 두 번째로 참석하는 오프라인 개발자 컨퍼런스였다. 
 
 급하게 회사로 복귀해야 해서 세션은 하나 밖에 듣지 못했지만 부스가 알찼다. 특히 `네이버 클로바`와 `네이버 제트`의 개발팀에게 직접 
 사내 개발 문화와 분위기, 필수로 요구되는 스킬 등을 질문하고 그 분들의 답변을 들을 수 있어서 좋았다.
@@ -373,11 +400,11 @@ Django로 백엔드 서버를 다루면서 마주했던 `동시성` 관련 이�
 <br>
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/IMG_5553.JPG" >
-<figcaption align = "center">[Picture] Deview 포토존</figcaption>
+<figcaption align = "center">[Picture 7] Deview 포토존</figcaption>
 
 <br> 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/kasa/IMG_5563.JPG" >
-<figcaption align = "center">[Picture] Deview 입장 팔찌</figcaption>
+<figcaption align = "center">[Picture 8] Deview 입장 팔찌</figcaption>
 
 <br> 
