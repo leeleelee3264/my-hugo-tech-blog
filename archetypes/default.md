@@ -48,8 +48,11 @@ tags = [""]
 
 <br> 
 
-<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="" >
-<figcaption align = "center"></figcaption>
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/cloud.png" >
+<figcaption align = "center">[Picture 1] 인프라 논리적 규모</figcaption>
+
 
 <br> 
 
