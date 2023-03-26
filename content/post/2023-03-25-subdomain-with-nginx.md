@@ -233,7 +233,7 @@ sites-available/
 server {
 listen 80;
 listen [::]:80;
-server_name www.leelee.me, leelee.me;
+server_name www.leelee.me, leelee.me, jenkins.leelee.me;
 
     return 301 https://$host$request_uri;
 }
@@ -263,6 +263,8 @@ server_name www.leelee.me, leelee.me;
 
 원래 `server_name *leelee.me` 라고 했다가 leelee.me로 들어가도 jenkins가 나왔다. 
 뭔가 jenkins의 conf를 덮어쓰는 거 같아서 아스테리크를 쓰지 않고 도메인을 `server_name www.leelee.me leelee.me` 로 명시했다.
+
+그리고 80 포트 설정 쪽 server_name에 꼭 추가할 서브도메인을 쓰도록 한다. 쓰지 않으면 redirect가 이상하게 된다. 
 
 <U>앞으로 서브도메인을 추가할 때마다 site-avaliable에 서브도메인.leelee.me 설정 파일을 만들고, server_name 서브도메인.leelee.me 를 명시하는 작업을 해야 한다.</U> 
 
