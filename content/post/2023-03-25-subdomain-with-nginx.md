@@ -233,7 +233,7 @@ sites-available/
 server {
 listen 80;
 listen [::]:80;
-server_name www.leelee.me, leelee.me, jenkins.leelee.me;
+server_name www.leelee.me, leelee.me;
 
     return 301 https://$host$request_uri;
 }
@@ -264,8 +264,6 @@ server_name www.leelee.me, leelee.me;
 원래 `server_name *leelee.me` 라고 했다가 leelee.me로 들어가도 jenkins가 나왔다. 
 뭔가 jenkins의 conf를 덮어쓰는 거 같아서 아스테리크를 쓰지 않고 도메인을 `server_name www.leelee.me leelee.me` 로 명시했다.
 
-그리고 80 포트 설정 쪽 server_name에 꼭 추가할 서브도메인을 쓰도록 한다. 쓰지 않으면 redirect가 이상하게 된다. 
-
 <U>앞으로 서브도메인을 추가할 때마다 site-avaliable에 서브도메인.leelee.me 설정 파일을 만들고, server_name 서브도메인.leelee.me 를 명시하는 작업을 해야 한다.</U> 
 
 <br>
@@ -277,9 +275,16 @@ server_name www.leelee.me, leelee.me;
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 # Jenkins server block to proxy requests to Jenkins running on port 8081
 server {
-listen 443 ssl http2;
-listen [::]:443 ssl http2;
+listen 80;
 server_name jenkins.leelee.me;
+return 301 https://$host$request_uri;
+}
+
+server {
+
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name jenkins.leelee.me;
 
     # SSL/TLS configuration using Let's Encrypt certificate
     ssl_certificate /etc/letsencrypt/live/leelee.me-0001/fullchain.pem;
@@ -288,10 +293,15 @@ server_name jenkins.leelee.me;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     location / {
-        proxy_pass http://localhost:8081/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+      proxy_set_header        Host $host;
+      proxy_set_header        X-Real-IP $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header        X-Forwarded-Proto $scheme;
+
+      # Fix the "It appears that your reverse proxy set up is broken" error.
+      proxy_pass          http://127.0.0.1:8081;
+      proxy_read_timeout  90;
     }
 }
 {{< /highlight >}}
