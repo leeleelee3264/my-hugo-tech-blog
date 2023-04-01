@@ -29,10 +29,41 @@ tags = ["infra"]
 
 <br>
 
-> 결과물 
+> 결과물
 
-- Nginx에 서브도메인 연결 
+- Nginx에 서브도메인 연결
 - 서브도메인 https 적용
+
+<br>
+
+본격적인 세팅에 들어가기 전에 Nginx가 여기서 어떤 용도로 사용이 되었나를 간략하게 알아보도록 하겠다.
+더 자세하게 알고 싶다면 [[[Infra] 클라우드 필수 교양, 로드 밸런서]](https://leeleelee3264.github.io/post/2022-10-24-load-balancer/) 를 참고하도록 한다. 
+
+<br>
+
+#### Nginx의 용도 
+
+> Nginx는 오픈소스 Web Server로, Reserve Proxy의 역할 또한 수행할 수 있다.   
+
+<br>
+
+여기서는 Nginx는 `Reverse Proxy`로 사용한다. Reverse Proxy는 클라이언트 요청들을 `판단`해서 서버 그룹에 넘겨준다. 또한 선택된 서버가 만들어낸 응답을 적합한 클라이언트에 리턴해준다. 
+
+<br>
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/subdomain/reverse.png" >
+<figcaption align = "center">[Picture 0] Reverse Proxy Flow</figcaption>
+
+<br>
+
+
+> 시나리오 
+
+- 프로젝트에서 Jenkins의 포트를 8081이라고 했을 때 Nginx를 사용하기 전에는 엑세스를 위해 8081 포트를 열어둬야 했다.
+- 하지만 Nginx가 `단일접점`이 되어 모든 요청을 받아 담당 서버로 전달하게 되면서 더이상 8081 포트를 열어둘 필요가 없어졌다. 
+- 결과적으로 Nginx가 사용하기 위한 `80`과 `443` 포트만 열어두면 된다.
+
+
 
 
 <br>
