@@ -33,8 +33,9 @@ post = "/:section/:filename/" # Custom post links, e.g. "/:year/:month/:title/"
 [params]
 author = "leeleelee3264"                # You can also set author in post front matter individually
 #subTitle = "Logfile of Developer LeeLee"
-defaultTheme = "auto"              # default theme when first visit (auto|dark|light)
+defaultTheme = "light"              # default theme when first visit (auto|dark|light)
 
+primaryColor = ""
 # Source URL of the website, will appear in the footer
 sourceURL = "https://github.com/leeleelee3264/leeleelee3264.github.io"
 
@@ -101,7 +102,7 @@ lazyPlaceholderRow = "/assets/lazyload/dsrca_loading_960x270.svg"
 lazyPlaceholderCol = "/assets/lazyload/dsrca_loading_480x540.svg"
 
 # Let images display in full brightness under dark mode
-# disableDarkImage = true
+disableDarkImage = true
 
 [markup]
 [markup.goldmark]
