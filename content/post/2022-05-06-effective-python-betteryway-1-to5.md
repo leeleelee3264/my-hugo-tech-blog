@@ -1,5 +1,5 @@
 +++
-title = "[Book] [Effective Python] 노트 정리 (1/10) - Think like Python"
+title = "[Book] [Effective Python] 알면 고수 같아 보이는 파이썬 개념"
 date = "2022-05-06"
 description = "Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 PEP8, bytes and str, f formatter, range, enumerate, zip를 다룬다."
 tags = ["Book"]

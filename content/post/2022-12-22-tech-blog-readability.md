@@ -1,5 +1,5 @@
 +++
-title = "[Project] 읽고 싶어지는 기술 블로그 만들기"
+title = "[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기"
 date = "2022-12-22"
 description = "어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다."
 tags = ["Project"]
@@ -22,6 +22,7 @@ tags = ["Project"]
 2. Hugo 도입기
 3. 읽고 싶은 기술 블로그 만들기
 4. 프로젝트 회고  
+5. 2023-0502 update
 
 <br> 
 
@@ -519,10 +520,22 @@ Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적
 항상 블로그 포스팅에는 사소한 주제보다는 의미있는, 큰 규모의 글을 다뤄야 한다는 부담 때문에 더 자주 포스팅을 하지 못한다. 
 앞으로는 부담을 내려두고 정말 기록을 위한 사소한 주제를 다뤄야겠다. 
 
+<br>
 
+# 2023-0502 update
+블로그에 사용하는 폰트와 백그라운드를 커스텀하기 위해 코드를 추가했다. 
+서브 모듈로 추가한 `themes/fuji` 디렉터리에서 수정했기 때문에 프로젝트를 clone 해 올 때 마다 이 코드를 추가한다. 
 
+<br>
 
+> themes/fuji/assets/scss/_custom_var.scss
 
-
-
+{{< highlight css  "linenos=true,hl_inline=false" >}}
+// Override variables with that file
+@import '_custom'; // Keep that for back-compatibility. This shouldn't be used anymore.
+$light-color-primary: #222222;
+$dark-color-font: #222222;
+$dark-color-font: #f1f1f1;
+$dark-color-bg: #121212;
+{{< /highlight >}}
 

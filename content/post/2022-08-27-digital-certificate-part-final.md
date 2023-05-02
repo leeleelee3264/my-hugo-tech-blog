@@ -1,5 +1,5 @@
 +++
-title = "[Infra] 네트워크 필수교양, 인증서 (2/2) - 심화학습"
+title = "[Infra] 인증서 (2/2): CA와 Chain of trust란 무엇인가?"
 date = "2022-08-27"
 description = "이 포스트에서는 인증서의 심화 개념인 Certificate Authority, root CA, CA bundle, chain of trust에 대해서 알아본다."
 tags = ["Infra"]

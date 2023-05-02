@@ -1,5 +1,5 @@
 +++
-title = "[Infra] Nginx에 서브도메인 연결하기 with Https"
+title = "[Infra] Nginx에 서브도메인 연결하기"
 date = "2023-03-25"
 description = "Nginx에서 서브도메인을 사용할 수 있도록 설정하는 방법을 알아본다."
 tags = ["infra"]

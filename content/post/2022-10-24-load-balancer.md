@@ -1,5 +1,5 @@
 +++
-title = "[Infra] 클라우드 필수 교양, 로드 밸런서"
+title = "[Infra] 로드 밸런서란 무엇인가?"
 date = "2022-10-24"
 description = "이 포스트에서는 scale up, scale out, 트래픽과 함께 기초적인 로드 밸런서 지식을 다룬다. 끝에서는 로드 밸런스와 리버스 프록시를 비교한다."
 tags = ["Infra"]

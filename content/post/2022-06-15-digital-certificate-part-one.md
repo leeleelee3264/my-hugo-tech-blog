@@ -1,5 +1,5 @@
 +++
-title = "[Infra] 네트워크 필수교양, 인증서 (1/2) - 쌩기초"
+title = "[Infra] 인증서 (1/2): Certificate, PKI, X.509란 무엇인가?"
 date = "2022-06-15"
 description = "이 포스트에서는 인증서의 기본 개념을 다룬다: CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509"
 tags = ["Infra"]

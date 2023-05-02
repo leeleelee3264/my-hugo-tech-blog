@@ -1,5 +1,5 @@
 +++
-title = "[General] Kasa에서 백엔드 엔지니어로서의 1년 회고하기"
+title = "[General] 핀테크 스타트업에서 백엔드 엔지니어로 1년 근무한 소감"
 date = "2023-03-01"
 description = "Kasa에서 1년 동안 백엔드 엔지니어로서 지낸 시간을 회고합니다."
 tags = ["General"]

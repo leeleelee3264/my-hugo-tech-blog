@@ -1,5 +1,5 @@
 +++
-title = "[Class] [예제로 배우는 스프링 입문] 노트 정리"
+title = "[Class] [예제로 배우는 스프링 입문] IoC, AOP, PSA 기초"
 date = "2023-02-06"
 description = "예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다."
 tags = ["Backend"]

@@ -1,5 +1,5 @@
 +++
-title = "[Infra] Ubuntu 설치와 초기 설정하기"
+title = "[Infra] 안 쓰는 노트북에 Ubuntu 설치하고 초기 설정하기"
 date = "2021-04-21"
 description = "Ubuntu 설치와 초기 설정 방법에 대해 알아본다. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB."
 tags = ["Infra"]

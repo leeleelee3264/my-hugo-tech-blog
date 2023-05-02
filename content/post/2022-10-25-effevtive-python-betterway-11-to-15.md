@@ -1,5 +1,5 @@
 +++
-title = "[Book] [Effective Python] 노트 정리 (2/10) - List & Dictionary"
+title = "[Book] [Effective Python] List, Dictionary"
 date = "2022-10-25"
 description = "Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 List & Dictionary를 다룬다."
 tags = ["Book"]
