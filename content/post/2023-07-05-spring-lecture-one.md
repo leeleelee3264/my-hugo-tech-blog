@@ -5,20 +5,6 @@ description = "스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC,
 tags = ["Backend"]
 +++
 
-===
-규칙
-1. 포스트 앞에는 항상 summary와 index를 작성한다. 
-2. big title과 middle title 사이에는 br이 없다. 
-3. middle title, small title, image, example 사이에는 br이 있다. 
-4. image 전에 설명을 써두도록 한다. 
-5. image caption은 [Picture 1] 설명설명 식으로 작성한다. 
-6. image 사이즈는 height 400 width 500
-7. 여러 줄의 코드를 쓸 때에는 highlight를 사용한다. 넘버링이 default로 되어있다. 
-8. 한 줄의 코드를 쓰거나 코드가 아닐 경우에 (url 등) markdown code block을 사용한다.
-9. link 를 할 때에는 [링크] 로 해두어, 링크임을 식별할 수 있도록 한다. 
-10. 정렬을 할 때는 1,2,3,4 보다는 - 으로 dot 정렬을 사용한다. 
-=== 
-
 <br>
 <br> 
 
@@ -35,13 +21,13 @@ tags = ["Backend"]
 
 # session 1 라이브러리
 
-<U>로그</U>
-slf4j → 인터페이스이다.
+<U>로그</U>   
+slf4j → 인터페이스이다.  
 logback → slf4j를 구현한 구현체, 요즘은 logback을 쓰는 추세이다.    
 
 
-<U>테스트</U>
-Junit이 5로 넘어갔다. → 거의 다 5를 쓰는 추세이다.
+<U>테스트</U>  
+Junit이 5로 넘어갔다. → 거의 다 5를 쓰는 추세이다.  
 부가 라이브러리: assertj, mockito
 
 
@@ -64,13 +50,15 @@ viewResolver는 view를 찾아서 model과 함께 타임리프 엔진에 넘긴�
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/build.png" >
 <figcaption align = "center">[Picture 2] 빌드하고 실행하기</figcaption>
 
+<br>
+
 
 `no main manifest attribute, in hello-spring-1.0-SNAPSHOT.jar` 이 에러가 났는데 나는 프로젝트를 spring으로 생성하지 않고, plan java로 생성했어서 초기 설정이 부족해서 발생하는 에러라고 판단했다. 때문에 빈번하게 일어나는 에러라 생각하지 않아, 조치를 취하지 않았다. 
 
 <br>
 
 # session 4 정적 컨텐츠 
-static 디렉터리 밑에 컨텐츠를 만들면 아무것도 안 해도 매핑이 된다. 만약 static/hello-static.html 을 만들었다면 [localhost:8080/hello-static.html](http://localhost:8080/hello-static.html) 를 치고 들어가면 컨텐츠를 볼 수 있다. 
+static 디렉터리 밑에 컨텐츠를 만들면 아무것도 안 해도 매핑이 된다. 만약 static/hello-static.html 을 만들었다면 `localhost:8080/hello-static.html` 를 치고 들어가면 컨텐츠를 볼 수 있다. 
 
 정적 컨텐츠 요청이 오면 맨 처음에 `일반 API 요청처럼 이 url과 연결되어있는 컨트롤러를 먼저 찾는다`. 그 뒤에 없으면 static 파일을 뒤져서 결과를 반환한다. → 컨트롤러가 우선순위가 높다.
 
@@ -93,7 +81,7 @@ public String helloMvc(@RequestParam("name") String name, Model model) {
 }
 {{< /highlight >}}
 
-요청 url: localhost:8080/hello-mvc?name=leelee
+요청 url: `localhost:8080/hello-mvc?name=leelee`
 
 `Commnd + p` → 메서드에 대한 파라메터 정보 보기
 
@@ -110,6 +98,8 @@ public String helloString(@RequestParam("name") String name) {
 }
 {{< /highlight >}}
 
+<br>
+
 
 `@ResponseBody` → HTTP Body 부분에 내가 직접 값을 넣어서 주겠다. 그래서 실제 HTTP 응답을 보면 Body 부분에는 컨트롤러가 리턴해준 값만 들어가 있다. 
 
@@ -120,6 +110,8 @@ class를 생성해서 응답으로 넣어주면 그게 바로 key-value 형태�
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/json.png" >
 <figcaption align = "center">[Picture 4] json</figcaption>
 
+<br>
+
 `@ResponseBody` 어노테이션이 있으면 viewResolver를 호출하지 않는다. 대신 `HttpMessaheConverter`를 호출한다. (객체, String 외의 타입도 내장이 되어있다) 
 
 객체(class) 라면 → JsonConverter (MappingJackson2HttpMessageConverter)
@@ -127,8 +119,8 @@ class를 생성해서 응답으로 넣어주면 그게 바로 key-value 형태�
 
 <br> 
 
-Json 라이브러리  
-Jackson vs Gson(Google) → Spring에는 Jackson이 기본으로 내장되어있다. 큰 Json의 경우에는 Jackson이 성능이 좋고 작은 Json은 Gson이 성능이 좋다고.   
+<U>Json 라이브러리</U>  
+`Jackson` vs `Gson`(Google) → Spring에는 Jackson이 기본으로 내장되어있다. 큰 Json의 경우에는 Jackson이 성능이 좋고 작은 Json은 Gson이 성능이 좋다고.   
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/converter.png" >
 <figcaption align = "center">[Picture 5] converter</figcaption>
@@ -144,8 +136,12 @@ Jackson vs Gson(Google) → Spring에는 Jackson이 기본으로 내장되어있
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/arch.png" >
 <figcaption align = "center">[Picture 6] 일반적인 웹 애플리케이션 계층 구조</figcaption>
 
+<br>
+
 
 맨날 드는 생각: 객체 값 바꾸는 것은 도대체 어디서 해야 할까? 서비스일까 도메인일까? 
+
+내 생각처럼 레포지토리는 단순 무식하게 DB 왔다갔다 하는 기능으로 만드는 게 맞고, 서비스는 각종 비즈니스 로직이 들어가게 개발해야 한다. 그래서 레포지토리의 함수 이름은 단순하고 서비스의 함수 이름은 비즈니스와 유사하게 만든다.
 
 <br>
 
@@ -165,6 +161,8 @@ public Optional<Member> findById(Long id) {
     return Optional.ofNullable(store.get(id));
 }
 {{< /highlight >}}
+
+
 
 동시성 문제가 있을 수 있을 때는 일반 Map이 아니라 `ConcurrentHashMap`을 써야 한다. Long 같은 경우도 동시성 문제가 있을 때는 `AtomicLong`을 사용한다. 
 
@@ -187,9 +185,10 @@ void save() {
     }
 {{< /highlight >}}
 
+
+
 `org.junit.jupiter.api` 에서 제공하는 assert도 있지만, `org.assertj.core` 는 assert를 조금 더 편하게 사용할 수 있어서 실무에서 많이 사용한다. `spring-boot-starter-test` 를 디펜던시로 넣어야 사용할 수 있다. 
 
-테스트 순서는 보장이 안된다, 그래서 순서에 의존적으로 테스트를 작성하면 안된다. 하나의 테스트가 끝날 때마다 환경을 정리해주는 코드를 호출해야 한다. (clearStore는 직접 구현) 
 
 <br>
 
@@ -201,11 +200,15 @@ void save() {
     }
 {{< /highlight >}}
 
+테스트 순서는 보장이 안된다, 그래서 순서에 의존적으로 테스트를 작성하면 안된다. 하나의 테스트가 끝날 때마다 환경을 정리해주는 코드를 호출해야 한다.
+
 <br>
 
 # session 10 회원 서비스 개발
 
 `command + option + v` → 리턴을 받아주는 코드를 만들어준다. 
+
+<br>
 
 {{< highlight java  "linenos=true,hl_inline=false" >}}
 
@@ -224,7 +227,7 @@ Optional에 들어있는 값을 get으로 바로 꺼내는 걸 권장하지는 �
 
 `commnd + optional + m` → 코드 리팩터링 중 method 추출해서 만들어준다. 
 
-내 생각처럼 레포지토리는 단순 무식하게 DB 왔다갔다 하는 기능으로 만드는 게 맞고, 서비스는 각종 비즈니스 로직이 들어가게 개발해야 한다. 그래서 레포지토리의 함수 이름은 단순하고 서비스의 함수 이름은 비즈니스와 유사하게 만든다. 
+
 
 <br>
 
@@ -239,9 +242,9 @@ Member findMember() {} // 어쨌든 맴버를 찾겠다는 의미가 더 강하�
 {{< /highlight >}}
 
 테스트 코드 함수는 한글 이름으로 적어도 된다~ 실제로 실무에서도 한글로 많이 쓴다. 
+
 <br>
 
-테스트 코드 짤 때 머리 가슴 배 처럼 3단 구성을 하면 좋다. 심지어 코드에 주석으로 3단 구성 쓰는 것도 좋다고. 
 
 {{< highlight java  "linenos=true,hl_inline=false" >}}
     @Test
@@ -253,6 +256,8 @@ Member findMember() {} // 어쨌든 맴버를 찾겠다는 의미가 더 강하�
         // then -> 뭐가 나와야 한다. 
     }
 {{< /highlight >}}
+
+테스트 코드 짤 때 머리 가슴 배 처럼 3단 구성을 하면 좋다. 심지어 코드에 주석으로 3단 구성 쓰는 것도 좋다고.
 
 <br>
 
@@ -266,8 +271,6 @@ Member findMember() {} // 어쨌든 맴버를 찾겠다는 의미가 더 강하�
 
 Spring을 쓰려면 어지간한 것들은 Spring Bean으로 등록해서 쓰는 게 이점이 훨씬 많다. Bean은 싱글톤 객체로 등록이 된다. 단 하나의 인스턴스를 만들어 두고 여기 저기서 쓴다는 것이다. 
 
-**TODO: 왜 싱글턴으로 만들어두는지 정리하기**
-
 
 
 컴포넌트 에노테이션을 써서 스프링 컨테이너에 빈으로 등록된다. 이 빈들의 의존관계를 (생성자에 파라메터로 들어가는 것) 스프링이 파악해서 직접 의존관계를 주입해준다. 
@@ -278,6 +281,8 @@ Spring을 쓰려면 어지간한 것들은 Spring Bean으로 등록해서 쓰는
 <br>
 
 아무 곳에나 컴포넌트를 설정하면 안되고, `SpringBootApplication`이 있는 패키지의 밑에다가 설정해줘야 한다. 그래서 SpringBootApplication 어노테이션 안에 있는 `ComponentScan` 어노테이션이 컴포넌트를 스캔해서 스프링 컨테이너에 넣어줄 수 있다. 
+
+<br>
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/dir.png" >
 <figcaption align = "center">[Picture 8] 스프링 디렉터리</figcaption>
@@ -310,14 +315,18 @@ public class MemberConfig {
 
 **TODO: 언제 ComponentScan을 쓰고 언제 Bean을 쓰는지**
 
-<U>ComponentScan</U> 
+<U>Component</U>
 
+- Class-level 어노테이션이다.
 - 실무에서 주로 사용한다.
-- 형태가 정해진 (정형화된) Controller, Service, Repository에서 많이 쓰인다.
+- 형태가 정해진 (정형화된) Controller, Service, Repository에서 많이 쓰인다. (Spring Stereotype Annotation)
 
+<br>
 
-<U>Bean</U> 
+<U>Bean</U>
 
+- Method-level 어노테이션이다.
+- 외부 라이브러리의 객체를 빈으로 등록하고 싶을 때 사용한다.
 - 상황에 따라서 구현체를 바꿔야 할 때 많이 쓰인다.
     - ComponentScan에서는 어노테이션을 기존 구현체에서 삭제하고, 새로운 구현체에 붙여줘야 한다.
     - Bean으로 만들었다면 new 하는 부분에 새로운 구현체 넣어주면 된다.
@@ -326,7 +335,7 @@ public class MemberConfig {
 
 {{< highlight java  "linenos=true,hl_inline=false" >}}
 
-MemoryMemberRepository를 JpaMemberRepository로 바꿀 때 
+// MemoryMemberRepository를 JpaMemberRepository로 바꿀 때 
 
 // componentscan 
 ~~@Repository~~
@@ -348,6 +357,8 @@ public MemberRepository memberRepository() {
 ComponentScan 또는 Bean을 사용하면 MemberRepository에 의존성을 가지고 있는 MemberService에 아무런 수정을 가하지 않아도 된다. Spring의 DI가 다 해줬다. 
 
 → 설령 생성자 등의 조립하는 코드에는 변경이 갈 수 있더라도 실제 동작하는 코드에는 변경이 없다. 인터페이스 짱! 
+
+<br>
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/inter.png" >
 <figcaption align = "center">[Picture 9] 인터페이스와 스프링</figcaption>
@@ -374,12 +385,14 @@ ComponentScan 또는 Bean을 사용하면 MemberRepository에 의존성을 가�
 
 # session 13 순수 JDBC
 
-DB의 발전 순서 
+<U>DB의 발전 순서</U> 
 
 1. 순수 JDBC
 2. JdbcTemplate, Mybatis 
 3. JPA
 4. 스프링 데이터 JPA
+
+<br>
 
 순수 JDBC API를 사용한 DB 접근은 20년 전 쯤에 사용하던 방법이다. 커넥션도 직접 가지고 오고 닫아주는 등의 작업을 해야 해서 코드가 아주 길어진다. JPA 자제도 나온지 시간이 좀 지났고, 이제는 JPA를 또 한 번 정리한 스프링 데이터 JPA를 사용한다. 
 
@@ -426,11 +439,6 @@ implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 runtimeOnly 'com.h2database:h2'
 {{< /highlight >}}
 
-
-그럴 일은 거의 없지만 ring 프레임워크를 사용할 때 DB 커넥션을 직접 가지고 와야 한다면 아래의 방법을 사용해야 한다. 트랜잭션 등의 이유로 같은 커넥션을 유지해야 하기 때문이다. 
-
-커넥션을 가져왔다면 커넥션을 끊는 부분도 꼭 해줘야 한다. DB 커넥션이 `네트워크 자원`이라 쌓이면 장애가 될 수 있다.
-
 <br>
 
 {{< highlight java  "linenos=true,hl_inline=false" >}}
@@ -446,6 +454,8 @@ private void close(Connection conn) throws SQLException {
 }
 {{< /highlight >}}
 
+그럴 일은 거의 없지만 Sring 프레임워크를 사용할 때 DB 커넥션을 직접 가지고 와야 한다면 위의 방법을 사용해야 한다. 트랜잭션 등의 이유로 같은 커넥션을 유지해야 하기 때문이다. 커넥션을 가져왔다면 커넥션을 끊는 부분도 꼭 해줘야 한다. DB 커넥션이 `네트워크 자원`이라 쌓이면 장애가 될 수 있다.
+
 <br>
 
 # session 14 스프링 통합 테스트
@@ -459,9 +469,7 @@ class MemberServiceIntegrationTest {
 {{< /highlight >}}
 
 
-`@SpringBootTest` 는 스프링을 띄워서 테스트 한다. 이를 통합테스트라고 한다. 
-
-`@Transactional`을 쓰면 테스트 끝나고 DB를 다 롤백을 해서 DB를 지워준다. 테스트 메소드 **하나하나**에 적용이 된다. 
+`@SpringBootTest` 는 스프링을 띄워서 테스트 한다. 이를 통합테스트라고 한다. `@Transactional`을 쓰면 테스트 끝나고 DB를 다 롤백을 해서 DB를 지워준다. 테스트 메소드 **하나하나**에 적용이 된다. 
 
 스프링 컨테이너를 띄우지 않은 순수한 자바를 이용한 단위 테스트를 만드는 게 진짜 좋은 테스트다. 컨테이너까지 띄워야 한다면 테스트 단위를 잘못 잡은 것이다. 
 
@@ -536,8 +544,8 @@ public class JpaMemberRepository implements MemberRepository{
         return member.stream().findAny();
     }
 }
+{{< /highlight >}}
 
-<br>
 
 JPA를 쓰려면 EntityManager가 꼭 있어야 한다. EntityManager가 내부에 DataSource도 들고 있다. JPA에서 사용하는 쿼리인 `JPQL`은 대상이 Entity다. 그래서 결과값도 Entity를 가져온다.
 
@@ -563,7 +571,7 @@ select를 제외한 JPA 쿼리문은 모두 트랜잭션 안에서 동작해야 
 
 # session 17 스프링 데이터 JPA
 
-기본: Spring boot + JPA + 스프링 데이터 JPA 
+`기본: Spring boot + JPA + 스프링 데이터 JPA` 
 
 스프링 데이터 JPA는 JPA를 편하게 사용할 수 있도록 도와주는 기술이다. 그래서 JPA를 먼저 공부하는 게 좋다. 
 
@@ -584,8 +592,6 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 
 findByName 메소드도 사실 직접 구현을 하지 않았다. By어쩌구, By어쩌구And저쩌구 이런 식으로 컨벤션을 맞추면 스프링 데이터 JPA가 JPQL을 알아서 만들어준다. (reflection)
 
-`JpaRepository`를 상속 받았으면 `SpringDataJpaMemberRepository`의 구현체도 Spring이 알아서 만들어준다. (Proxy Pattern) 그래서 조립하는 부분에서도 구현체를 넘겨줄 필요 없이 MemberRepository를 생성자에 넣어두기만 하면 된다. 
-
 <br>
 
 {{< highlight java  "linenos=true,hl_inline=false" >}}
@@ -602,6 +608,8 @@ private final MemberRepository memberRepository;
 //        return new JpaMemberRepository(em);
 //    }
 {{< /highlight >}}
+
+`JpaRepository`를 상속 받았으면 `SpringDataJpaMemberRepository`의 구현체도 Spring이 알아서 만들어준다. (Proxy Pattern) 그래서 조립하는 부분에서도 구현체를 넘겨줄 필요 없이 MemberRepository를 생성자에 넣어두기만 하면 된다.
 
 
 <br>
@@ -620,6 +628,16 @@ private final MemberRepository memberRepository;
 # session 18 AOP가 필요한 상황
 
 **TODO: 함수 소요 시간 측정 말고도 AOP가 필요한 상황이 언제 있을까**
+
+1. 로깅
+2. 캐싱 → Spring에서 제공하는 `@Cacheable` 방법이다.
+    1. 메소드의 결과를 캐싱하는 로직을 구현한다. 메소드 실행 전 캐시를 확인 해, 이미 기록이 있다면 반환하도록 한다.
+3. 오류 처리
+    1. 예외가 발생했을 때 특정 동작을 수행하거나 예외를 변환한다.
+4. 트랜잭션 → Spring에서 제공하는 `@Transational` 방법이다.
+5. 보안
+
+<br>
 
 `공통 관심 사항` ↔ `핵심 관심 사항`
 
@@ -700,6 +718,38 @@ AOP는 `프록시 패턴`을 이용해서 구현했다. AOP가 적용이 되는 
 
 <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/gclin.png" >
 <figcaption align = "center">[Picture 12] Proxy Class</figcaption>
+
+<br>
+
+Spring AOP는 JDK 동적 프록시와 CGLIB 두 방법을 사용해서 프록시를 구현한다. 인터페이스가 있는 클래스라면 JDK 동적 프록시는 리플랙션을 이용해 타겟의 인터페이스를 구현하여 프록시를 생성한다. 인터페이스가 없는 클래스라면 CGLIB는 타겟의 클래스를 상속받아, 바이트코드를 조작해 프록시를 생성해준다.
+
+하지만 인터페이스를 구현한 클래스도 CGLIB로 생성이 되어 확인을 해봤더니 `@EnableAspectJAutoProxy` 때문이었다. JDK 동적 프록시가 아래와 같은 한계가 있어서 스프링에서는 CGLIB로 프록시를 생성하도록 강제하는 옵션을 제공하고 있다.
+
+<br>
+
+<U>JDK 동적 프록시 한계</U>
+
+1. 반드시 인터페이스를 생성해야 한다.
+2. 빈을 구현 클래스로 주입 받을 수 없고, 인터페이스로 주입을 받아야 한다.
+3. 프록시 생성 시간이 CGLIB보다 늦다. JDK 동적 프록시는 런타임에 프록시를 생성하는 반면, CGLIB는 처음에 클래스 로드할 때 프록시 객체를 미리 초기화해둔다.
+
+<br>
+
+JDK 동적 프록시를 사용하고 싶다면 아래의 properties를 설정해주면 된다.
+
+{{< highlight java  "linenos=true,hl_inline=false" >}}
+# aop
+spring.aop.auto=false
+spring.aop.proxy-target-class=false
+{{< /highlight >}}
+
+<br>
+
+
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring-1/jdk.png" >
+<figcaption align = "center">[Picture 13] Proxy Class with JDK Dynamic Proxy</figcaption>
+
 
 <br>
 
