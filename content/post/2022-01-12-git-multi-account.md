@@ -43,8 +43,8 @@ tags = ["General"]
 #### Step 1 사용할 계정들의 키 발급
 
 {{< highlight shell  "linenos=true,hl_inline=false" >}}
-ssh-keygen -t rsa -b 4096 -C "leelee@office.com"
-ssh-keygen -t rsa -b 4096 -C "leelee@personal.com"
+ssh-keygen -t ed25519 -C "leelee@office.com" -f ~/.ssh/id_rsa_personal
+ssh-keygen -t ed25519 -C "leelee@personal.com" -f ~/.ssh/id_rsa_office
 {{< /highlight >}}
 
 
@@ -53,8 +53,8 @@ ssh-keygen -t rsa -b 4096 -C "leelee@personal.com"
 #### Step 2 로컬의 ssh-agent 에 발급받은 키 연결:
 
 {{< highlight shell  "linenos=true,hl_inline=false" >}}
-ssh-add -K ~/.ssh/id_rsa_personal 
-ssh-add -K ~/.ssh/id_rsa_office
+ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal
+ssh-add --apple-use-keychain ~/.ssh/id_rsa_office
 {{< /highlight >}}
 
 
@@ -72,19 +72,17 @@ ssh-add -K ~/.ssh/id_rsa_office
 {{< highlight shell  "linenos=true,hl_inline=false" >}}
 # Personal GitHub account
 Host github.com-personal 
-HostName github.com
-User git
-AddKeysToAgent yes
-UseKeychain yes
-IdentityFile ~/.ssh/id_rsa
+    HostName github.com
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa
 
 # Office Github account
 Host github.com-office
-HostName github.com
-User git
-AddKeysToAgent yes
-UseKeychain yes
-IdentityFile ~/.ssh/id_rsa_office
+    HostName github.com
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa_office
 {{< /highlight >}}
 
 
@@ -105,17 +103,7 @@ IdentityFile ~/.ssh/id_rsa_office
 > id_rsa.pub 에시 
 
 {{< highlight shell  "linenos=true,hl_inline=false" >}}
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCruMY405yFL/6fvDvVFUTlxgXVO
-XRhdXlWDGsX5Kcn7yvEiGwBhVngvL8WWfA+hlelodoIAvlgnN9sJmVDDHF8XkK6r/
-INdvFBAQ28+2GlOM8l038HDiCOTg/GzhEQK0hVzE0Cgsfrw2YMSxDJ9Gr9eSDSN0ia0LM
-LHMXdn5I5aeePGlt0boMIJgohzLVb4HT5KipBxbHETe05a8oOvmc9nS8r47ibSWpecuqDMJ7
-7YrBa82X0d+5nAdZ1QiJg63k7ifJdPC4/CJHVvmglsHBzTkWEdn89R6q4OwyrUBRnrcITrF8
-aCQMax2A5f7SaLcJ9xXQx47LT0ApfJ5UhHmLdK2vKzWEeEXhMfT3d0wIlppsEs5FuZRLqSAyZ
-QCn1IxZvV+KBAe5O3B9sidhULMnTzGqLCe3lLv3K0uI2MrP694LHqjW0duppbRbZZSNGdc0AM
-PtOqprI+lvBAugi6mN20sWRBMsHz1m1HdUI4yM85VAhYLNLgqs5n13ZfwUYEEh9EyqtGESToy
-8DCSRqPqHNINB0skGBh9DF3ChjhdKvyn40AmpHdAzFlWgKGXbvx1DKzVhkubGNkISicwT7U+9
-/18UuHJL2OsoFd9YcQ0qJqcrXWY2RxVkqAxzndxaPNeT5uXhZt0yNukm3UXd9khEd/Qn8F1n
-IqgHGiVCntP9wmQ== leelee@personal.com
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+d2UkNy9yBi6Dd2pc7O1MPik87UhC81GzyTzlKYYRI leelee@office.com
 {{< /highlight >}}
 
 
