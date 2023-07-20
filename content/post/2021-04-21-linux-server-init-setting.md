@@ -95,6 +95,12 @@ sudo wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0
 
 > 고정 ip를 위한 netplan 파일
 
+{{< highlight python  "linenos=true,hl_inline=false" >}}
+cd /ect/netplan/00-installer-config.yaml
+{{< /highlight >}}
+
+<br>
+
 {{< highlight bash  "linenos=true,hl_inline=false" >}}
 # This is the network config written by 'subiquity'
 network:
