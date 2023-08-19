@@ -2,7 +2,7 @@
 title = "[Seminar] Django에서 ORM과 Redis로 동시성을 다루는 방법"
 date = "2022-12-26"
 description = "Kasa에서 2022-11-30에 진행한 Handling Concurrent request in Django를 주제로 진행한 세미나를 정리한다."
-tags = ["Project"]
+tags = ["Seminar"]
 +++
 
 
