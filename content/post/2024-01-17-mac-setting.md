@@ -16,6 +16,8 @@ tags = ["General"]
 **Index**
 1. Intro 
 2. 설치하는 앱 
+3. 인텔리제이 세부 설정 
+4. 맥 설정 
 
 
 <br> 
@@ -363,3 +365,42 @@ Github 등 2차로 OTP 인증이 필요한 곳이 많은데 그때마다 핸드�
 개인으로 라도 사용하고 싶었는데 개인도 유로인 솔루션이라서 고민하다가 구매하지 않았다. 
 
 
+<br>
+
+# 인텔리제이 세부 설정
+
+- 사용 폰트: D2Coding (12~13) 
+- 사용 테마: Atom One Dark (Material Theme 설치)
+- 사용 플러그인:
+  - Atom Material Icons 
+  - CodeGlance Pro 
+  - Key Promoter X 
+  - Kubernetes 
+  - Material Theme UI 
+  - Pokemon Progress 
+  - Rainbow Brackets Lite 
+  - Terraform and HCL 
+  - 그외 언어 support template은 필요할 때 마다 추가 
+- 마우스 휠로 폰트 조절: Editor > General > Mouse Control > Change font size Commond+Mouse Wheel in: 
+
+<br>
+
+OpenLens가 있는데 인텔리제이에 쿠버네티스 플러그인을 깔 필요가 있을까 했는데 깔아보니 엄청 편하다. 
+UI로 yaml을 생성하고 Describe하는 기능을 잘 쓰고 있다. 
+
+<br>
+
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/setting/ku.png" >
+<figcaption align = "center">[Picture 2] Kubernetes in Intellij</figcaption>
+
+<br>
+
+# 맥 설정
+- [세손가락 드래그](https://support.apple.com/ko-kr/102341)
+- [마우스 포인터 크기 조절](https://support.apple.com/ko-kr/guide/mac-help/mchlp2920/mac) 
+- [따옴표 자동변환](https://travel.plusblog.co.kr/989)
+- [맥북 베터리 잔량 표시](https://jungirl.kr/entry/%EB%A7%A5%EB%B6%81-%EB%B0%B0%ED%84%B0%EB%A6%AC-%EC%9E%94%EB%9F%89-%EB%B9%84%EC%9C%A8-%ED%91%9C%EC%8B%9C/)
+- [자동 대문자 해제](https://angerscroll.tistory.com/3)
+- [맞춤법 검사 끄기](https://support.apple.com/ko-kr/guide/mac-help/mchlp2299/mac)
+- [맥북 메모 글자 확대](https://discussionskorea.apple.com/thread/25162?sortBy=best)
+- [맥북 메모 맞춤법 자동 수정 끄기](https://wakestand.tistory.com/1000)
