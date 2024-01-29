@@ -16,8 +16,7 @@ tags = ["General"]
 **Index**
 1. Intro 
 2. 설치하는 앱 
-3. 맥 설정
-4. Jetbrains 제품군 세부 설정 
+
 
 <br> 
 
@@ -139,6 +138,14 @@ CLI profile name [Admin-***]:
 $ aws sso login --profile my-profile
 ```
 
+<br>
+
+eks를 사용하고 있다면 클러스터 정보도 kube/config에 등록해줘야 한다. [Install kubectl](https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-macos/) 공식 문서를 보고 kubectl을 설치한 후 진행한다. 
+
+```
+# aws login 이후
+aws --profile <profile-name> eks --region <profile-region> update-kubeconfig --name <cluster-name> --alias <cluster-alias>
+```
 
 <br>
 
@@ -164,24 +171,99 @@ tfenv list
 
 <br>
 
-### Kubernetes 보조 툴 (Command Base)
-
-- 용도:
-- 설치 방법:
-- 세부 설정:
-
-(클러스터 설정하는 방법도 쓰자)
-
-<br>
-
 
 ### Iterm2
-- 용도:
+- 용도: 터미널 
 - 설치 방법:
+
+```
+brew install iterm2 
+
+# install oh-my-zsh 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# in .zshrc 
+# agnoster가 현재 checkout한 브랜치를 쉽게 알아볼 수 있게 지원해주는 테마라고 한다. 
+ZSH_THEME="agnoster"
+```
+
 - 세부 설정:
+
+폰트: [D2 Coding](https://github.com/naver/d2codingfont)  
+Colors: Blue Matrix  
+하단 상태바: [상태바 추가](https://danaing.github.io/etc/2022/03/28/M1-mac-iTerm2-setting.html), CPU, Mem, 시간 등을 선택해서 사용한다.   
+
+설치가 필요한 플러그인: zsh-autosuggestions, zsh-syntax highlighter, [kubectl 자동 완성](https://interp.blog/oh-my-zsh-kubectl-autocomplete/)
+
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+사용하는 플러그인
+```
+git kubectl kube-ps1 zsh-syntax-highlighting zsh-autosuggestions aws docker docker-compose
+```
+
+사용하는 alias 
+```
+alias ll="ls -alht"
+alias src="source ~/.zshrc"
+alias gst="git status"
+alias glog="git log --oneline"
+alias gb="git branch | cat"
+alias ab="git branch -a | cat"
+alias gsw="git switch main"
+alias rsw="git switch -"
+alias dbranch="git branch | grep -v 'main' | xargs git branch -D"
+alias shutdown="sudo shutdown -h now"
+alias reboot="sudo reboot"
+alias h="history"
+alias hg="history | grep"
+alias down="sudo pkill loginwindow"
+alias e="exit"
+alias tf='terraform'
+
+# AWS
+alias sso="aws sso login --profile <dev> && aws sso login --profile <staging> && aws sso login --profile <prod>"
+alias ep="export AWS_PROFILE=<prod>"
+alias es="export AWS_PROFILE=<staging>"
+alias ed="export AWS_PROFILE=<dev>"
+
+```
 
 <br>
 
+
+
+### Kubernetes support: kubectx, kubens
+
+- 용도: kubernetes를 조금 더 편하게 사용할 수 있도록 보조해주는 command base tool. kubectx: 사용중인 클러스터 바꾸기, kubens: 사용중인 네임스페이스 바꾸기  
+- 설치 방법:  
+```
+brew install kubectx
+brew install kubens 
+```
+
+- 세부 설정: - 
+
+<br>
+
+### Kubernetes support: kube-ps1
+- 용도: 터미널 프롬프트에 지금 사용중인 K8s 클러스터와 네임스페이스를 보여준다. 단, 이걸 쓰면 터미널이 느려진다.  
+- 설치 방법: 
+```
+brew install kube-ps1
+
+# .zshrc 추가  
+source "$(brew --prefix)/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+```
+
+- 세부 설정: - 
+
+
+<br>
 
 ### Scroll Reverser
 - 용도: 마우스 휠 반전 
@@ -247,9 +329,12 @@ tfenv list
 <br>
 
 ### OpenLens 
-- 용도: Kubernetes Management 
-- 설치 방법: []()
-- 세부 설정: 
+- 용도: Kubernetes Management (Lens 무료 버전)
+- 설치 방법: [OpenLens Download](https://formulae.brew.sh/cask/openlens)
+- 세부 설정: Extension을 추가로 깔아야 Lens와 동일한 환경으로 쓸 수 있다. 아래의 Extension들을 깔자. 
+  - openlens-node-pod-menu: node, pod 메뉴를 볼 수 있는 extension
+  - lens-multi-pod-logs: 디플로이에 연결된 복수 개의 파드 로그를 볼 수 있는 extension 
+  - kube-resource-map: k8s 리소스 관계를 그림으로 보여주는 extension. Deploy, Statefulset, Daemonset, pod, service, ingress에서 사용 가능. 
 
 
 <br>
@@ -276,10 +361,5 @@ Github 등 2차로 OTP 인증이 필요한 곳이 많은데 그때마다 핸드�
 **참고**  
 전 직장에서 사용했는데 DevOps가 사내 솔루션, 3rd-party 솔루션에 접속할 일이 많다보니 다양한 계정의 계정 정보를 따로 관리할 필요가 없어서 정말 편리하게 사용했다. 
 개인으로 라도 사용하고 싶었는데 개인도 유로인 솔루션이라서 고민하다가 구매하지 않았다. 
-
-
-
-# Jetbrains 제품군 세부 설정 
-
 
 
