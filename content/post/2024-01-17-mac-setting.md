@@ -1,5 +1,5 @@
 +++
-title = "[General] DevOps Engineer에 최적화된 맥 설정하기 (1/2): APP"
+title = "[General] DevOps Engineer에 최적화된 맥 설정하기"
 date = "2024-01-17"
 description = "DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편"
 tags = ["General"]
