@@ -1,7 +1,7 @@
 +++
 title = "[General] DevOps Engineer에 최적화된 맥 설정하기"
 date = "2024-01-17"
-description = "DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편"
+description = "DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다."
 tags = ["General"]
 +++
 
@@ -9,7 +9,7 @@ tags = ["General"]
 <br>
 <br> 
 
-> DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편
+> DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. 
 
 <br> 
 
@@ -202,10 +202,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
+<br>
+
 사용하는 플러그인
 ```
 git kubectl kube-ps1 zsh-syntax-highlighting zsh-autosuggestions aws docker docker-compose
 ```
+
+<br>
 
 사용하는 alias 
 ```
